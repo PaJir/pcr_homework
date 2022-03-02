@@ -1,0 +1,249 @@
+body {
+    background-color: #f5f6f7 !important;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+    margin: 0;
+}
+.top-content {
+    background-color: #f5f6f7 !important;
+    box-shadow: 0 1px 5px #cccccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 87px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+.top-content div {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.top-content .top-h1 {
+    height: 45px;
+    font-size: 1.25em;
+}
+.top-content .top-h1 a {
+    line-height: 45px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.top-content .top-h1 a,
+.top-content .top-h1 a:link,
+.top-content .top-h1 a:visited {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+.top-content .top-h2 {
+    height: 40px;
+    font-size: 1.05em;
+}
+.top-content .top-h2 a {
+    line-height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.top-content .top-h2 a,
+.top-content .top-h2 a:link,
+.top-content .top-h2 a:visited {
+    color: #3f3f3f;
+    text-decoration: none;
+}
+
+.main-content-wrap {
+    margin: 107px 50px 20px 20px;
+    width: calc(100vw - 70px);
+}
+.main-content {
+    background-color: #ffffff;
+    border-radius: 3px;
+    margin: auto;
+    min-height: calc(100vh - 127px);
+    width: calc(100vw - 90px);
+    max-width: 1200px;
+}
+.content {
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.bosses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start; /* 如果要让boss的高度相同，注释这行 */
+    /* justify-content: space-around; */
+    width: 100%;
+}
+.boss-wrap {
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    /* height: 200px; */
+    width: 200px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.boss-profile {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.boss-name-rate {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 0 0 10px;
+}
+.boss-name {
+    color: #2f2f2f;
+    font-size: smaller;
+}
+.boss-rate {
+    color: #3f3f3f;
+    font-size: small;
+}
+.boss-info {
+    color: #3f3f3f;
+    font-size: smaller;
+}
+input[class="boss-detail-check"] {
+    display: none;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+.boss-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s;
+}
+.boss-detail-check-up {
+    display: none;
+}
+.boss-detail-check-down,
+.boss-detail-check-up {
+    color: #999999;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+.boss-detail-check:checked ~ .boss-detail-check-up {
+    display: inline-block;
+}
+.boss-detail-check:checked ~ .boss-detail-check-down {
+    display: none;
+}
+.boss-detail-check:checked ~ .boss-detail {
+    max-height: 400px !important; /* 如果高度不够的话，继续加 */
+}
+.boss-detail-value {
+    margin: 5px 0;
+}
+.boss-detail-value span {
+    font-size: small;
+    padding: 0 10px;
+}
+.boss-detail-value span:first-child {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+.boss-detail-value span:last-child {
+    background-color: #ffffff;
+}
+
+.battle-tabs button {
+    background-color: inherit;
+    color: #3f3f3f;
+    border-color: rgba(222, 222, 222, 0.5);
+    border-radius: 100px;
+    border-width: 1px;
+    cursor: pointer;
+    padding: 2px 12px;
+    transition: 0.25s;
+    margin: 0 1px;
+}
+.battle-tabs button:hover {
+    background-color: #b6dcfe;
+}
+.battle-tabs button.active {
+    color: #ffffff;
+    background-color: #49a8fc;
+}
+.battle-tabs span {
+    margin-left: 10px;
+}
+.battle-tab-content {
+    display: none;
+    padding: 10px 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    bottom: -4px; /* fix: 位置偏上，未完全测试 */
+}
+.switch input {
+    display: none;
+}
+.switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+.switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.25s;
+}
+.switch .slider:hover {
+    background-color: #b6dcfe;
+}
+.switch input:checked + .slider {
+    background-color: #49a8fc;
+}
+.switch input:focus + .slider {
+    box-shadow: 0 0 1px #49a8fc;
+}
+.switch input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+.right-content {
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 30px;
+}
+.right-content a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
