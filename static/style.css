@@ -87,9 +87,14 @@ body {
     flex-direction: column;
     /* height: 200px; */
     width: 200px;
-    padding: 10px;
+    padding: 10px 10px 5px 10px;
     margin-right: 5px;
     margin-bottom: 5px;
+    cursor: pointer;
+}
+.boss-wrap:hover,
+.boss-wrap.active {
+    background-color: #f2f4fa;
 }
 .boss-profile {
     display: flex;
@@ -132,7 +137,12 @@ input[class="boss-detail-check"] {
     color: #999999;
     cursor: pointer;
     text-align: center;
+    height: 22px;
     width: 100%;
+}
+.boss-detail-check-down:hover img,
+.boss-detail-check-up:hover img {
+    height: 22px;
 }
 .boss-detail-check:checked ~ .boss-detail-check-up {
     display: inline-block;
@@ -166,7 +176,7 @@ input[class="boss-detail-check"] {
     border-width: 1px;
     cursor: pointer;
     padding: 2px 12px;
-    transition: 0.25s;
+    /* transition: 0.25s; */
     margin: 0 1px;
 }
 .battle-tabs button:hover {
@@ -230,6 +240,35 @@ input[class="boss-detail-check"] {
     -ms-transform: translateX(16px);
     transform: translateX(16px);
 }
+
+.table-header {
+    background-color: #eeeeee;
+    border-radius: 3px;
+    color: #3f3f3f;
+    min-width: 100%;
+    padding: 2px 0;
+    margin: 20px 0 10px 0;
+}
+.table-header div {
+    display: inline-block;
+    text-align: center;
+}
+.table-header div:nth-child(1) {
+    width: 120px;
+}
+.table-header div:nth-child(2) {
+    width: 200px;
+}
+.table-header div:nth-child(3) {
+    width: 100px;
+}
+.table-header div:nth-child(4) {
+    width: 200px;
+}
+.table-header div:nth-child(5) {
+    width: 200px;
+}
+
 
 .right-content {
     align-items: center;

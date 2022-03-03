@@ -1,6 +1,7 @@
 <html>
     <title>公主连结作业网</title>
     <head>
+        <meta charset="UTF-8" />
         <link type="text/css" rel="stylesheet" href="static/style.css" />
         <!-- <link type="text/css" rel="stylesheet" href="static/bootstrap.min.css" /> -->
         <!-- <script type="text/javascript" src="static/jquery.min.js"></script> -->
@@ -24,90 +25,7 @@
                 <section class="content">
                     <h2>BOSS</h2>
                     <div class="bosses">
-                        <!--用id区分boss 1~5，换背景色换boss-wrap的-->
-                        <div class="boss-wrap" id="boss1">
-                            <div class="boss-profile">
-                                <img src="static/img/icon_unit_302100.png" height="48px" width="48px" />
-                                <div class="boss-name-rate">
-                                    <div class="boss-name">双足飞龙</div>
-                                    <div class="boss-rate">点数比率：2</div>
-                                </div>
-                            </div>
-                            <div class="boss-info">这个boss的伤害极高，<br />这是一阶段的描述，<br />二阶段的描述在哪。</div>
-                            <input class="boss-detail-check" id="boss-detail-check1" type="checkbox" />
-                            <div class="boss-detail">
-                                <!--照着下面的例子多写几行-->
-                                <div class="boss-detail-value"><span>等级</span><span>100</span></div>
-                                <div class="boss-detail-value"><span>物理攻击力</span><span>99999</span></div>
-                                <div class="boss-detail-value"><span>魔法攻击力</span><span>0</span></div>
-                            </div>
-                            <label for="boss-detail-check1" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px"/></label>
-                            <label for="boss-detail-check1" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px"/></label>
-                        </div>
-                        <div class="boss-wrap" id="boss2">
-                            <div class="boss-profile">
-                                <img src="static/img/icon_unit_302100.png" height="48px" width="48px" />
-                                <div class="boss-name-rate">
-                                    <div class="boss-name">双足飞龙</div>
-                                    <div class="boss-rate">点数比率：2</div>
-                                </div>
-                            </div>
-                            <div class="boss-info">这个boss的伤害极高。</div>
-                            <input class="boss-detail-check" id="boss-detail-check2" type="checkbox" />
-                            <div class="boss-detail">
-                                <div class="boss-detail-value"><span>等级</span><span>100</span></div>
-                            </div>
-                            <label for="boss-detail-check2" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px"/></label>
-                            <label for="boss-detail-check2" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px"/></label>
-                        </div>
-                        <div class="boss-wrap" id="boss3">
-                            <div class="boss-profile">
-                                <img src="static/img/icon_unit_302100.png" height="48px" width="48px" />
-                                <div class="boss-name-rate">
-                                    <div class="boss-name">双足飞龙</div>
-                                    <div class="boss-rate">点数比率：2</div>
-                                </div>
-                            </div>
-                            <div class="boss-info">这个boss的伤害极高。</div>
-                            <input class="boss-detail-check" id="boss-detail-check3" type="checkbox" />
-                            <div class="boss-detail">
-                                <div class="boss-detail-value"><span>等级</span><span>100</span></div>
-                            </div>
-                            <label for="boss-detail-check3" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px"/></label>
-                            <label for="boss-detail-check3" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px"/></label>
-                        </div>
-                        <div class="boss-wrap" id="boss4">
-                            <div class="boss-profile">
-                                <img src="static/img/icon_unit_302100.png" height="48px" width="48px" />
-                                <div class="boss-name-rate">
-                                    <div class="boss-name">双足飞龙</div>
-                                    <div class="boss-rate">点数比率：2</div>
-                                </div>
-                            </div>
-                            <div class="boss-info">这个boss的伤害极高。</div>
-                            <input class="boss-detail-check" id="boss-detail-check4" type="checkbox" />
-                            <div class="boss-detail">
-                                <div class="boss-detail-value"><span>等级</span><span>100</span></div>
-                            </div>
-                            <label for="boss-detail-check4" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px"/></label>
-                            <label for="boss-detail-check4" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px"/></label>
-                        </div>
-                        <div class="boss-wrap" id="boss5">
-                            <div class="boss-profile">
-                                <img src="static/img/icon_unit_302100.png" height="48px" width="48px" />
-                                <div class="boss-name-rate">
-                                    <div class="boss-name">双足飞龙</div>
-                                    <div class="boss-rate">点数比率：2</div>
-                                </div>
-                            </div>
-                            <div class="boss-info">这个boss的伤害极高。</div>
-                            <input class="boss-detail-check" id="boss-detail-check5" type="checkbox" />
-                            <div class="boss-detail">
-                                <div class="boss-detail-value"><span>等级</span><span>100</span></div>
-                            </div>
-                            <label for="boss-detail-check5" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px"/></label>
-                            <label for="boss-detail-check5" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px"/></label>
-                        </div>
+                        <!--用id区分boss 1~5，动态生成-->
                     </div>
                 </section>
                 <section class="content">
@@ -122,51 +40,254 @@
                             <button class="battle-tab-panel" onclick="tab_filter(event, 4)">五阶段</button>
                             <span>尾刀</span>
                             <label class="switch">
-                                <input type="checkbox" onclick="">
+                                <input type="checkbox" id="checkbox-remainder" onclick="" />
+                                <div class="slider"></div>
+                            </label>
+                            <span>AUTO</span>
+                            <label class="switch">
+                                <input type="checkbox" id="checkbox-auto" onclick="" />
                                 <div class="slider"></div>
                             </label>
                         </div>
-                        <div class="battle-tab-content" style="display:block">
-                            1
+                        <!--不好用table实现，直接用div硬怼-->
+                        <div class="table-header">
+                            <div class="table-head">批量/分刀</div>
+                            <div class="table-head">阵容</div>
+                            <div class="table-head">参考伤害</div>
+                            <div class="table-head">特殊说明</div>
+                            <div class="table-head">欢乐秀</div>
                         </div>
-                        <div class="battle-tab-content">
-                            2
+                        <div class="battle-tab-content" id="stage1" style="display: block">
+                            <!--用id stage + x 定位要插入的位置-->
                         </div>
-                        <div class="battle-tab-content">
-                            3
-                        </div>
-                        <div class="battle-tab-content">
-                            4
-                        </div>
-                        <div class="battle-tab-content">
-                            5
-                        </div>
+                        <div class="battle-tab-content" id="stage2">2</div>
+                        <div class="battle-tab-content" id="stage3">3</div>
+                        <div class="battle-tab-content" id="stage4">4</div>
+                        <div class="battle-tab-content" id="stage5">5</div>
                     </div>
                 </section>
             </div>
         </div>
         <div class="right-content">
             <!--TODO: hover显示文字-->
-            <a href="/"><img src="static/icon/qq.png" height="24px" width="24px" /><!--TODO: 改icon--></a>
-            <a href="/"><img src="static/icon/info.png" height="24px" width="24px" /><!--TODO: 改成icon--></a>
-            <a href="/"><img src="static/icon/email.png" height="24px" width="24px" /><!--TODO: 改icon--></a>
+            <a href="/"><img src="static/icon/qq.png" height="24px" width="24px" /></a>
+            <a href="/"><img src="static/icon/info.png" height="24px" width="24px" /></a>
+            <a href="/"><img src="static/icon/email.png" height="24px" width="24px" /></a>
         </div>
     </body>
     <script>
+        // 全局变量
+        var data = undefined; // boss和homework数据
+        var boss_id = undefined; // 选中的boss
+        var stage = undefined; // 预留
+        // tab 筛选项
         function tab_filter(event, id) {
             let tabcontents = document.getElementsByClassName("battle-tab-content");
-            for(let i=0;i<tabcontents.length; i++) {
-                if(i===id){
+            for (let i = 0; i < tabcontents.length; i++) {
+                if (i === id) {
                     tabcontents[i].style.display = "block";
                 } else {
                     tabcontents[i].style.display = "none";
                 }
             }
             let tabpanels = document.getElementsByClassName("battle-tab-panel");
-            for(let i=0;i<tabpanels.length; i++) {
-                tabpanels[i].className  = tabpanels[i].className.replace(" active", "");
+            for (let i = 0; i < tabpanels.length; i++) {
+                tabpanels[i].className = tabpanels[i].className.replace(" active", "");
             }
             event.currentTarget.className += " active";
         }
+
+        function getBossHtml(boss) {
+            // return a html
+            let html = '<div class="boss-wrap" id="' + boss.id + '" onclick="changeBoss(event, this.id)">';
+            html += '<div class="boss-profile">';
+            html += '<img src="static/img/icon_unit_' + boss.id + '.png" height="48px" width="48px" />';
+            html += '<div class="boss-name-rate">';
+            html += '<div class="boss-name">' + boss.name + "</div>";
+            html += '<div class="boss-rate">点数比率：' + boss.rate + "</div>";
+            html += "</div></div>";
+            html += '<div class="boss-info">' + boss.info + "</div>";
+            html += '<input class="boss-detail-check" id="boss-detail-check-' + boss.id + '" type="checkbox" onclick="stopClick(event)" />';
+            html += '<div class="boss-detail">';
+            boss.detail.forEach(function (detail) {
+                html += '<div class="boss-detail-value"><span>' + detail[0] + "</span><span>" + detail[1] + "</span></div>";
+            });
+            html += "</div>";
+            html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px" /></label>';
+            html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px" /></label>';
+            html += "</div>";
+            return html;
+        }
+
+        function stopClick(e) {
+            // 阻止事件冒泡
+            e.stopPropagation();
+        }
+
+        function changeBoss(e, id) {
+            // 点击的是折叠栏
+            if (e && (e.path[1].className === "boss-detail-check-down" || e.path[1].className === "boss-detail-check-up")) {
+                return;
+            }
+            boss_id = id;
+
+            let bosses = document.getElementsByClassName("boss-wrap");
+            for (let i = 0; i < bosses.length; i++) {
+                bosses[i].className = bosses[i].className.replace(" active", "");
+            }
+            document.getElementById(id).className += " active";
+
+            data.filter(function (boss) {
+                return boss.id === boss_id;
+            }).forEach(function (boss) {
+                let html = getHomeworkHtml(boss.homework, boss.joyshow);
+                document.getElementById("stage" + boss.stage).innerHTML = html;
+            });
+        }
+
+        function getHomeworkHtml(homework, joyshow) {
+            let html = "";
+            if (homework && homework.length !== 0) {
+                html += "<div>test</div>";
+            }
+            if (joyshow && joyshow.length !== 0) {
+            }
+            return html;
+        }
+
+        function init() {
+            // 全局变量
+            data = [
+                {
+                    name: "双足飞龙",
+                    id: "302100",
+                    stage: 1, // 一阶段
+                    rate: "1.2",
+                    info: "张开巨大的飞翼翱翔天空的翼龙。能够喷射巨大的火球，阻挡侵入者。<br>・对前方范围内的敌人造成中等物理伤害。",
+                    detail: [
+                        ["等级", 60],
+                        ["生命值", 7000000],
+                        ["物理攻击力", 2200],
+                        ["物理防御力", 220],
+                        ["魔法攻击力", 2100],
+                        ["魔法防御力", 200],
+                        ["命中", 50],
+                        ["技能值上升", 20]
+                    ],
+                    homework: [
+                        {
+                            unit: ["110631", "107831", "101331", "101531", "107031"],
+                            damage: "3787120w",
+                            auto: 0,
+                            info: "评论区留言：这个轴不好用。",
+                            video: [
+                                {
+                                    text: "天地壹号 蓝字400w 视频有轴",
+                                    url: "https://space.bilibili.com"
+                                },
+                                {
+                                    text: "afafdfsdfadsfdsfasdfasdfasfdsf",
+                                    url: "https://space.bilibili.com"
+                                }
+                            ]
+                        },
+                        {
+                            unit: ["110631", "107831", "101331", "101531", "107031"],
+                            damage: "3787120w",
+                            auto: 1,
+                            info: "评论区留言：这个轴好用。",
+                            video: [
+                                {
+                                    text: "auto视频",
+                                    url: "https://space.bilibili.com"
+                                }
+                            ]
+                        }
+                    ],
+                    joyshow: {
+                        img: ["static/test/春环.png", "static/test/兰法1.png", "static/test/thumb_music_000018.png", "static/test/tx_worldmap_01009901a.png"],
+                        msg: ["会长，手机没电了，充电器坏了，今天我就不出刀了", "会长，兰法妈妈要去喝nn，今天就不出刀了"]
+                    }
+                },
+                {
+                    name: "野性狮鹫",
+                    id: "302000",
+                    stage: 1,
+                    rate: "1.2",
+                    info: "在残酷环境中成长进化的狮鹫。使用龙卷风将猎物卷起到空中进行狩猎。<br>・对前方范围内的敌人造成魔法伤害（中）。",
+                    detail: [
+                        ["等级", 65],
+                        ["生命值", 8000000],
+                        ["物理攻击力", 1802],
+                        ["物理防御力", 200],
+                        ["魔法攻击力", 2100],
+                        ["魔法防御力", 200],
+                        ["命中", 50],
+                        ["技能值上升", 20]
+                    ]
+                },
+                {
+                    name: "极彩鸟",
+                    id: "305900",
+                    stage: 1,
+                    rate: "1.3",
+                    info: "【物理】能散发出惊人的吸引力，有着缤纷色彩的艳丽鸟类。若被那份美丽所吸引，便会成为其仆人，袭击同伴。<br>・必杀技能对魅惑状态以外的全体敌人造成物理伤害（大）。<br>・对前方两名角色造成魔法伤害（小），并赋予魅惑状态，再大幅提升物理攻击力与魔法攻击力。",
+                    detail: [
+                        ["等级", 70],
+                        ["生命值", 10000000],
+                        ["物理攻击力", 1900],
+                        ["物理防御力", 214],
+                        ["魔法攻击力", 1552],
+                        ["魔法防御力", 214],
+                        ["命中", 50],
+                        ["技能值上升", 25]
+                    ]
+                },
+                {
+                    name: "独眼巨人",
+                    id: "303900",
+                    stage: 1,
+                    rate: "1.4",
+                    info: "【物理】以自己的怪力为傲的独眼巨人。充满魔力的眼瞳能释放出强大的奇怪光线。<br>・对敌方全体造成魔法伤害（大）。提升对生命值为100%的敌人造成的伤害并降低其行动速度。<br>・对物理攻击力最高的一名敌人，根据其最大生命值，造成物理伤害（中），并降低其技能值。",
+                    detail: [
+                        ["等级", 75],
+                        ["生命值", 12000000],
+                        ["物理攻击力", 2010],
+                        ["物理防御力", 193],
+                        ["魔法攻击力", 2010],
+                        ["魔法防御力", 225],
+                        ["命中", 50],
+                        ["技能值上升", 45]
+                    ]
+                },
+                {
+                    name: "梦魇牡羊",
+                    id: "300300",
+                    stage: 1,
+                    rate: "1.5",
+                    info: "【魔法】获得强大力量的白羊座魔星兽。在阴暗的沉睡监牢中将冒险者的灵魂吞噬殆尽。<br>・对敌方全体造成魔法伤害（大），对束缚状态的敌人额外造成魔法伤害（小）。<br>・对前方范围内的敌人造成魔法伤害（中）。<br>・对一名敌人施加束缚状态。",
+                    detail: [
+                        ["等级", 80],
+                        ["生命值", 15000000],
+                        ["物理攻击力", 2000],
+                        ["物理防御力", 211],
+                        ["魔法攻击力", 1745],
+                        ["魔法防御力", 211],
+                        ["命中", 50],
+                        ["技能值上升", 15]
+                    ]
+                }
+            ];
+            let html = "";
+            data.forEach(function (boss) {
+                html += getBossHtml(boss);
+            });
+            document.getElementsByClassName("bosses")[0].innerHTML = html;
+
+            boss_id = data[0].id;
+            changeBoss(null, boss_id);
+        }
+
+        init();
     </script>
 </html>
