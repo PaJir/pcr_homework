@@ -60,10 +60,10 @@
                         <div class="battle-tab-content" id="stage1" style="display: block">
                             <!--用id stage + x 定位要插入的位置-->
                         </div>
-                        <div class="battle-tab-content" id="stage2">2</div>
-                        <div class="battle-tab-content" id="stage3">3</div>
-                        <div class="battle-tab-content" id="stage4">4</div>
-                        <div class="battle-tab-content" id="stage5">5</div>
+                        <div class="battle-tab-content" id="stage2"></div>
+                        <div class="battle-tab-content" id="stage3"></div>
+                        <div class="battle-tab-content" id="stage4"></div>
+                        <div class="battle-tab-content" id="stage5"></div>
                     </div>
                 </section>
             </div>
@@ -145,14 +145,54 @@
             });
         }
 
+        function fiveUnits(units) {
+            let html = '<div class="units">';
+            units.forEach(function (unit) {
+                unit = unit.split(":");
+                html += '<div class="unit"><img src="static/img/icon_unit_' + unit[0] + '.png" /><br>' + unit[1] + "</div>";
+            });
+            html += "</div>";
+            return html;
+        }
+
+        function listVideos(videos) {
+            let html = '<div class="videos"><span>视频</span>';
+            videos.forEach(function (video) {
+                html += '<div class="video"><a href="' + video.url + '">' + video.text + "</a></div>";
+            });
+            html += '<div class="video-add">＋ 添加我的视频</div>';
+            html += "</div>";
+            return html;
+        }
+
         function getHomeworkHtml(homework, joyshow) {
             let html = "";
             if (homework && homework.length !== 0) {
-                html += "<div>test</div>";
+                html += '<div class="homeworks">';
+                homework.forEach(function (hw) {
+                    html += '<div class="homework-wrap" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '">';
+                    html += '<div class="homework-up">';
+                    html += '<input class="batch-check-' + hw.id + '" type="checkbox" onclick="checkBatch(event)" />';
+                    html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">批量</label>';
+                    html += fiveUnits(hw.unit);
+                    html += '<div class="damage-value">' + hw.damage + "w</div>";
+                    html += '<div class="homework-info">' + hw.info + "</div>";
+                    html += "</div>";
+                    html += '<div clas="homw-work-down">';
+                    html += listVideos(hw.video);
+                    html += "</div>";
+                    html += "</div>";
+                });
+                html += '<div class="homework-wrap homework-add">+ 添加我的阵容</div>';
+                html += "</div>";
             }
             if (joyshow && joyshow.length !== 0) {
             }
             return html;
+        }
+
+        function checkBatch(e) {
+            console.log("batch");
         }
 
         function init() {
@@ -176,10 +216,11 @@
                     ],
                     homework: [
                         {
-                            unit: ["110631", "107831", "101331", "101531", "107031"],
-                            damage: "3787120w",
+                            id: 1,
+                            unit: ["110631:水狐", "107831:水黑", "101331:七七香", "101531:美里", "107031:nnk"],
+                            damage: "378",
                             auto: 0,
-                            info: "评论区留言：这个轴不好用。",
+                            info: "评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。",
                             video: [
                                 {
                                     text: "天地壹号 蓝字400w 视频有轴",
@@ -192,13 +233,42 @@
                             ]
                         },
                         {
-                            unit: ["110631", "107831", "101331", "101531", "107031"],
-                            damage: "3787120w",
+                            id: 2,
+                            unit: ["110631:水狐", "107831:水黑", "101331:七七香", "101531:美里", "107031:nnk"],
+                            damage: "379",
                             auto: 1,
                             info: "评论区留言：这个轴好用。",
+                            video: []
+                        },
+                        {
+                            id: 3,
+                            unit: ["110631:水狐", "107831:水黑", "101331:七七香", "101531:美里", "107031:nnk"],
+                            damage: "300",
+                            auto: 2,
+                            info: "半AUTO。",
                             video: [
                                 {
                                     text: "auto视频",
+                                    url: "https://space.bilibili.com"
+                                },
+                                {
+                                    text: "auto视频视频",
+                                    url: "https://space.bilibili.com"
+                                },
+                                {
+                                    text: "auto视频",
+                                    url: "https://space.bilibili.com"
+                                },
+                                {
+                                    text: "auto视频视频视频视频",
+                                    url: "https://space.bilibili.com"
+                                },
+                                {
+                                    text: "auto视频",
+                                    url: "https://space.bilibili.com"
+                                },
+                                {
+                                    text: "auto视频视频视频视频",
                                     url: "https://space.bilibili.com"
                                 }
                             ]
