@@ -166,9 +166,8 @@
         }
 
         function getHomeworkHtml(homework, joyshow) {
-            let html = "";
+            let html = '<div class="homeworks">';
             if (homework && homework.length !== 0) {
-                html += '<div class="homeworks">';
                 homework.forEach(function (hw) {
                     html += '<div class="homework-wrap" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '">';
                     html += '<div class="homework-up">';
@@ -183,11 +182,24 @@
                     html += "</div>";
                     html += "</div>";
                 });
-                html += '<div class="homework-wrap homework-add">+ 添加我的阵容</div>';
-                html += "</div>";
             }
+            html += '<div class="homework-wrap homework-add">+ 添加我的阵容</div>';
+            html += "</div>";
+            html += '<div class="joyshow">';
             if (joyshow && joyshow.length !== 0) {
+                joyshow.img.forEach(function (joy) {
+                    html += '<div class="joy">';
+                    html += '<img src="' + joy + '" />';
+                    html += '</div>';
+                });
+                joyshow.msg.forEach(function (joy) {
+                    html += '<div class="joy">';
+                    html += joy + '</div>';
+                })
+                
             }
+            html += '<div class="joy joy-add">+ 吐个槽</div>';
+            html += '</div>';
             return html;
         }
 
@@ -275,7 +287,7 @@
                         }
                     ],
                     joyshow: {
-                        img: ["static/test/春环.png", "static/test/兰法1.png", "static/test/thumb_music_000018.png", "static/test/tx_worldmap_01009901a.png"],
+                        img: ["static/test/春环.png", "static/test/兰法1.jpg", "static/test/thumb_music_000018.png", "static/test/tx_worldmap_01009901a.png", "static/test/兰法1.jpg", "static/test/thumb_music_000018.png"],
                         msg: ["会长，手机没电了，充电器坏了，今天我就不出刀了", "会长，兰法妈妈要去喝nn，今天就不出刀了"]
                     }
                 },

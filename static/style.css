@@ -192,6 +192,7 @@ input[class="boss-detail-check"] {
 .battle-tab-content {
     display: none;
     padding: 10px 0;
+    width: 1200px;
 }
 
 .switch {
@@ -245,7 +246,7 @@ input[class="boss-detail-check"] {
     background-color: #f8f9fc;
     border-radius: 3px;
     color: #3f3f3f;
-    width: 1150px;
+    width: 1200px;
     min-width: 100%;
     font-size: small;
     padding: 3px 10px;
@@ -260,7 +261,8 @@ input[class="boss-detail-check"] {
     width: 95px;
 }
 .table-header div:nth-child(2) {
-    width: 230px;
+    margin-left: 5px;
+    width: 215px;
 }
 .table-header div:nth-child(3) {
     width: 100px;
@@ -269,9 +271,13 @@ input[class="boss-detail-check"] {
     width: 300px;
 }
 .table-header div:nth-child(5) {
+    margin-left: 40px;
     width: 400px;
 }
 
+.homeworks {
+    display: inline-block;
+}
 .homework-wrap {
     background-color: #f2f4fa;
     border: 1px #cccccc solid;
@@ -359,21 +365,53 @@ input[class="boss-detail-check"] {
     background-color: #ffecf0;
 }
 .video-add,
-.homework-add {
+.homework-add,
+.joy-add {
     color: #cccccc;
     border: 1px dashed #cccccc;
 }
 .video-add:hover,
-.homework-add:hover {
+.homework-add:hover,
+.joy-add:hover {
     background-color: #f8f8f8;
 }
-.homework-add {
+.homework-add,
+.joy-add {
     background-color: #ffffff;
     text-align: center;
     line-height: 75px;
     font-size: larger;
     cursor: pointer;
 }
+.joyshow {
+    display: inline-block;
+    position: absolute;
+    padding-left: 10px;
+    margin-top: 5px;
+    width: 390px;
+    column-count: 2;
+    -webkit-column-count: 2;
+    column-width: 200px;
+    column-gap: 0;
+    font-size: small;
+    /* background-color: #49a8fc; */
+}
+.joy {
+    box-sizing: border-box;
+    display: inline-block;
+    break-inside: avoid;
+    margin: 0 5px 5px 0;
+    /* background-color: #1a0c9c; */
+    width: 190px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.joy img {
+    width: 190px;
+    height: auto;
+    vertical-align: top;
+}
+
 .right-content {
     align-items: center;
     background-color: #ffffff;
