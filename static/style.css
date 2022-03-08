@@ -568,3 +568,12 @@ input#input-add-video-link {
     margin: 0 5px;
     width: 280px;
 }
+.window-add-joy {
+    height: 220px;
+    width: 320px;
+}
+input#input-add-joy-text,
+input#input-add-joy-img {
+    width: 320px;
+    margin: 5px 0;
+}

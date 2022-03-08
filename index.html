@@ -169,7 +169,24 @@
             </div>
         </div>
         <div class="window-shadow window-add-joy-wrap">
-            <div class="window-inner window-add-joy">添加吐槽 吐槽内容 上传图片</div>
+            <div class="window-inner window-add-joy">
+                <h3 style="text-align: center">添加吐槽</h3>
+                <div>
+                    <label>吐槽内容</label>
+                </div>
+                <div class="input-row">
+                    <input id="input-add-joy-text" />
+                </div>
+                <div>
+                    <label>上传图片</label>
+                </div>
+                <div class="input-row">
+                    <input type="file" id="input-add-joy-img" />
+                </div>
+                <div class="close-window-icon" onclick="closeWindow('window-add-joy-wrap')">×</div>
+                <button class="cancel" onclick="closeWindow('window-add-joy-wrap')">取消</button>
+                <button class="confirm" onclick="confirmJoy()">确定</button>
+            </div>
         </div>
         <div class="window-shadow window-connect-wrap">
             <div class="window-inner window-connect">联系方式</div>
@@ -351,6 +368,7 @@
             }
             html += '<div class="homework-wrap homework-add" onclick="addHomework()">+ 添加我的阵容</div>';
             html += "</div>";
+            // TODO: 排版问题
             html += '<div class="joyshow">';
             if (joyshow && joyshow.length !== 0) {
                 joyshow.img.forEach(function (joy) {
@@ -363,7 +381,7 @@
                     html += joy + "</div>";
                 });
             }
-            html += '<div class="joy joy-add">+ 吐个槽</div>';
+            html += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>';
             html += "</div>";
             return html;
         }
@@ -505,7 +523,41 @@
             document.getElementsByClassName("window-add-video-wrap")[0].style.display = "block";
             document.getElementsByClassName("window-add-video-wrap")[0].dataset.paramHwid = hwId;
         }
-
+        // 确认添加吐槽
+        function confirmJoy() {
+            let form = {
+                bossId: activeBoss.id,
+                text: document.getElementById("input-add-joy-text").value,
+                img: ""
+            };
+            let file = document.getElementById("input-add-joy-img").files[0];
+            if (file !== undefined) {
+                if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/gif") {
+                    alert("不是有效的图片文件!");
+                    return;
+                }
+                var fileReader = new FileReader();
+                fileReader.onload = function (e) {
+                    // TOOD: 提交form成功再关闭窗口
+                    form.img = e.target.result;
+                    console.log(form);
+                    closeWindow("window-add-joy-wrap");
+                    // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
+                    document.getElementById("input-add-joy-text").value = "";
+                    document.getElementById("input-add-joy-img").value = "";
+                };
+                fileReader.readAsDataURL(file);
+            } else if (from.text !== "") {
+                // TOOD: 提交form成功再关闭窗口
+                console.log(form);
+                closeWindow("window-add-joy-wrap");
+                document.getElementById("input-add-joy-text").value = "";
+            }
+        }
+        // 显示吐个槽
+        function addJoy() {
+            document.getElementsByClassName("window-add-joy-wrap")[0].style.display = "block";
+        }
         function init() {
             // TODO: 改为请求boss&阵容数据
             if (!data) {
