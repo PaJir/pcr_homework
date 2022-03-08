@@ -6,6 +6,9 @@
         <!-- <link type="text/css" rel="stylesheet" href="static/bootstrap.min.css" /> -->
         <!-- <script type="text/javascript" src="static/jquery.min.js"></script> -->
         <!-- <script type="text/javascript" src="static/bootstrap.min.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="lib/control/iconselect.css" />
+        <script type="text/javascript" src="lib/control/iconselect.js"></script>
+        <script type="text/javascript" src="lib/iscroll.js"></script>
     </head>
     <body>
         <div class="top-content">
@@ -33,19 +36,19 @@
                     <div class="battle">
                         <div class="battle-tabs">
                             阶段
-                            <button class="battle-tab-panel active" onclick="tab_filter(event, 0)">一阶段</button>
-                            <button class="battle-tab-panel" onclick="tab_filter(event, 1)">二阶段</button>
-                            <button class="battle-tab-panel" onclick="tab_filter(event, 2)">三阶段</button>
-                            <button class="battle-tab-panel" onclick="tab_filter(event, 3)">四阶段</button>
-                            <button class="battle-tab-panel" onclick="tab_filter(event, 4)">五阶段</button>
+                            <button class="battle-tab-panel active" onclick="tabFilter(event, 0)" value="1">一阶段</button>
+                            <button class="battle-tab-panel" onclick="tabFilter(event, 1)" value="2">二阶段</button>
+                            <button class="battle-tab-panel" onclick="tabFilter(event, 2)" value="3">三阶段</button>
+                            <button class="battle-tab-panel" onclick="tabFilter(event, 3)" value="4">四阶段</button>
+                            <button class="battle-tab-panel" onclick="tabFilter(event, 4)" value="5">五阶段</button>
                             <span>尾刀</span>
                             <label class="switch">
-                                <input type="checkbox" id="checkbox-remainder" onclick="" />
+                                <input type="checkbox" id="checkbox-remainder" onclick="remainderAutoFilter()" />
                                 <div class="slider"></div>
                             </label>
                             <span>AUTO</span>
                             <label class="switch">
-                                <input type="checkbox" id="checkbox-auto" onclick="" />
+                                <input type="checkbox" id="checkbox-auto" onclick="remainderAutoFilter()" />
                                 <div class="slider"></div>
                             </label>
                         </div>
@@ -74,14 +77,98 @@
             <a href="/"><img src="static/icon/info.png" height="24px" width="24px" /></a>
             <a href="/"><img src="static/icon/email.png" height="24px" width="24px" /></a>
         </div>
+        <!--添加阵容弹窗-->
+        <div class="window-shadow window-add-homework-wrap">
+            <div class="window-add-homework">
+                <h3 style="text-align: center">添加阵容</h3>
+                <div class="select-unit-wrap">
+                    <span class="select-boss-wrap">
+                        <span class="select-boss" id="select-boss-span">
+                            <!-- <img src=""/> -->
+                        </span>
+                        <br />角色
+                    </span>
+                    <div>
+                        <div id="select-unit-1-img"></div>
+                        <input type="text" class="select-unit" id="select-unit-1" name="select-unit-1" />
+                    </div>
+                    <div>
+                        <div id="select-unit-2-img"></div>
+                        <input type="text" class="select-unit" id="select-unit-2" name="select-unit-2" />
+                    </div>
+                    <div>
+                        <div id="select-unit-3-img"></div>
+                        <input type="text" class="select-unit" id="select-unit-3" name="select-unit-3" />
+                    </div>
+                    <div>
+                        <div id="select-unit-4-img"></div>
+                        <input type="text" class="select-unit" id="select-unit-4" name="select-unit-4" />
+                    </div>
+                    <div>
+                        <div id="select-unit-5-img"></div>
+                        <input type="text" class="select-unit" id="select-unit-5" name="select-unit-5" />
+                    </div>
+                </div>
+                <div class="input-row">
+                    <label>阶段</label>
+                    <select class="select" id="select-stage">
+                        <option value="1">一阶段</option>
+                        <option value="2">二阶段</option>
+                        <option value="3">三阶段</option>
+                        <option value="4">四阶段</option>
+                        <option value="5">五阶段</option>
+                    </select>
+                    <label for="input-remainder">整刀</label>
+                    <input type="radio" name="input-remainder" id="input-remainder-0" value="0" />
+                    <label for="input-remainder">尾刀</label>
+                    <input type="radio" name="input-remainder" id="input-remainder-1" value="1" />
+                </div>
+                <div class="input-row">
+                    <label>AUTO/半AUTO</label>
+                    <select class="select" id="select-auto">
+                        <option value="0">手动</option>
+                        <option value="1">AUTO</option>
+                        <option value="2">半AUTO</option>
+                    </select>
+                    <label>参考伤害(w)</label>
+                    <input id="input-damage" type="number" min="1" max="100000" step="1" />
+                </div>
+                <div>
+                    <label>特殊说明</label>
+                </div>
+                <div class="input-row">
+                    <input id="input-info" />
+                </div>
+                <p style="font-size: medium">视频</p>
+                <div class="input-row">
+                    <label>标题</label>
+                    <input id="input-video-title" />
+                    <label>链接</label>
+                    <input id="input-video-link" />
+                </div>
+                <div class="close-window-icon" onclick="closeWindow('window-add-homework-wrap')">×</div>
+                <button class="cancel" onclick="closeWindow('window-add-homework-wrap')">取消</button>
+                <button class="confirm" onclick="confirmHomework()">确定</button>
+            </div>
+        </div>
+        <div class="window-shadow window-add-video-wrap">
+            <div class="window-add-video">添加视频 标题 链接</div>
+        </div>
+        <div class="window-shadow window-add-joy-wrap">
+            <div class="window-add-joy">添加吐槽 吐槽内容 上传图片</div>
+        </div>
+        <div class="window-shadow window-connect-wrap">
+            <div class="window-connect">联系方式</div>
+        </div>
     </body>
     <script>
         // 全局变量
         var data = undefined; // boss和homework数据
-        var boss_id = undefined; // 选中的boss
+        var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss
         var stage = undefined; // 预留
+        var icons = undefined; // 角色列表 [{iconFilePath: "", iconValue: ""}]
         // tab 筛选项
-        function tab_filter(event, id) {
+        function tabFilter(event, id) {
             let tabcontents = document.getElementsByClassName("battle-tab-content");
             for (let i = 0; i < tabcontents.length; i++) {
                 if (i === id) {
@@ -95,13 +182,63 @@
                 tabpanels[i].className = tabpanels[i].className.replace(" active", "");
             }
             event.currentTarget.className += " active";
+            // 改变boss信息
+            let html = "";
+            data.filter((boss) => {
+                // 前者从1开始，后者从0开始
+                return boss.stage == id + 1;
+            }).forEach((boss) => {
+                html += getBossHtml(boss);
+            });
+            document.getElementsByClassName("bosses")[0].innerHTML = html;
         }
-
+        // 尾刀和AUTO两个筛选项控制器
+        function remainderAutoFilter() {
+            // 四种情况
+            // remainder auto
+            //     0      0     只显示非尾刀非auto
+            //     0      1     只显示非尾刀auto/半auto
+            //     1      0     只显示尾刀非auto
+            //     1      1     只显示尾刀auto/半auto
+            let is_remainder = document.getElementById("checkbox-remainder").checked;
+            let is_auto = document.getElementById("checkbox-auto").checked;
+            let hw = document.getElementsByClassName("homework");
+            for (let i = 0; i < hw.length; i++) {
+                if (!is_remainder && !is_auto) {
+                    if (hw[i].dataset.paramRemain === "0" && hw[i].dataset.paramAuto === "0") {
+                        hw[i].style.display = "block";
+                    } else {
+                        hw[i].style.display = "none";
+                    }
+                } else if (!is_remainder && is_auto) {
+                    if (hw[i].dataset.paramRemain === "0" && hw[i].dataset.paramAuto !== "0") {
+                        hw[i].style.display = "block";
+                    } else {
+                        hw[i].style.display = "none";
+                    }
+                } else if (is_remainder && !is_auto) {
+                    if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto === "0") {
+                        hw[i].style.display = "block";
+                    } else {
+                        hw[i].style.display = "none";
+                    }
+                } else {
+                    if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto !== "0") {
+                        hw[i].style.display = "block";
+                    } else {
+                        hw[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        // 显示一个Boss信息
         function getBossHtml(boss) {
-            // return a html
-            let html = '<div class="boss-wrap" id="' + boss.id + '" onclick="changeBoss(event, this.id)">';
+            let html = '<div class="boss-wrap';
+            boss.name == activeBoss.name && (html += " active");
+            // 通过paramName保证切换阶段时不切换boss
+            html += '" id="' + boss.id + '" data-param-name="' + boss.name + '" onclick="changeBoss(event, this.dataset.paramName)">';
             html += '<div class="boss-profile">';
-            html += '<img src="static/img/icon_unit_' + boss.id + '.png" height="48px" width="48px" />';
+            html += '<img src="' + boss.icon + '" height="48px" width="48px" />';
             html += '<div class="boss-name-rate">';
             html += '<div class="boss-name">' + boss.name + "</div>";
             html += '<div class="boss-rate">点数比率：' + boss.rate + "</div>";
@@ -112,33 +249,48 @@
             boss.detail.forEach(function (detail) {
                 html += '<div class="boss-detail-value"><span>' + detail[0] + "</span><span>" + detail[1] + "</span></div>";
             });
+            boss.part &&
+                boss.part.length > 0 &&
+                boss.part.forEach(function (part) {
+                    html += "<p>" + part.name + "</p>";
+                    part.detail.forEach(function (detail) {
+                        html += '<div class="boss-detail-value"><span>' + detail[0] + "</span><span>" + detail[1] + "</span></div>";
+                    });
+                });
             html += "</div>";
             html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px" /></label>';
             html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px" /></label>';
             html += "</div>";
             return html;
         }
-
+        // TODO: iOS上点击的bug
         function stopClick(e) {
             // 阻止事件冒泡
             e.stopPropagation();
         }
-
-        function changeBoss(e, id) {
+        // 切换boss，展示该boss下的阵容和欢乐秀
+        function changeBoss(e, activeName) {
             // 点击的是折叠栏
             if (e && (e.path[1].className === "boss-detail-check-down" || e.path[1].className === "boss-detail-check-up")) {
                 return;
             }
-            boss_id = id;
-
+            // 没变，不更新
+            if (activeBoss.name === activeName) {
+                return;
+            }
+            activeBoss.name = activeName;
             let bosses = document.getElementsByClassName("boss-wrap");
             for (let i = 0; i < bosses.length; i++) {
                 bosses[i].className = bosses[i].className.replace(" active", "");
+                if (bosses[i].dataset.paramName === activeName) {
+                    bosses[i].className += " active";
+                    activeBoss.id = bosses[i].id;
+                    activeBoss.idx = i;
+                }
             }
-            document.getElementById(id).className += " active";
 
             data.filter(function (boss) {
-                return boss.id === boss_id;
+                return boss.name === activeName;
             }).forEach(function (boss) {
                 let html = getHomeworkHtml(boss.homework, boss.joyshow);
                 document.getElementById("stage" + boss.stage).innerHTML = html;
@@ -148,8 +300,7 @@
         function fiveUnits(units) {
             let html = '<div class="units">';
             units.forEach(function (unit) {
-                unit = unit.split(":");
-                html += '<div class="unit"><img src="static/img/icon_unit_' + unit[0] + '.png" /><br>' + unit[1] + "</div>";
+                html += '<div class="unit"><img src="' + unit.icon + '" /><br>' + unit.name + "</div>";
             });
             html += "</div>";
             return html;
@@ -169,7 +320,7 @@
             let html = '<div class="homeworks">';
             if (homework && homework.length !== 0) {
                 homework.forEach(function (hw) {
-                    html += '<div class="homework-wrap" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '">';
+                    html += '<div class="homework-wrap homework" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '" data-param-remain="' + hw.remain + '">';
                     html += '<div class="homework-up">';
                     html += '<input class="batch-check-' + hw.id + '" type="checkbox" onclick="checkBatch(event)" />';
                     html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">批量</label>';
@@ -183,23 +334,22 @@
                     html += "</div>";
                 });
             }
-            html += '<div class="homework-wrap homework-add">+ 添加我的阵容</div>';
+            html += '<div class="homework-wrap homework-add" onclick="addHomework()">+ 添加我的阵容</div>';
             html += "</div>";
             html += '<div class="joyshow">';
             if (joyshow && joyshow.length !== 0) {
                 joyshow.img.forEach(function (joy) {
                     html += '<div class="joy">';
                     html += '<img src="' + joy + '" />';
-                    html += '</div>';
+                    html += "</div>";
                 });
                 joyshow.msg.forEach(function (joy) {
                     html += '<div class="joy">';
-                    html += joy + '</div>';
-                })
-                
+                    html += joy + "</div>";
+                });
             }
             html += '<div class="joy joy-add">+ 吐个槽</div>';
-            html += '</div>';
+            html += "</div>";
             return html;
         }
 
@@ -207,167 +357,143 @@
             console.log("batch");
         }
 
-        function init() {
-            // 全局变量
-            data = [
-                {
-                    name: "双足飞龙",
-                    id: "302100",
-                    stage: 1, // 一阶段
-                    rate: "1.2",
-                    info: "张开巨大的飞翼翱翔天空的翼龙。能够喷射巨大的火球，阻挡侵入者。<br>・对前方范围内的敌人造成中等物理伤害。",
-                    detail: [
-                        ["等级", 60],
-                        ["生命值", 7000000],
-                        ["物理攻击力", 2200],
-                        ["物理防御力", 220],
-                        ["魔法攻击力", 2100],
-                        ["魔法防御力", 200],
-                        ["命中", 50],
-                        ["技能值上升", 20]
-                    ],
-                    homework: [
-                        {
-                            id: 1,
-                            unit: ["110631:水狐", "107831:水黑", "101331:七七香", "101531:美里", "107031:nnk"],
-                            damage: "378",
-                            auto: 0,
-                            info: "评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。评论区留言：这个轴不好用。",
-                            video: [
-                                {
-                                    text: "天地壹号 蓝字400w 视频有轴",
-                                    url: "https://space.bilibili.com"
-                                },
-                                {
-                                    text: "afafdfsdfadsfdsfasdfasdfasfdsf",
-                                    url: "https://space.bilibili.com"
-                                }
-                            ]
-                        },
-                        {
-                            id: 2,
-                            unit: ["110631:水狐", "107831:水黑", "101331:七七香", "101531:美里", "107031:nnk"],
-                            damage: "379",
-                            auto: 1,
-                            info: "评论区留言：这个轴好用。",
-                            video: []
-                        },
-                        {
-                            id: 3,
-                            unit: ["110631:水狐", "107831:水黑", "101331:七七香", "101531:美里", "107031:nnk"],
-                            damage: "300",
-                            auto: 2,
-                            info: "半AUTO。",
-                            video: [
-                                {
-                                    text: "auto视频",
-                                    url: "https://space.bilibili.com"
-                                },
-                                {
-                                    text: "auto视频视频",
-                                    url: "https://space.bilibili.com"
-                                },
-                                {
-                                    text: "auto视频",
-                                    url: "https://space.bilibili.com"
-                                },
-                                {
-                                    text: "auto视频视频视频视频",
-                                    url: "https://space.bilibili.com"
-                                },
-                                {
-                                    text: "auto视频",
-                                    url: "https://space.bilibili.com"
-                                },
-                                {
-                                    text: "auto视频视频视频视频",
-                                    url: "https://space.bilibili.com"
-                                }
-                            ]
-                        }
-                    ],
-                    joyshow: {
-                        img: ["static/test/春环.png", "static/test/兰法1.jpg", "static/test/thumb_music_000018.png", "static/test/tx_worldmap_01009901a.png", "static/test/兰法1.jpg", "static/test/thumb_music_000018.png"],
-                        msg: ["会长，手机没电了，充电器坏了，今天我就不出刀了", "会长，兰法妈妈要去喝nn，今天就不出刀了"]
-                    }
-                },
-                {
-                    name: "野性狮鹫",
-                    id: "302000",
-                    stage: 1,
-                    rate: "1.2",
-                    info: "在残酷环境中成长进化的狮鹫。使用龙卷风将猎物卷起到空中进行狩猎。<br>・对前方范围内的敌人造成魔法伤害（中）。",
-                    detail: [
-                        ["等级", 65],
-                        ["生命值", 8000000],
-                        ["物理攻击力", 1802],
-                        ["物理防御力", 200],
-                        ["魔法攻击力", 2100],
-                        ["魔法防御力", 200],
-                        ["命中", 50],
-                        ["技能值上升", 20]
-                    ]
-                },
-                {
-                    name: "极彩鸟",
-                    id: "305900",
-                    stage: 1,
-                    rate: "1.3",
-                    info: "【物理】能散发出惊人的吸引力，有着缤纷色彩的艳丽鸟类。若被那份美丽所吸引，便会成为其仆人，袭击同伴。<br>・必杀技能对魅惑状态以外的全体敌人造成物理伤害（大）。<br>・对前方两名角色造成魔法伤害（小），并赋予魅惑状态，再大幅提升物理攻击力与魔法攻击力。",
-                    detail: [
-                        ["等级", 70],
-                        ["生命值", 10000000],
-                        ["物理攻击力", 1900],
-                        ["物理防御力", 214],
-                        ["魔法攻击力", 1552],
-                        ["魔法防御力", 214],
-                        ["命中", 50],
-                        ["技能值上升", 25]
-                    ]
-                },
-                {
-                    name: "独眼巨人",
-                    id: "303900",
-                    stage: 1,
-                    rate: "1.4",
-                    info: "【物理】以自己的怪力为傲的独眼巨人。充满魔力的眼瞳能释放出强大的奇怪光线。<br>・对敌方全体造成魔法伤害（大）。提升对生命值为100%的敌人造成的伤害并降低其行动速度。<br>・对物理攻击力最高的一名敌人，根据其最大生命值，造成物理伤害（中），并降低其技能值。",
-                    detail: [
-                        ["等级", 75],
-                        ["生命值", 12000000],
-                        ["物理攻击力", 2010],
-                        ["物理防御力", 193],
-                        ["魔法攻击力", 2010],
-                        ["魔法防御力", 225],
-                        ["命中", 50],
-                        ["技能值上升", 45]
-                    ]
-                },
-                {
-                    name: "梦魇牡羊",
-                    id: "300300",
-                    stage: 1,
-                    rate: "1.5",
-                    info: "【魔法】获得强大力量的白羊座魔星兽。在阴暗的沉睡监牢中将冒险者的灵魂吞噬殆尽。<br>・对敌方全体造成魔法伤害（大），对束缚状态的敌人额外造成魔法伤害（小）。<br>・对前方范围内的敌人造成魔法伤害（中）。<br>・对一名敌人施加束缚状态。",
-                    detail: [
-                        ["等级", 80],
-                        ["生命值", 15000000],
-                        ["物理攻击力", 2000],
-                        ["物理防御力", 211],
-                        ["魔法攻击力", 1745],
-                        ["魔法防御力", 211],
-                        ["命中", 50],
-                        ["技能值上升", 15]
-                    ]
+        function closeWindow(id) {
+            document.getElementsByClassName(id)[0].style.display = "none";
+        }
+        // 确认添加阵容
+        function confirmHomework() {
+            // 用于提交的表单数据，数值都是string
+            let form = {
+                unit: [], // ["优衣", "猫拳", "剑圣", ...]
+                bossId: activeBoss.id,
+                stage: document.getElementById("select-stage").value,
+                remain: "0",
+                damage: document.getElementById("input-damage").value,
+                auto: document.getElementById("select-auto").value,
+                info: document.getElementById("input-info").value,
+                video: {
+                    text: document.getElementById("input-video-title").value,
+                    url: document.getElementById("input-video-link").value
                 }
-            ];
-            let html = "";
-            data.forEach(function (boss) {
-                html += getBossHtml(boss);
+            };
+            if (form.damage === "") {
+                // 必须输入参考伤害
+                return;
+            }
+            let units = document.getElementsByClassName("select-unit");
+            for (let i = 0; i < units.length; i++) {
+                let unit = units[i].value;
+                if (unit === "" || form.unit.indexOf(unit) != -1) {
+                    // 必须选5个不同的角色
+                    return;
+                }
+                form.unit.push(unit);
+            }
+            document.getElementsByName("input-remainder").forEach((e) => {
+                if (e.checked) {
+                    form.remain = e.value;
+                }
             });
-            document.getElementsByClassName("bosses")[0].innerHTML = html;
+            // TODO: 提交form成功再关闭窗口
+            console.log(form);
+            closeWindow("window-add-homework-wrap");
+        }
+        // 显示添加阵容弹窗
+        function addHomework() {
+            document.getElementsByClassName("window-add-homework-wrap")[0].style.display = "block";
+            // TODO: 改为请求角色列表
+            if (!icons) {
+                var request = new XMLHttpRequest();
+                request.open("get", "static/test/icons.json");
+                request.send(null);
+                request.onload = () => {
+                    if (request.status === 200) {
+                        icons = JSON.parse(request.responseText);
+                        // 只有在第一次加载出用户列表的时候才需要给选项添加监听
+                        for (let i = 1; i <= 5; i++) {
+                            let iconSelect = new IconSelect("select-unit-" + i + "-img", {
+                                selectedIconWidth: 48,
+                                selectedIconHeight: 48,
+                                iconsWidth: 36,
+                                iconsHeight: 36,
+                                vectoralIconNumber: 10,
+                                horizontalIconNumber: 10
+                            });
+                            iconSelect.refresh(icons);
+                            let textSelect = document.getElementById("select-unit-" + i);
 
-            boss_id = data[0].id;
-            changeBoss(null, boss_id);
+                            document.getElementById("select-unit-" + i + "-img").addEventListener("changed", function (e) {
+                                textSelect.value = iconSelect.getSelectedValue();
+                            });
+                        }
+                    }
+                };
+            }
+            // 读取值，填充选项
+            // boss头像&id
+            data.filter((boss) => {
+                return boss.id == activeBoss.id;
+            }).forEach((boss) => {
+                document.getElementById("select-boss-span").innerHTML = '<img src="' + boss.icon + '" />';
+            });
+            // 整刀 / 尾刀
+            let is_remainder = document.getElementById("checkbox-remainder").checked;
+            if (is_remainder) {
+                document.getElementById("input-remainder-1").checked = true;
+            } else {
+                document.getElementById("input-remainder-0").checked = true;
+            }
+            // 阶段
+            let stages = document.getElementsByClassName("battle-tab-panel");
+            let options = document.getElementById("select-stage").options;
+            let selectedStage = "1";
+            for (let i = 0; i < stages.length; i++) {
+                if (stages[i].className.indexOf("active") !== -1) {
+                    selectedStage = stages[i].value;
+                    break;
+                }
+            }
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value == selectedStage) {
+                    options[i].selected = true;
+                    break;
+                }
+            }
+            // 手动 / AUTO
+            let is_auto = document.getElementById("checkbox-auto").checked;
+            options = document.getElementById("select-auto").options;
+            for (let i = 0; i < options.length; i++) {
+                if ((is_auto && options[i].value == "1") || (!is_auto && options[i].value == "0")) {
+                    options[i].selected = true;
+                    break;
+                }
+            }
+        }
+
+        function init() {
+            // TODO: 改为请求boss&阵容数据
+            if (!data) {
+                var request = new XMLHttpRequest();
+                request.open("get", "static/test/demo.json");
+                request.send(null);
+                request.onload = () => {
+                    if (request.status === 200) {
+                        data = JSON.parse(request.responseText);
+                    }
+                    // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
+                    let html = "";
+                    data.filter((boss) => {
+                        // 兼容 stage="1"，以防万一
+                        return boss.stage == 1;
+                    }).forEach((boss) => {
+                        html += getBossHtml(boss, data[0].name);
+                    });
+                    document.getElementsByClassName("bosses")[0].innerHTML = html;
+
+                    changeBoss(null, data[0].name);
+                    remainderAutoFilter();
+                };
+            }
         }
 
         init();

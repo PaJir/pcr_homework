@@ -90,6 +90,8 @@ body {
     padding: 10px 10px 5px 10px;
     margin-right: 5px;
     margin-bottom: 5px;
+    font-size: small;
+    color: #2f2f2f;
     cursor: pointer;
 }
 .boss-wrap:hover,
@@ -107,13 +109,13 @@ body {
     justify-content: space-around;
     margin: 0 0 0 10px;
 }
-.boss-name {
+/* .boss-name {
     color: #2f2f2f;
-    font-size: smaller;
-}
+    font-size: small;
+} */
 .boss-rate {
     color: #3f3f3f;
-    font-size: small;
+    font-size: smaller;
 }
 .boss-info {
     color: #3f3f3f;
@@ -157,7 +159,7 @@ input[class="boss-detail-check"] {
     margin: 5px 0;
 }
 .boss-detail-value span {
-    font-size: small;
+    /* font-size: small; */
     padding: 0 10px;
 }
 .boss-detail-value span:first-child {
@@ -301,6 +303,7 @@ input[class="boss-detail-check"] {
     height: 28px;
     width: 75px;
     background-color: #49a8fc;
+    cursor: pointer;
 }
 .units {
     display: flex;
@@ -427,4 +430,128 @@ input[class="boss-detail-check"] {
 .right-content a {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.right-content a:hover {
+    background-color: #49a8fc;
+}
+.window-shadow {
+    align-items: center;
+    background-color: rgba(245, 246, 247, 0.66);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.window-add-homework {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: inset 0 -2px 0 #ddd;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    height: 400px;
+    width: 420px;
+    padding: 0 15px;
+    font-size: small;
+}
+.input-row {
+    line-height: 20px;
+    height: 20px;
+    margin-bottom: 20px;
+}
+.box {
+    z-index: 9999;
+}
+.window-add-homework-wrap,
+.window-add-video-wrap,
+.window-add-joy-wrap,
+.window-connect-wrap {
+    display: none;
+}
+.select-unit-wrap {
+    font-size: small;
+    margin-bottom: 20px;
+}
+.select-unit-wrap div {
+    display: inline-block;
+    width: 65px;
+    text-align: center;
+}
+.select-boss-wrap {
+    float: left;
+    margin: 2px 2px 0 0;
+    text-align: center;
+    width: 48px;
+}
+.select-boss img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 2px;
+}
+.window-add-homework div input,
+.window-add-homework div select {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+input.select-unit {
+    width: 63px;
+}
+select {
+    width: 80px;
+}
+select#select-stage,
+select#select-auto {
+    margin-right: 20px;
+}
+input#input-damage {
+    width: 80px;
+}
+input#input-info {
+    width: 100%;
+}
+.close-window-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    line-height: 30px;
+    width: 30px;
+    color: rgba(204, 204, 204, 0.8);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    cursor: pointer;
+}
+.cancel {
+    position: absolute;
+    right: 80px;
+    bottom: 20px;
+    background-color: #fcfcfc;
+    border-radius: 3px;
+    color: #3f3f3f;
+    padding: 3px 10px;
+    margin: 1px 2px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+.cancel:hover {
+    background-color: #eeeeee;
+}
+.confirm {
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+    background-color: #49a8fc;
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 3px 10px;
+    margin: 1px 2px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+.confirm:hover {
+    background-color: #46a0f0;
 }
