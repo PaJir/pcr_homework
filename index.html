@@ -79,7 +79,7 @@
         </div>
         <!--添加阵容弹窗-->
         <div class="window-shadow window-add-homework-wrap">
-            <div class="window-add-homework">
+            <div class="window-inner window-add-homework">
                 <h3 style="text-align: center">添加阵容</h3>
                 <div class="select-unit-wrap">
                     <span class="select-boss-wrap">
@@ -151,14 +151,28 @@
                 <button class="confirm" onclick="confirmHomework()">确定</button>
             </div>
         </div>
+        <!--添加视频弹窗-->
         <div class="window-shadow window-add-video-wrap">
-            <div class="window-add-video">添加视频 标题 链接</div>
+            <div class="window-inner window-add-video">
+                <h3 style="text-align: center">添加视频</h3>
+                <div class="input-row">
+                    <label>标题</label>
+                    <input id="input-add-video-title" />
+                </div>
+                <div class="input-row">
+                    <label>链接</label>
+                    <input id="input-add-video-link" />
+                </div>
+                <div class="close-window-icon" onclick="closeWindow('window-add-video-wrap')">×</div>
+                <button class="cancel" onclick="closeWindow('window-add-video-wrap')">取消</button>
+                <button class="confirm" onclick="confirmVideo()">确定</button>
+            </div>
         </div>
         <div class="window-shadow window-add-joy-wrap">
-            <div class="window-add-joy">添加吐槽 吐槽内容 上传图片</div>
+            <div class="window-inner window-add-joy">添加吐槽 吐槽内容 上传图片</div>
         </div>
         <div class="window-shadow window-connect-wrap">
-            <div class="window-connect">联系方式</div>
+            <div class="window-inner window-connect">联系方式</div>
         </div>
     </body>
     <script>
@@ -268,7 +282,7 @@
             // 阻止事件冒泡
             e.stopPropagation();
         }
-        // 切换boss，展示该boss下的阵容和欢乐秀
+        // 切换boss，展示该boss下的阵容和欢乐秀，并筛选尾刀和AUTO
         function changeBoss(e, activeName) {
             // 点击的是折叠栏
             if (e && (e.path[1].className === "boss-detail-check-down" || e.path[1].className === "boss-detail-check-up")) {
@@ -295,6 +309,7 @@
                 let html = getHomeworkHtml(boss.homework, boss.joyshow);
                 document.getElementById("stage" + boss.stage).innerHTML = html;
             });
+            remainderAutoFilter();
         }
 
         function fiveUnits(units) {
@@ -306,12 +321,12 @@
             return html;
         }
 
-        function listVideos(videos) {
+        function listVideos(videos, hwId) {
             let html = '<div class="videos"><span>视频</span>';
             videos.forEach(function (video) {
                 html += '<div class="video"><a href="' + video.url + '">' + video.text + "</a></div>";
             });
-            html += '<div class="video-add">＋ 添加我的视频</div>';
+            html += '<div class="video-add" data-param-hwid="' + hwId + '" onclick="addVideo(this.dataset.paramHwid)">＋ 添加我的视频</div>';
             html += "</div>";
             return html;
         }
@@ -329,7 +344,7 @@
                     html += '<div class="homework-info">' + hw.info + "</div>";
                     html += "</div>";
                     html += '<div clas="homw-work-down">';
-                    html += listVideos(hw.video);
+                    html += listVideos(hw.video, hw.id);
                     html += "</div>";
                     html += "</div>";
                 });
@@ -469,6 +484,27 @@
                 }
             }
         }
+        // 确认添加视频
+        function confirmVideo() {
+            let form = {
+                hwId: document.getElementsByClassName("window-add-video-wrap")[0].dataset.paramHwid,
+                text: document.getElementById("input-add-video-title").value,
+                url: document.getElementById("input-add-video-link").value
+            };
+            if (form.text === "" || form.url === "") {
+                // 简单判空处理
+                return;
+            }
+            // TODO: 提交form成功再关闭窗口
+            console.log(form);
+            closeWindow("window-add-video-wrap");
+        }
+        // 显示添加视频
+        function addVideo(hwId) {
+            // hwId为作业id，隐性参数
+            document.getElementsByClassName("window-add-video-wrap")[0].style.display = "block";
+            document.getElementsByClassName("window-add-video-wrap")[0].dataset.paramHwid = hwId;
+        }
 
         function init() {
             // TODO: 改为请求boss&阵容数据
@@ -491,7 +527,6 @@
                     document.getElementsByClassName("bosses")[0].innerHTML = html;
 
                     changeBoss(null, data[0].name);
-                    remainderAutoFilter();
                 };
             }
         }
