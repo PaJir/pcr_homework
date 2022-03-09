@@ -17,8 +17,8 @@ and open the template in the editor.
      position: relative;
      margin: 0px;
      padding: 0px;
-     width: 70px; /* sil */
-     height: 60px; /* sil */
+     width: 61px; /* sil */
+     height: 50px; /* sil */
      border: 1px solid #999999;
 
      -webkit-border-radius: 3px;
@@ -32,8 +32,8 @@ and open the template in the editor.
      position: relative;
      margin: 0px;
      padding: 0px;
-     width: 70px; /* sil */
-     height: 60px; /* sil */
+     width: 61px; /* sil */
+     height: 50px; /* sil */
      border: 1px solid #000000;
      background-color: #FFFFFF;
 
@@ -48,8 +48,8 @@ and open the template in the editor.
      position: absolute;
      margin: 0px;
      padding: 0px;
-     top:5px;
-     left:5px;
+     top:1px;
+     left:1px;
      width: 48px; /* sil */
      height: 48px; /* sil */
 
