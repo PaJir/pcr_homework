@@ -397,7 +397,7 @@
         function confirmHomework() {
             // 用于提交的表单数据，数值都是string
             let form = {
-                unit: [], // ["优衣", "猫拳", "剑圣", ...]
+                unit: [], // ["1001", "1002", "1003"...]
                 bossId: activeBoss.id,
                 stage: document.getElementById("select-stage").value,
                 remain: "0",
@@ -415,7 +415,7 @@
             }
             let units = document.getElementsByClassName("select-unit");
             for (let i = 0; i < units.length; i++) {
-                let unit = units[i].value;
+                let unit = units[i].dataset.paramId;
                 if (unit === "" || form.unit.indexOf(unit) != -1) {
                     // 必须选5个不同的角色
                     return;
@@ -457,6 +457,7 @@
 
                             document.getElementById("select-unit-" + i + "-img").addEventListener("changed", function (e) {
                                 textSelect.value = iconSelect.getSelectedValue();
+                                textSelect.dataset.paramId = iconSelect.getSelectedId();
                             });
                         }
                     }
