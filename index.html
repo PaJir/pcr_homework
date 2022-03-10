@@ -274,9 +274,8 @@
             html += '<div class="boss-name">' + boss.name + "</div>";
             html += '<div class="boss-rate">点数比率：' + boss.rate + "</div>";
             html += "</div></div>";
-            html += '<div class="boss-info">' + boss.info + "</div>";
             html += '<input class="boss-detail-check" id="boss-detail-check-' + boss.id + '" type="checkbox" onclick="stopClick(event)" />';
-            html += '<div class="boss-detail">';
+            html += '<div class="boss-info boss-detail">' + boss.info;
             boss.detail.forEach(function (detail) {
                 html += '<div class="boss-detail-value"><span>' + detail[0] + "</span><span>" + detail[1] + "</span></div>";
             });

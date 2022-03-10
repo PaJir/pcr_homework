@@ -153,7 +153,7 @@ input[class="boss-detail-check"] {
     display: none;
 }
 .boss-detail-check:checked ~ .boss-detail {
-    max-height: 400px !important; /* 如果高度不够的话，继续加 */
+    max-height: 800px !important; /* 如果高度不够的话，继续加 */
 }
 .boss-detail-value {
     margin: 5px 0;
@@ -248,8 +248,7 @@ input[class="boss-detail-check"] {
     background-color: #f8f9fc;
     border-radius: 3px;
     color: #3f3f3f;
-    width: 1200px;
-    min-width: 100%;
+    width: 1140px;
     font-size: small;
     padding: 3px 10px;
     margin: 20px 0 0 0;
@@ -267,14 +266,15 @@ input[class="boss-detail-check"] {
     width: 215px;
 }
 .table-header div:nth-child(3) {
-    width: 100px;
+    margin-left: 10px;
+    width: 90px;
 }
 .table-header div:nth-child(4) {
     width: 300px;
 }
 .table-header div:nth-child(5) {
     margin-left: 40px;
-    width: 400px;
+    width: 366px;
 }
 
 .homeworks {
@@ -285,7 +285,7 @@ input[class="boss-detail-check"] {
     border: 1px #cccccc solid;
     border-radius: 5px;
     min-height: 75px;
-    width: 750px; /* 100 + 230 + 100 + 300 + 20padding*/
+    width: 740px; /* 100 + 230 + 100 + 300 + 20padding*/
     padding: 10px;
     margin: 5px 0;
 }
