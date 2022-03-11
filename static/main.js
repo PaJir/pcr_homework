@@ -28,6 +28,7 @@ function tabFilter(event, id) {
     });
     document.getElementsByClassName("bosses")[0].innerHTML = html;
 }
+
 // 尾刀和AUTO两个筛选项控制器
 function remainderAutoFilter() {
     // 四种情况
@@ -67,6 +68,7 @@ function remainderAutoFilter() {
         }
     }
 }
+
 // 显示一个Boss信息
 function getBossHtml(boss) {
     let html = '<div class="boss-wrap';
@@ -93,16 +95,21 @@ function getBossHtml(boss) {
             });
         });
     html += "</div>";
+    // TODO
+    // html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img src="' + _qiniuUrl + '/image/gzlj/down-arrow.png" height="20px" /></label>';
+    // html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="' + _qiniuUrl + '/image/gzlj/up-arrow.png" height="20px" /></label>';
     html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px" /></label>';
     html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px" /></label>';
     html += "</div>";
     return html;
 }
+
 // TODO: iOS上点击的bug
 function stopClick(e) {
     // 阻止事件冒泡
     e.stopPropagation();
 }
+
 // 切换boss，展示该boss下的阵容和欢乐秀，并筛选尾刀和AUTO
 function changeBoss(e, activeName) {
     // 点击的是折叠栏
@@ -197,11 +204,12 @@ function checkBatch(e) {
 function closeWindow(id) {
     document.getElementsByClassName(id)[0].style.display = "none";
 }
+
 // 确认添加阵容
 function confirmHomework() {
     // 用于提交的表单数据，数值都是string
     let form = {
-        unit: [], // ["1001", "1002", "1003"...]
+        unit: [],
         bossId: activeBoss.id,
         stage: document.getElementById("select-stage").value,
         remain: "0",
@@ -215,6 +223,7 @@ function confirmHomework() {
     };
     if (form.damage === "") {
         // 必须输入参考伤害
+        layer.msg("请输入参考伤害", { icon: 0 });
         return;
     }
     let units = document.getElementsByClassName("select-unit");
@@ -222,6 +231,7 @@ function confirmHomework() {
         let unit = units[i].dataset.paramId;
         if (unit === "" || form.unit.indexOf(unit) != -1) {
             // 必须选5个不同的角色
+            layer.msg("请选择5个不同的角色", { icon: 0 });
             return;
         }
         form.unit.push(unit);
@@ -231,8 +241,17 @@ function confirmHomework() {
             form.remain = e.value;
         }
     });
-    // TODO: 提交form成功再关闭窗口
-    console.log(form);
+    // TODO
+    // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
+    // $.post(_baseUrl + "/gzlj/data/lineup", { data: JSON.stringify(form) }, function (result) {
+    //     layer.close(_layerIndex);
+    //     if (result.status != 1) {
+    //         layer.msg(result.info, { icon: 2 });
+    //     } else {
+    //         closeWindow("window-add-homework-wrap");
+    //         layer.msg("阵容提交成功~请等待审核", { icon: 1 });
+    //     }
+    // });
     closeWindow("window-add-homework-wrap");
 }
 // 更新选中的角色
@@ -254,11 +273,16 @@ function updateSelectedUnits() {
             $("#select-unit-" + idx)[0].dataset.paramId = unit.dataset.paramId;
         });
 }
+
 // 显示添加阵容弹窗
 function addHomework() {
     document.getElementsByClassName("window-add-homework-wrap")[0].style.display = "block";
-    // TODO: 改为请求角色列表
     if (!icons) {
+        // TODO
+        // $.get(_baseUrl + "/gzlj/data/role", function (result) {
+        //     if (result.status == 1) {
+        //         icons = result.data;
+        //     }
         var request = new XMLHttpRequest();
         request.open("get", "static/test/icons.json");
         request.send(null);
@@ -340,6 +364,7 @@ function addHomework() {
         }
     }
 }
+
 // 确认添加视频
 function confirmVideo() {
     let form = {
@@ -351,16 +376,28 @@ function confirmVideo() {
         // 简单判空处理
         return;
     }
-    // TODO: 提交form成功再关闭窗口
+    // TODO
+    // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
+    // $.post(_baseUrl + "/gzlj/data/video", { data: JSON.stringify(form) }, function (result) {
+    //     layer.close(_layerIndex);
+    //     if (result.status != 1) {
+    //         layer.msg(result.info, { icon: 2 });
+    //     } else {
+    //         closeWindow("window-add-video-wrap");
+    //         layer.msg("阵容视频提交成功~请等待审核", { icon: 1 });
+    //     }
+    // });
     console.log(form);
     closeWindow("window-add-video-wrap");
 }
+
 // 显示添加视频
 function addVideo(hwId) {
     // hwId为作业id，隐性参数
     document.getElementsByClassName("window-add-video-wrap")[0].style.display = "block";
     document.getElementsByClassName("window-add-video-wrap")[0].dataset.paramHwid = hwId;
 }
+
 // 确认添加吐槽
 function confirmJoy() {
     let form = {
@@ -371,14 +408,26 @@ function confirmJoy() {
     let file = document.getElementById("input-add-joy-img").files[0];
     if (file !== undefined) {
         if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/gif") {
-            alert("不是有效的图片文件!");
+            layer.msg("不是有效的图片文件!", { icon: 0 });
             return;
         }
         var fileReader = new FileReader();
         fileReader.onload = function (e) {
-            // TOOD: 提交form成功再关闭窗口
+            // TODO
             form.img = e.target.result;
-            console.log(form);
+            // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
+            // $.post(_baseUrl + "/gzlj/data/debunk", { data: JSON.stringify(form) }, function (result) {
+            //     layer.close(_layerIndex);
+            //     if (result.status != 1) {
+            //         layer.msg(result.info, { icon: 2 });
+            //     } else {
+            //         closeWindow("window-add-joy-wrap");
+            //         // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
+            //         document.getElementById("input-add-joy-text").value = "";
+            //         document.getElementById("input-add-joy-img").value = "";
+            //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
+            //     }
+            // });
             closeWindow("window-add-joy-wrap");
             // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
             document.getElementById("input-add-joy-text").value = "";
@@ -386,19 +435,34 @@ function confirmJoy() {
         };
         fileReader.readAsDataURL(file);
     } else if (from.text !== "") {
-        // TOOD: 提交form成功再关闭窗口
-        console.log(form);
+        // TODO
+        // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
+        // $.post(_baseUrl + "/gzlj/data/debunk", { data: JSON.stringify(form) }, function (result) {
+        //     layer.close(_layerIndex);
+        //     if (result.status != 1) {
+        //         layer.msg(result.info, { icon: 2 });
+        //     } else {
+        //         closeWindow("window-add-joy-wrap");
+        //         document.getElementById("input-add-joy-text").value = "";
+        //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
+        //     }
+        // });
         closeWindow("window-add-joy-wrap");
         document.getElementById("input-add-joy-text").value = "";
     }
 }
+
 // 显示吐个槽
 function addJoy() {
     document.getElementsByClassName("window-add-joy-wrap")[0].style.display = "block";
 }
+
 function init() {
-    // TODO: 改为请求boss&阵容数据
     if (!data) {
+        // TODO
+        // $.get(_baseUrl + "/gzlj/data", function (result) {
+        //     if (result.status == 1) {
+        //         data = result.data;
         var request = new XMLHttpRequest();
         request.open("get", "static/test/demo.json");
         request.send(null);
@@ -417,8 +481,10 @@ function init() {
             document.getElementsByClassName("bosses")[0].innerHTML = html;
 
             changeBoss(null, data[0].name);
-        };
+        }
     }
 }
 
-init();
+$(document).ready(function () {
+    init();
+});
