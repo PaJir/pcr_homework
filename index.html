@@ -4,11 +4,8 @@
         <meta charset="UTF-8" />
         <link type="text/css" rel="stylesheet" href="static/style.css" />
         <!-- <link type="text/css" rel="stylesheet" href="static/bootstrap.min.css" /> -->
-        <!-- <script type="text/javascript" src="static/jquery.min.js"></script> -->
         <!-- <script type="text/javascript" src="static/bootstrap.min.js"></script> -->
-        <link rel="stylesheet" type="text/css" href="lib/control/iconselect.css" />
-        <script type="text/javascript" src="lib/control/iconselect.js"></script>
-        <script type="text/javascript" src="lib/iscroll.js"></script>
+        <script type="text/javascript" src="https://static.caimogu.cc/plugins/jquery.min.js"></script>
     </head>
     <body>
         <div class="top-content">
@@ -81,6 +78,12 @@
         <div class="window-shadow window-add-homework-wrap">
             <div class="window-inner window-add-homework">
                 <h3 style="text-align: center">添加阵容</h3>
+                <label class="position-label">前卫</label>
+                <div class="candidate-unit-wrap" id="candidate-unit-wrap-0"></div>
+                <label class="position-label">中卫</label>
+                <div class="candidate-unit-wrap" id="candidate-unit-wrap-1"></div>
+                <label class="position-label">后卫</label>
+                <div class="candidate-unit-wrap" id="candidate-unit-wrap-2"></div>
                 <div class="select-unit-wrap">
                     <span class="select-boss-wrap">
                         <span class="select-boss" id="select-boss-span">
@@ -88,25 +91,25 @@
                         </span>
                         <br />角色
                     </span>
-                    <div>
-                        <div id="select-unit-1-img"></div>
+                    <div class="select-unit-imgs">
+                        <div class="select-unit-img" id="select-unit-0-img"></div>
+                        <input type="text" class="select-unit" id="select-unit-0" name="select-unit-0" />
+                    </div>
+                    <div class="select-unit-imgs">
+                        <div class="select-unit-img" id="select-unit-1-img"></div>
                         <input type="text" class="select-unit" id="select-unit-1" name="select-unit-1" />
                     </div>
-                    <div>
-                        <div id="select-unit-2-img"></div>
+                    <div class="select-unit-imgs">
+                        <div class="select-unit-img" id="select-unit-2-img"></div>
                         <input type="text" class="select-unit" id="select-unit-2" name="select-unit-2" />
                     </div>
-                    <div>
-                        <div id="select-unit-3-img"></div>
+                    <div class="select-unit-imgs">
+                        <div class="select-unit-img" id="select-unit-3-img"></div>
                         <input type="text" class="select-unit" id="select-unit-3" name="select-unit-3" />
                     </div>
-                    <div>
-                        <div id="select-unit-4-img"></div>
+                    <div class="select-unit-imgs">
+                        <div class="select-unit-img" id="select-unit-4-img"></div>
                         <input type="text" class="select-unit" id="select-unit-4" name="select-unit-4" />
-                    </div>
-                    <div>
-                        <div id="select-unit-5-img"></div>
-                        <input type="text" class="select-unit" id="select-unit-5" name="select-unit-5" />
                     </div>
                 </div>
                 <div class="input-row">
@@ -430,6 +433,26 @@
             console.log(form);
             closeWindow("window-add-homework-wrap");
         }
+        // 更新选中的角色
+        function updateSelectedUnits() {
+            $(".select-unit-img").each((idx, unit) => {
+                unit.innerHTML = "";
+            })
+            $(".select-unit").each((idx, unit) => {
+                unit.value = "";
+            })
+            let units = $(".unit-icon.active");
+            units
+                .sort((a, b) => {
+                    return b.dataset.paramIdx - a.dataset.paramIdx;
+                })
+                .each((idx, unit) => {
+                    $("#select-unit-" + idx + "-img")[0].innerHTML = unit.innerHTML;
+                    $("#select-unit-" + idx)[0].value = unit.dataset.paramName;
+                    $("#select-unit-" + idx)[0].dataset.paramId = unit.dataset.paramId;
+                });
+            
+        }
         // 显示添加阵容弹窗
         function addHomework() {
             document.getElementsByClassName("window-add-homework-wrap")[0].style.display = "block";
@@ -441,24 +464,38 @@
                 request.onload = () => {
                     if (request.status === 200) {
                         icons = JSON.parse(request.responseText);
-                        // 只有在第一次加载出用户列表的时候才需要给选项添加监听
-                        for (let i = 1; i <= 5; i++) {
-                            let iconSelect = new IconSelect("select-unit-" + i + "-img", {
-                                selectedIconWidth: 48,
-                                selectedIconHeight: 48,
-                                iconsWidth: 36,
-                                iconsHeight: 36,
-                                vectoralIconNumber: 10,
-                                horizontalIconNumber: 10
+                        icons.forEach((_icon, _idx) => {
+                            let html = "";
+                            _icon.forEach((icon, idx) => {
+                                html +=
+                                    '<div class="unit-icon" title="' +
+                                    icon.iconValue +
+                                    '" data-param-id="' +
+                                    icon.iconId +
+                                    '" data-param-name="' +
+                                    icon.iconValue +
+                                    '" data-param-idx="' +
+                                    (_idx * 1000 + idx) +
+                                    '"><img src="' +
+                                    icon.iconFilePath +
+                                    '"></div>';
                             });
-                            iconSelect.refresh(icons);
-                            let textSelect = document.getElementById("select-unit-" + i);
-
-                            document.getElementById("select-unit-" + i + "-img").addEventListener("changed", function (e) {
-                                textSelect.value = iconSelect.getSelectedValue();
-                                textSelect.dataset.paramId = iconSelect.getSelectedId();
-                            });
-                        }
+                            $("#candidate-unit-wrap-" + _idx)[0].innerHTML = html;
+                        });
+                        $(".unit-icon").click(function () {
+                            if (this.className.indexOf(" active") === -1) {
+                                // 选中
+                                if ($(".unit-icon.active").length >= 5) {
+                                    // 最多5个
+                                    return;
+                                }
+                                this.className += " active";
+                            } else {
+                                // 取消
+                                this.className = this.className.replace(" active", "");
+                            }
+                            updateSelectedUnits();
+                        });
                     }
                 };
             }

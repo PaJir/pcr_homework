@@ -458,8 +458,9 @@ input[class="boss-detail-check"] {
     font-size: small;
 }
 .window-add-homework {
-    height: 400px;
-    width: 420px;
+    /* height: 800px; */
+    width: 470px;
+    padding-bottom: 40px;
 }
 .input-row {
     line-height: 20px;
@@ -475,13 +476,37 @@ input[class="boss-detail-check"] {
 .window-connect-wrap {
     display: none;
 }
+.candidate-unit-wrap {
+    width: 470px;
+    margin-bottom: 10px;
+}
+.unit-icon {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    height: 36px;
+    width: 36px;
+    margin: 1px 0 0 1px;
+    cursor: pointer;
+    opacity: 0.75;
+}
+.unit-icon.active,
+.unit-icon:hover {
+    border: 1px solid #ff679a;
+    opacity: 1;
+}
+.unit-icon img {
+    height: 36px;
+    width: 36px;
+}
 .select-unit-wrap {
     font-size: small;
     margin-bottom: 20px;
 }
-.select-unit-wrap div {
+.select-unit-imgs {
     display: inline-block;
-    width: 65px;
+    width: 52px;
     text-align: center;
 }
 .select-boss-wrap {
@@ -495,13 +520,24 @@ input[class="boss-detail-check"] {
     height: 48px;
     margin-bottom: 2px;
 }
+.select-unit-img {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    margin: 0 1px;
+}
+.select-unit-img img {
+    height: 48px;
+    width: 48px;
+}
 .window-shadow div input,
 .window-shadow div select {
     border: 1px solid #cccccc;
     border-radius: 3px;
 }
 input.select-unit {
-    width: 63px;
+    width: 50px;
     pointer-events: none;
 }
 select {
