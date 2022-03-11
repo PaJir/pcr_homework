@@ -3,6 +3,15 @@ var data = undefined; // boss和homework数据
 var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss
 var stage = undefined; // 预留
 var icons = undefined; // 角色列表 [{iconFilePath: "", iconValue: ""}]
+// hover
+$(".top-hover").hover(
+    function () {
+        $(".top-h2").css("max-height", "20px");
+    },
+    function () {
+        $(".top-h2").css("max-height", "0");
+    }
+);
 // tab 筛选项
 function tabFilter(event, id) {
     let tabcontents = document.getElementsByClassName("battle-tab-content");
@@ -481,7 +490,7 @@ function init() {
             document.getElementsByClassName("bosses")[0].innerHTML = html;
 
             changeBoss(null, data[0].name);
-        }
+        };
     }
 }
 

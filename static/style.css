@@ -8,10 +8,6 @@ body {
 .top-content {
     background-color: #f5f6f7 !important;
     box-shadow: 0 1px 5px #cccccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 87px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -21,32 +17,40 @@ body {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
+    vertical-align: middle;
 }
 .top-content .top-h1 {
-    height: 45px;
-    font-size: 1.25em;
+    background-color: #009ad6;
+    height: 30px;
+    font-size: 16px;
 }
 .top-content .top-h1 a {
-    line-height: 45px;
-    margin-left: 10px;
-    margin-right: 10px;
+    line-height: 30px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 .top-content .top-h1 a,
 .top-content .top-h1 a:link,
 .top-content .top-h1 a:visited {
-    color: #2f2f2f;
+    color: #ffffff;
     text-decoration: none;
 }
 .top-content .top-h2 {
-    height: 40px;
-    font-size: 1.05em;
+    max-height: 0;
+    font-size: 14px;
+    padding-left: 30px;
+    overflow: hidden;
+    transition: max-height 0.25s;
+}
+.top-content .top-h2:hover {
+    max-height: 20px !important;
 }
 .top-content .top-h2 a {
-    line-height: 40px;
-    margin-left: 10px;
-    margin-right: 10px;
+    line-height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .top-content .top-h2 a,
 .top-content .top-h2 a:link,
@@ -54,16 +58,19 @@ body {
     color: #3f3f3f;
     text-decoration: none;
 }
+.top-content .top-h2 a:hover {
+    font-weight: bold;
+}
 
 .main-content-wrap {
-    margin: 107px 50px 20px 20px;
+    margin: 50px 50px 20px 20px;
     width: calc(100vw - 70px);
 }
 .main-content {
     background-color: #ffffff;
     border-radius: 3px;
     margin: auto;
-    min-height: calc(100vh - 127px);
+    min-height: calc(100vh - 70px);
     width: calc(100vw - 90px);
     max-width: 1200px;
 }
