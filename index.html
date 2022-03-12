@@ -43,7 +43,7 @@
                                 <input type="checkbox" id="checkbox-remainder" onclick="remainderAutoFilter()" />
                                 <div class="slider"></div>
                             </label>
-                            <span>AUTO</span>
+                            <span>AUTO/半AUTO</span>
                             <label class="switch">
                                 <input type="checkbox" id="checkbox-auto" onclick="remainderAutoFilter()" />
                                 <div class="slider"></div>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="input-row">
                     <label>阶段</label>
-                    <select class="select" id="select-stage">
+                    <select class="select" id="select-stage" onchange="maxDamage(this.value)">
                         <option value="1">一阶段</option>
                         <option value="2">二阶段</option>
                         <option value="3">三阶段</option>
@@ -134,24 +134,27 @@
                         <option value="2">半AUTO</option>
                     </select>
                     <label>参考伤害(w)</label>
-                    <input id="input-damage" type="number" min="1" max="100000" step="1" />
+                    <input id="input-damage" type="number" min="1" step="1" onkeydown="keyDownLoop(event, this)" />
                 </div>
                 <div>
                     <label>特殊说明</label>
                 </div>
                 <div class="input-row">
-                    <input id="input-info" />
+                    <input id="input-info" placeholder="注意与“视频标题”相区分" />
                 </div>
                 <p style="font-size: medium">视频</p>
                 <div class="input-row">
                     <label>标题</label>
-                    <input id="input-video-title" />
+                    <input id="input-video-title" placeholder="作者 类型 伤害 其他" />
                     <label>链接</label>
                     <input id="input-video-link" />
                 </div>
+                <div class="check-info">*确定前请再三检查投稿内容是否有误</div>
                 <div class="close-window-icon" onclick="closeWindow('window-add-homework-wrap')">×</div>
-                <button class="cancel" onclick="closeWindow('window-add-homework-wrap')">取消</button>
-                <button class="confirm" onclick="confirmHomework()">确定</button>
+                <div class="cancel-confirm">
+                    <button class="cancel" onclick="closeWindow('window-add-homework-wrap')">取消</button>
+                    <button class="confirm" onclick="confirmHomework()">确定</button>
+                </div>
             </div>
         </div>
         <!--添加视频弹窗-->
@@ -166,9 +169,12 @@
                     <label>链接</label>
                     <input id="input-add-video-link" />
                 </div>
+                <div class="check-info">*确定前请再三检查投稿内容是否有误</div>
                 <div class="close-window-icon" onclick="closeWindow('window-add-video-wrap')">×</div>
-                <button class="cancel" onclick="closeWindow('window-add-video-wrap')">取消</button>
-                <button class="confirm" onclick="confirmVideo()">确定</button>
+                <div class="cancel-confirm">
+                    <button class="cancel" onclick="closeWindow('window-add-video-wrap')">取消</button>
+                    <button class="confirm" onclick="confirmVideo()">确定</button>
+                </div>
             </div>
         </div>
         <div class="window-shadow window-add-joy-wrap">
@@ -186,9 +192,12 @@
                 <div class="input-row">
                     <input type="file" id="input-add-joy-img" />
                 </div>
+                <div class="check-info">*确定前请再三检查投稿内容是否有误</div>
                 <div class="close-window-icon" onclick="closeWindow('window-add-joy-wrap')">×</div>
-                <button class="cancel" onclick="closeWindow('window-add-joy-wrap')">取消</button>
-                <button class="confirm" onclick="confirmJoy()">确定</button>
+                <div class="cancel-confirm">
+                    <button class="cancel" onclick="closeWindow('window-add-joy-wrap')">取消</button>
+                    <button class="confirm" onclick="confirmJoy()">确定</button>
+                </div>
             </div>
         </div>
         <div class="window-shadow window-connect-wrap">

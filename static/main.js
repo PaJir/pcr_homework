@@ -1,6 +1,6 @@
 // 全局变量
 var data = undefined; // boss和homework数据
-var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss
+var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss，TODO: 没有随着阶段的切换而改变
 var stage = undefined; // 预留
 var icons = undefined; // 角色列表 [{iconFilePath: "", iconValue: ""}]
 // hover
@@ -261,6 +261,7 @@ function confirmHomework() {
     //         layer.msg("阵容提交成功~请等待审核", { icon: 1 });
     //     }
     // });
+    console.log(form);
     closeWindow("window-add-homework-wrap");
 }
 // 更新选中的角色
@@ -282,10 +283,45 @@ function updateSelectedUnits() {
             $("#select-unit-" + idx)[0].dataset.paramId = unit.dataset.paramId;
         });
 }
-
+// 处理输入的伤害值
+function keyDownLoop(e, that) {
+    let min = parseInt(that.min);
+    let max = parseInt(that.max);
+    let value = parseInt(that.value || "0");
+    let step = parseInt(that.step);
+    if (e.keyCode === 38) {
+        // arrow-up
+        if (value + step > max) {
+            that.value = min - 1;
+        }
+    } else if (e.keyCode === 40) {
+        // arrow-down
+        if (value - step < min) {
+            that.value = max + 1;
+        }
+    }
+}
+// 设置伤害值上限
+function maxDamage(stage) {
+    data.filter((boss) => {
+        return boss.stage == stage;
+    })
+        .filter((boss, idx) => {
+            return idx == activeBoss.idx % 5;
+        })
+        .forEach((boss) => {
+            boss.detail
+                .filter((detail) => {
+                    return detail[0] === "生命值";
+                })
+                .forEach((detail) => {
+                    $("#input-damage")[0].max = detail[1] / 10000;
+                });
+        });
+}
 // 显示添加阵容弹窗
 function addHomework() {
-    document.getElementsByClassName("window-add-homework-wrap")[0].style.display = "block";
+    $(".window-add-homework-wrap")[0].style.display = "block";
     if (!icons) {
         // TODO
         // $.get(_baseUrl + "/gzlj/data/role", function (result) {
@@ -330,6 +366,17 @@ function addHomework() {
                     }
                     updateSelectedUnits();
                 });
+                $(".select-unit-imgs").click(function () {
+                    let id = this.children[1].dataset.paramId;
+                    $(".unit-icon")
+                        .filter(function () {
+                            return this.dataset.paramId == id;
+                        })
+                        .each(function () {
+                            this.className = this.className.replace(" active", "");
+                        });
+                    updateSelectedUnits();
+                });
             }
         };
     }
@@ -338,18 +385,18 @@ function addHomework() {
     data.filter((boss) => {
         return boss.id == activeBoss.id;
     }).forEach((boss) => {
-        document.getElementById("select-boss-span").innerHTML = '<img src="' + boss.icon + '" />';
+        $("#select-boss-span")[0].innerHTML = '<img src="' + boss.icon + '" />';
     });
     // 整刀 / 尾刀
-    let is_remainder = document.getElementById("checkbox-remainder").checked;
+    let is_remainder = $("#checkbox-remainder")[0].checked;
     if (is_remainder) {
-        document.getElementById("input-remainder-1").checked = true;
+        $("#input-remainder-1")[0].checked = true;
     } else {
-        document.getElementById("input-remainder-0").checked = true;
+        $("#input-remainder-0")[0].checked = true;
     }
     // 阶段
-    let stages = document.getElementsByClassName("battle-tab-panel");
-    let options = document.getElementById("select-stage").options;
+    let stages = $(".battle-tab-panel");
+    let options = $("#select-stage")[0].options;
     let selectedStage = "1";
     for (let i = 0; i < stages.length; i++) {
         if (stages[i].className.indexOf("active") !== -1) {
@@ -364,14 +411,16 @@ function addHomework() {
         }
     }
     // 手动 / AUTO
-    let is_auto = document.getElementById("checkbox-auto").checked;
-    options = document.getElementById("select-auto").options;
+    let is_auto = $("#checkbox-auto")[0].checked;
+    options = $("#select-auto")[0].options;
     for (let i = 0; i < options.length; i++) {
         if ((is_auto && options[i].value == "1") || (!is_auto && options[i].value == "0")) {
             options[i].selected = true;
             break;
         }
     }
+    // 参考伤害上限
+    maxDamage(selectedStage);
 }
 
 // 确认添加视频

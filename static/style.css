@@ -103,7 +103,7 @@ body {
 }
 .boss-wrap:hover,
 .boss-wrap.active {
-    background-color: #f2f4fa;
+    background-color: #49a8fc;
 }
 .boss-profile {
     display: flex;
@@ -467,12 +467,13 @@ input[class="boss-detail-check"] {
 .window-add-homework {
     /* height: 800px; */
     width: 470px;
-    padding-bottom: 40px;
+    padding-bottom: 55px;
 }
 .input-row {
     line-height: 20px;
     height: 20px;
     margin-bottom: 20px;
+    font-weight: 600;
 }
 .box {
     z-index: 9999;
@@ -515,6 +516,7 @@ input[class="boss-detail-check"] {
     display: inline-block;
     width: 52px;
     text-align: center;
+    cursor: pointer;
 }
 .select-boss-wrap {
     float: left;
@@ -572,15 +574,24 @@ input#input-info {
     text-align: center;
     cursor: pointer;
 }
-.cancel {
+.check-info {
+    white-space: nowrap;
+    text-align: center;
+    color: #a80808;
+}
+.cancel-confirm {
     position: absolute;
-    right: 80px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: auto;
     bottom: 20px;
+}
+.cancel {
     background-color: #fcfcfc;
     border-radius: 3px;
     color: #3f3f3f;
     padding: 3px 10px;
-    margin: 1px 2px;
+    margin: 1px 6px;
     border: 1px solid #cccccc;
     cursor: pointer;
 }
@@ -588,14 +599,11 @@ input#input-info {
     background-color: #eeeeee;
 }
 .confirm {
-    position: absolute;
-    right: 15px;
-    bottom: 20px;
     background-color: #49a8fc;
     border-radius: 3px;
     color: #ffffff;
     padding: 3px 10px;
-    margin: 1px 2px;
+    margin: 1px 6px;
     border: 1px solid #cccccc;
     cursor: pointer;
 }
@@ -603,7 +611,7 @@ input#input-info {
     background-color: #46a0f0;
 }
 .window-add-video {
-    height: 180px;
+    height: 200px;
     width: 320px;
 }
 input#input-add-video-title,
@@ -612,7 +620,7 @@ input#input-add-video-link {
     width: 280px;
 }
 .window-add-joy {
-    height: 220px;
+    height: 235px;
     width: 320px;
 }
 input#input-add-joy-text,
