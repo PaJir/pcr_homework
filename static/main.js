@@ -486,13 +486,14 @@ function confirmJoy() {
             //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
             //     }
             // });
+            layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
             closeWindow("window-add-joy-wrap");
             // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
             document.getElementById("input-add-joy-text").value = "";
             document.getElementById("input-add-joy-img").value = "";
         };
         fileReader.readAsDataURL(file);
-    } else if (from.text !== "") {
+    } else if (form.text !== "") {
         // TODO
         // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
         // $.post(_baseUrl + "/gzlj/data/debunk", { data: JSON.stringify(form) }, function (result) {
@@ -505,6 +506,7 @@ function confirmJoy() {
         //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
         //     }
         // });
+        layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
         closeWindow("window-add-joy-wrap");
         document.getElementById("input-add-joy-text").value = "";
     }
