@@ -23,8 +23,8 @@ body {
 }
 .top-content .top-h1 {
     background-color: #009ad6;
-    height: 30px;
-    font-size: 16px;
+    height: 64px;
+    font-size: 24px;
 }
 .top-content .top-h1 a {
     line-height: 30px;
@@ -36,16 +36,14 @@ body {
 .top-content .top-h1 a:visited {
     color: #ffffff;
     text-decoration: none;
+    line-height: 64px;
 }
 .top-content .top-h2 {
-    max-height: 0;
+    height: 20px;
     font-size: 14px;
     padding-left: 30px;
     overflow: hidden;
     transition: max-height 0.25s;
-}
-.top-content .top-h2:hover {
-    max-height: 20px !important;
 }
 .top-content .top-h2 a {
     line-height: 20px;
@@ -103,7 +101,7 @@ body {
 }
 .boss-wrap:hover,
 .boss-wrap.active {
-    background-color: #49a8fc;
+    background-color: #ddf5fe;
 }
 .boss-profile {
     display: flex;

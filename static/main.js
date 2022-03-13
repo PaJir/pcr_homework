@@ -3,15 +3,6 @@ var data = undefined; // boss和homework数据
 var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss，TODO: 没有随着阶段的切换而改变
 var stage = undefined; // 预留
 var icons = undefined; // 角色列表 [{iconFilePath: "", iconValue: ""}]
-// hover
-$(".top-hover").hover(
-    function () {
-        $(".top-h2").css("max-height", "20px");
-    },
-    function () {
-        $(".top-h2").css("max-height", "0");
-    }
-);
 // tab 筛选项
 function tabFilter(event, id) {
     let tabcontents = document.getElementsByClassName("battle-tab-content");
@@ -414,7 +405,7 @@ function addHomework() {
     let is_auto = $("#checkbox-auto")[0].checked;
     options = $("#select-auto")[0].options;
     for (let i = 0; i < options.length; i++) {
-        if ((is_auto && options[i].value == "1") || (!is_auto && options[i].value == "0")) {
+        if ((is_auto && options[i].value == "1") || (!is_auto && options[i].value == "2")) {
             options[i].selected = true;
             break;
         }
