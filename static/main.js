@@ -104,7 +104,6 @@ function getBossHtml(boss) {
     return html;
 }
 
-// TODO: iOS上点击的bug
 function stopClick(e) {
     // 阻止事件冒泡
     e.stopPropagation();
@@ -195,6 +194,28 @@ function getHomeworkHtml(homework, joyshow) {
     html += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>';
     html += "</div>";
     return html;
+}
+
+function sortHomework(that) {
+    let asc = that.dataset.paramAsc || "0";
+    that.dataset.paramAsc = asc === "0" ? "1" : "0";
+    // 阶段1~5都会排序
+    $(".homeworks").each((idx, homeworks) => {
+        let len = homeworks.children.length - 1;
+        let hws = [];
+        for (let i = 0; i < len; i++) {
+            hws.push({
+                text: homeworks.children[i].outerHTML,
+                damage: parseInt(homeworks.children[i].dataset.paramDamage)
+            });
+        }
+        hws.sort((a, b) => {
+            return asc === "0" ? b.damage - a.damage : a.damage - b.damage;
+        }).forEach((hw, idx) => {
+            homeworks.children[idx].outerHTML = hw.text;
+            console.log(hw.damage);
+        });
+    });
 }
 
 function checkBatch(e) {
