@@ -113,7 +113,7 @@ function stopClick(e) {
 // 切换boss，展示该boss下的阵容和欢乐秀，并筛选尾刀和AUTO
 function changeBoss(e, activeName) {
     // 点击的是折叠栏
-    if (e && (e.path[1].className === "boss-detail-check-down" || e.path[1].className === "boss-detail-check-up")) {
+    if (e && (e.target.className === "boss-detail-check-down" || e.target.className === "boss-detail-check-up")) {
         return;
     }
     // 没变，不更新
