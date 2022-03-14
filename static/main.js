@@ -201,8 +201,40 @@ function checkBatch(e) {
     console.log("batch");
 }
 
+// 阻止页面滚动
+function stopMove() {
+    let top = -$("body").scrollTop();
+    let left = -$("body").scrollLeft();
+    $("body").css({
+        position: "fixed"
+    });
+    setTimeout(function () {
+        $("body").css({
+            top: top + "px",
+            left: left + "px"
+        });
+    });
+}
+
 function closeWindow(id) {
     document.getElementsByClassName(id)[0].style.display = "none";
+    // 重新滚动
+    let top = parseInt(-$("body").css("top").replace("px", ""));
+    let left = parseInt(-$("body").css("left").replace("px", ""));
+    $("body").css({
+        position: "relative",
+        top: "0",
+        left: "0"
+    });
+    $("body").scrollTop(top);
+    $("body").scrollLeft(left);
+}
+
+// 关闭弹窗
+function closeShadow(e, that) {
+    if (e.target.className.indexOf("window-shadow") != -1) {
+        closeWindow(that.className);
+    }
 }
 
 // 确认添加阵容
@@ -313,6 +345,7 @@ function maxDamage(stage) {
 // 显示添加阵容弹窗
 function addHomework() {
     $(".window-add-homework-wrap")[0].style.display = "block";
+    stopMove();
     if (!icons) {
         // TODO
         // $.get(_baseUrl + "/gzlj/data/role", function (result) {
@@ -443,8 +476,9 @@ function confirmVideo() {
 // 显示添加视频
 function addVideo(hwId) {
     // hwId为作业id，隐性参数
-    document.getElementsByClassName("window-add-video-wrap")[0].style.display = "block";
-    document.getElementsByClassName("window-add-video-wrap")[0].dataset.paramHwid = hwId;
+    $(".window-add-video-wrap")[0].style.display = "block";
+    $(".window-add-video-wrap")[0].dataset.paramHwid = hwId;
+    stopMove();
 }
 
 // 确认添加吐槽
@@ -505,7 +539,8 @@ function confirmJoy() {
 
 // 显示吐个槽
 function addJoy() {
-    document.getElementsByClassName("window-add-joy-wrap")[0].style.display = "block";
+    $(".window-add-joy-wrap")[0].style.display = "block";
+    stopMove();
 }
 
 function init() {

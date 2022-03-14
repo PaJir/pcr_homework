@@ -61,7 +61,7 @@ body {
 }
 
 .main-content-wrap {
-    margin: 50px 50px 20px 20px;
+    margin: 104px 50px 20px 20px;
     width: calc(100vw - 70px);
 }
 .main-content {
@@ -461,11 +461,15 @@ input[class="boss-detail-check"] {
     border-radius: 5px;
     padding: 0 15px;
     font-size: small;
+    max-height: 85%;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 .window-add-homework {
-    /* height: 800px; */
     width: 470px;
-    padding-bottom: 55px;
+}
+.window-inner::-webkit-scrollbar {
+    display: none;
 }
 .input-row {
     line-height: 20px;
@@ -578,11 +582,10 @@ input#input-info {
     color: #a80808;
 }
 .cancel-confirm {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
     margin: auto;
     bottom: 20px;
+    padding: 20px 0;
+    text-align: center;
 }
 .cancel {
     background-color: #fcfcfc;
@@ -608,18 +611,14 @@ input#input-info {
 .confirm:hover {
     background-color: #46a0f0;
 }
-.window-add-video {
-    height: 200px;
+.window-add-video,
+.window-add-joy {
     width: 320px;
 }
 input#input-add-video-title,
 input#input-add-video-link {
     margin: 0 5px;
     width: 280px;
-}
-.window-add-joy {
-    height: 235px;
-    width: 320px;
 }
 input#input-add-joy-text,
 input#input-add-joy-img {
