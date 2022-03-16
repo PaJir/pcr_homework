@@ -42,25 +42,25 @@ function remainderAutoFilter() {
     let hw = document.getElementsByClassName("homework");
     for (let i = 0; i < hw.length; i++) {
         if (!is_remainder && !is_auto) {
-            if (hw[i].dataset.paramRemain === "0" && hw[i].dataset.paramAuto === "0") {
+            if (hw[i].dataset.paramRemain === "0" && hw[i].dataset.paramAuto === "2") {
                 hw[i].style.display = "block";
             } else {
                 hw[i].style.display = "none";
             }
         } else if (!is_remainder && is_auto) {
-            if (hw[i].dataset.paramRemain === "0" && hw[i].dataset.paramAuto !== "0") {
+            if (hw[i].dataset.paramRemain === "0" && hw[i].dataset.paramAuto !== "2") {
                 hw[i].style.display = "block";
             } else {
                 hw[i].style.display = "none";
             }
         } else if (is_remainder && !is_auto) {
-            if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto === "0") {
+            if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto === "2") {
                 hw[i].style.display = "block";
             } else {
                 hw[i].style.display = "none";
             }
         } else {
-            if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto !== "0") {
+            if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto !== "2") {
                 hw[i].style.display = "block";
             } else {
                 hw[i].style.display = "none";
