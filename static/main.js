@@ -183,7 +183,7 @@ function getHomeworkHtml(homework, joyshow) {
     if (joyshow && joyshow.length !== 0) {
         joyshow.img.forEach(function (joy) {
             html += '<div class="joy">';
-            html += '<img src="' + joy + '" />';
+            html += '<img src="' + joy + '" onclick="showImg(this.src)"/>';
             html += "</div>";
         });
         joyshow.msg.forEach(function (joy) {
@@ -255,6 +255,12 @@ function closeWindow(id) {
 function closeShadow(e, that) {
     if (e.target.className.indexOf("window-shadow") != -1) {
         closeWindow(that.className);
+    }
+}
+function closeImgShadow(e, that) {
+    if (e.target.className.indexOf("window-shadow") != -1 || e.target.className.indexOf("close") != -1) {
+        closeWindow(that.className);
+        $("#imgContent")[0].remove();
     }
 }
 
@@ -562,6 +568,79 @@ function confirmJoy() {
 function addJoy() {
     $(".window-add-joy-wrap")[0].style.display = "block";
     stopMove();
+}
+
+// 点击显示图片大图
+function showImg(src) {
+    $(".window-img-wrap")[0].style.display = "block";
+    stopMove();
+    var imgContent = document.createElement("img");
+    imgContent.setAttribute("src", src);
+    imgContent.setAttribute("id", "imgContent");
+    imgContent.setAttribute("class", "handleimg-box");
+
+    $(".window-img-wrap")[0].appendChild(imgContent);
+
+    let oipc = $("#imgContent")[0];
+    let isDrag = false; //是否开始拖拽 false 不拖拽
+    let disX, disY; //图片相对于图片的位置
+    //鼠标按下时
+    $("#imgContent").on("mousedown", function (e) {
+        isDrag = true;
+        this.style.cursor = "move";
+        e = e || window.event; //兼容性写法
+        //鼠标位置
+        let x = e.clientX;
+        let y = e.clientY;
+        //鼠标相对于图片的位置
+        disX = x - this.offsetLeft;
+        disY = y - this.offsetTop;
+    });
+
+    // 鼠标移动时
+    $("#imgContent").on("mousemove", function (e) {
+        if (!isDrag) {
+            return;
+        }
+        e = e || window.event; //兼容性写法
+        //鼠标位置
+        let x = e.clientX;
+        let y = e.clientY;
+        //修改图片位置
+        oipc.style.left = x - disX + "px";
+        oipc.style.top = y - disY + "px";
+    });
+
+    // 鼠标抬起时
+    $("#imgContent").on("mouseup", function (e) {
+        isDrag = false;
+        oipc.style.cursor = "grab";
+    });
+
+    // 滚轮
+    $("#imgContent").on("mousewheel", function (e) {
+        e = e || window.event; //兼容性写法
+        e.delta = e.originalEvent.wheelDelta || e.detail || 0;
+        if (e.delta > 0) {
+            $("#imgContent")[0].style.height = $("#imgContent")[0].offsetHeight * 1.2 + "px";
+        } else if (e.delta < 0) {
+            $("#imgContent")[0].style.height = $("#imgContent")[0].offsetHeight / 1.2 + "px";
+        }
+    });
+}
+// 放大图片
+function expandImg() {
+    let imgContent = $("#imgContent")[0];
+    if (imgContent) {
+        imgContent.style.height = imgContent.offsetHeight * 1.2 + "px";
+    }
+}
+// 缩小图片
+function narrowImg() {
+    let imgContent = $("#imgContent")[0];
+    if (imgContent) {
+        imgContent.style.height = imgContent.offsetHeight / 1.2 + "px";
+    }
 }
 
 function init() {
