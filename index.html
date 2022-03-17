@@ -8,16 +8,31 @@
         <div class="top-content">
             <div class="top-h1">
                 <a href="https://www.caimogu.cc/gzlj.html" class="top-hover" style="margin: auto 0 auto 30px">
-                    <img src="static/icon/logo.png" height="36px" width="100%" />
+                    <img src="static/icon/logo.png" height="36px" width="72px" />
                 </a>
                 <a href="https://www.caimogu.cc/gzlj.html" class="top-hover">公主连结公会战轴区</a>
             </div>
             <div class="top-h2">
-                <a href="https://www.caimogu.cc/gzlj.html">主页</a>
-                <a href="https://space.bilibili.com/549739">花舞组</a>
-                <!-- <a href="https://pcr.satroki.tech/teams">网页版分刀器</a>
-                <a href="/">APP分刀器</a>
-                <a href="/">下载&教程</a> -->
+                <div class="top-h2-ul">
+                    <a href="https://www.caimogu.cc/gzlj.html">主页</a>
+                </div>
+                <div class="top-h2-ul">
+                    <a href="#">花舞组</a>
+                    <div class="top-h2-li">                    
+                        <a href="https://space.bilibili.com/549739">花舞组1</a>
+                        <a href="https://space.bilibili.com/549739">花舞组2</a>
+                        <a href="https://space.bilibili.com/549739">3</a>
+                    </div>
+                </div>
+                <div class="top-h2-ul">
+                    <a href="https://pcr.satroki.tech/teams">网页版分刀器</a>
+                </div>
+                <div class="top-h2-ul">
+                    <a href="/">APP分刀器</a>
+                </div>
+                <div class="top-h2-ul">
+                    <a href="/">其他</a>
+                </div>
             </div>
         </div>
         <div class="main-content-wrap">
@@ -67,12 +82,6 @@
                     </div>
                 </section>
             </div>
-        </div>
-        <div class="right-content">
-            <!--TODO: hover显示文字-->
-            <a href="javascript:;"><img src="static/icon/qq.png" height="24px" width="24px" /></a>
-            <a href="javascript:;"><img src="static/icon/info.png" height="24px" width="24px" /></a>
-            <a href="javascript:;"><img src="static/icon/email.png" height="24px" width="24px" /></a>
         </div>
         <!--添加阵容弹窗-->
         <div class="window-shadow window-add-homework-wrap" onclick="closeShadow(event, this)">
@@ -146,6 +155,8 @@
                 <div class="input-row">
                     <label>标题</label>
                     <input id="input-video-title" placeholder="作者 类型 伤害 其他" />
+                </div>
+                <div class="input-row">
                     <label>链接</label>
                     <input id="input-video-link" />
                 </div>
@@ -199,9 +210,6 @@
                     <button class="confirm" onclick="confirmJoy()">确定</button>
                 </div>
             </div>
-        </div>
-        <div class="window-shadow window-connect-wrap">
-            <div class="window-inner window-connect">联系方式</div>
         </div>
         <div class="window-shadow window-img-wrap" onclick="closeImgShadow(event, this)">
             <img class="imgbtn expand" src="static/icon/expand.png" onclick="expandImg()" alt="放大"></img>
