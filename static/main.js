@@ -165,7 +165,7 @@ function getHomeworkHtml(homework, joyshow) {
             html += '<div class="homework-wrap homework" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '" data-param-remain="' + hw.remain + '">';
             html += '<div class="homework-up">';
             html += '<input class="batch-check-' + hw.id + '" type="checkbox" onclick="checkBatch(event)" />';
-            html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">批量</label>';
+            html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.id + '</label>';
             html += fiveUnits(hw.unit);
             html += '<div class="damage-value">' + hw.damage + "w</div>";
             html += '<div class="homework-info">' + hw.info + "</div>";

@@ -59,11 +59,11 @@ body {
     cursor: pointer;
 }
 .top-h2 .top-h2-ul:hover {
-    background-color: #aaaaaa;
+    background-color: #888888;
 }
 .top-h2 .top-h2-ul:hover a {
     color: #ffffff;
-    background-color: #aaaaaa;
+    background-color: #888888;
 }
 .top-h2 .top-h2-ul:hover .top-h2-li {
     display: block;
@@ -72,7 +72,7 @@ body {
     display: none;
     position: absolute;
     font-size: 12px;
-    background-color: #aaaaaa;
+    background-color: #888888;
     margin-left: -15px;
     max-height: 346px;
     overflow-x: hidden;
@@ -86,7 +86,7 @@ body {
 }
 .top-h2 .top-h2-ul .top-h2-li a:hover {
     color: #ffffff;
-    background-color: #888888;
+    background-color: #555555;
 }
 
 .main-content-wrap {
@@ -438,7 +438,7 @@ input[class="boss-detail-check"] {
     display: inline-block;
     break-inside: avoid;
     margin: 0 5px 5px 0;
-    /* background-color: #1a0c9c; */
+    background-color: #f9f9f9;
     width: 190px;
     border-radius: 3px;
     overflow: hidden;
