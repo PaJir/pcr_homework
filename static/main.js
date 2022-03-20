@@ -27,6 +27,8 @@ function tabFilter(event, id) {
         html += getBossHtml(boss);
     });
     document.getElementsByClassName("bosses")[0].innerHTML = html;
+    // 更新欢乐秀排版
+    listJoyshow();
 }
 
 // 尾刀和AUTO两个筛选项控制器
@@ -137,6 +139,7 @@ function changeBoss(e, activeName) {
         document.getElementById("stage" + boss.stage).innerHTML = html;
     });
     remainderAutoFilter();
+    listJoyshow();
 }
 
 function fiveUnits(units) {
@@ -158,6 +161,34 @@ function listVideos(videos, hwId) {
     return html;
 }
 
+function listJoyshow() {
+    // 双列瀑布流
+    $(".joyshow").each((idx, joyshowTmp) => {
+        let lenTmp = joyshowTmp.children.length;
+        let left = '<div class="joy-left">';
+        let right = '<div class="joy-right">';
+        let leftHeight = 0;
+        let rightHeight = 0;
+        for (let j = 0; j < lenTmp; j++) {
+            let joyshow = joyshowTmp.children[j];
+            let len = joyshow.children.length;
+            for (let i = 0; i < len; i++) {
+                let height = $(joyshow.children[i]).outerHeight();
+                if (leftHeight <= rightHeight) {
+                    leftHeight += height;
+                    left += joyshow.children[i].outerHTML;
+                } else {
+                    rightHeight += height;
+                    right += joyshow.children[i].outerHTML;
+                }
+            }
+        }
+        left += "</div>";
+        right += "</div>";
+        joyshowTmp.innerHTML = left + right;
+    });
+}
+
 function getHomeworkHtml(homework, joyshow) {
     let html = '<div class="homeworks">';
     if (homework && homework.length !== 0) {
@@ -165,7 +196,7 @@ function getHomeworkHtml(homework, joyshow) {
             html += '<div class="homework-wrap homework" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '" data-param-remain="' + hw.remain + '">';
             html += '<div class="homework-up">';
             html += '<input class="batch-check-' + hw.id + '" type="checkbox" onclick="checkBatch(event)" />';
-            html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.id + '</label>';
+            html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.id + "</label>";
             html += fiveUnits(hw.unit);
             html += '<div class="damage-value">' + hw.damage + "w</div>";
             html += '<div class="homework-info">' + hw.info + "</div>";
@@ -178,8 +209,7 @@ function getHomeworkHtml(homework, joyshow) {
     }
     html += '<div class="homework-wrap homework-add" onclick="addHomework()">+ 添加我的阵容</div>';
     html += "</div>";
-    // TODO: 排版问题
-    html += '<div class="joyshow">';
+    html += '<div class="joyshow"><div class="joy-tmp">';
     if (joyshow && joyshow.length !== 0) {
         joyshow.img.forEach(function (joy) {
             html += '<div class="joy">';
@@ -192,7 +222,7 @@ function getHomeworkHtml(homework, joyshow) {
         });
     }
     html += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>';
-    html += "</div>";
+    html += "</div></div>";
     return html;
 }
 
@@ -213,13 +243,8 @@ function sortHomework(that) {
             return asc === "0" ? b.damage - a.damage : a.damage - b.damage;
         }).forEach((hw, idx) => {
             homeworks.children[idx].outerHTML = hw.text;
-            console.log(hw.damage);
         });
     });
-}
-
-function checkBatch(e) {
-    console.log("batch");
 }
 
 // 阻止页面滚动

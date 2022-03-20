@@ -313,6 +313,7 @@ input[class="boss-detail-check"] {
 
 .homeworks {
     display: inline-block;
+    vertical-align: top;
 }
 .homework-wrap {
     background-color: #f2f4fa;
@@ -422,22 +423,22 @@ input[class="boss-detail-check"] {
 }
 .joyshow {
     display: inline-block;
-    position: absolute;
+    vertical-align: top;
     padding-left: 10px;
     margin-top: 5px;
     width: 390px;
-    column-count: 2;
-    -webkit-column-count: 2;
-    column-width: 200px;
-    column-gap: 0;
     font-size: small;
     /* background-color: #49a8fc; */
 }
-.joy {
-    box-sizing: border-box;
+.joy-left,
+.joy-right {
     display: inline-block;
-    break-inside: avoid;
+    vertical-align: top;
+    width: 190px;
     margin: 0 5px 5px 0;
+}
+.joy {
+    margin: 0 0 5px 0;
     background-color: #f9f9f9;
     width: 190px;
     border-radius: 3px;
@@ -447,6 +448,7 @@ input[class="boss-detail-check"] {
     width: 190px;
     height: auto;
     vertical-align: top;
+    cursor: pointer;
 }
 
 /* 弹窗 */
