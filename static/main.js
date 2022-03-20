@@ -173,7 +173,7 @@ function listJoyshow() {
             let joyshow = joyshowTmp.children[j];
             let len = joyshow.children.length;
             for (let i = 0; i < len; i++) {
-                let height = $(joyshow.children[i]).outerHeight();
+                let height = $(joyshow.children[i]).outerHeight() || 100;
                 if (leftHeight <= rightHeight) {
                     leftHeight += height;
                     left += joyshow.children[i].outerHTML;
