@@ -28,6 +28,473 @@
         ],
         "homework": [
             {
+                "id": "ct127",
+                "unit": [
+                    { "name": "露娜", "icon": "https://patchwiki.biligame.com/images/pcr/a/af/5dm5hphdac1xed78t74zo2g1u6auu70.png" },
+                    { "name": "春田", "icon": "https://patchwiki.biligame.com/images/pcr/f/f5/kieyz1llmwrmdtvo2wbl9go0nq3ssa2.png" },
+                    { "name": "驴", "icon": "https://patchwiki.biligame.com/images/pcr/f/f1/btd4p36c1tzt4aqgo4lfwqjst6mvjtk.png" },
+                    { "name": "春黑", "icon": "https://patchwiki.biligame.com/images/pcr/d/df/pwtwalyy4p1mwan77mtvy46yh0vee67.png" },
+                    { "name": "充电宝", "icon": "https://patchwiki.biligame.com/images/pcr/8/8c/dy0rtln3fvhxkkqfxsnbnws61k8qqjh.png" }
+                ],
+                "damage": "700",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct106",
+                "unit": [
+                    { "name": "水电", "icon": "https://patchwiki.biligame.com/images/pcr/7/7e/cruvpw321tfrrppp4tmgwgnriatqsfr.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "春猫", "icon": "https://patchwiki.biligame.com/images/pcr/9/94/n7vfjbovwwoekbjr9n2ut4k66m9pvta.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "620",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct101",
+                "unit": [
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "春猫", "icon": "https://patchwiki.biligame.com/images/pcr/9/94/n7vfjbovwwoekbjr9n2ut4k66m9pvta.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "530",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct116",
+                "unit": [
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "圣锤", "icon": "https://patchwiki.biligame.com/images/pcr/e/e7/o9jg48nqow11dheuce4ia0pfsi9pwri.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "春猫", "icon": "https://patchwiki.biligame.com/images/pcr/9/94/n7vfjbovwwoekbjr9n2ut4k66m9pvta.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "510",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct117",
+                "unit": [
+                    { "name": "万圣兔", "icon": "https://patchwiki.biligame.com/images/pcr/d/df/cos4ajan6qtgh9gfmk8njlizlht0tmg.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "春猫", "icon": "https://patchwiki.biligame.com/images/pcr/9/94/n7vfjbovwwoekbjr9n2ut4k66m9pvta.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "477",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct129",
+                "unit": [
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "病娇", "icon": "https://patchwiki.biligame.com/images/pcr/4/49/md183zh8ewq7lupcmo9smuymjw749cm.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "忍扇", "icon": "https://patchwiki.biligame.com/images/pcr/f/f9/e557mss7yam7t1zbe9kaofwxpn32pr4.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "490",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct107",
+                "unit": [
+                    { "name": "水电", "icon": "https://patchwiki.biligame.com/images/pcr/7/7e/cruvpw321tfrrppp4tmgwgnriatqsfr.png" },
+                    { "name": "圣克", "icon": "https://patchwiki.biligame.com/images/pcr/c/c9/g5iwop5bk5ehlz0ir4q4b4abti61l02.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "550",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct114",
+                "unit": [
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "圣克", "icon": "https://patchwiki.biligame.com/images/pcr/c/c9/g5iwop5bk5ehlz0ir4q4b4abti61l02.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "535",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct126",
+                "unit": [
+                    { "name": "水电", "icon": "https://patchwiki.biligame.com/images/pcr/7/7e/cruvpw321tfrrppp4tmgwgnriatqsfr.png" },
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "500",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct115",
+                "unit": [
+                    { "name": "水电", "icon": "https://patchwiki.biligame.com/images/pcr/7/7e/cruvpw321tfrrppp4tmgwgnriatqsfr.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "病娇", "icon": "https://patchwiki.biligame.com/images/pcr/4/49/md183zh8ewq7lupcmo9smuymjw749cm.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "526",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct123",
+                "unit": [
+                    { "name": "tp弓", "icon": "https://patchwiki.biligame.com/images/pcr/0/05/exnyc4y1iuhrbjg3gxe7fncrj2mevmh.png" },
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "病娇", "icon": "https://patchwiki.biligame.com/images/pcr/4/49/md183zh8ewq7lupcmo9smuymjw749cm.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "445",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct102",
+                "unit": [
+                    { "name": "万圣兔", "icon": "https://patchwiki.biligame.com/images/pcr/d/df/cos4ajan6qtgh9gfmk8njlizlht0tmg.png" },
+                    { "name": "圣克", "icon": "https://patchwiki.biligame.com/images/pcr/c/c9/g5iwop5bk5ehlz0ir4q4b4abti61l02.png" },
+                    { "name": "华哥", "icon": "https://patchwiki.biligame.com/images/pcr/b/bd/p1vv08e3h57mbqkk1dfzji3p2ac70a5.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" }
+                ],
+                "damage": "440",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct112",
+                "unit": [
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "春猫", "icon": "https://patchwiki.biligame.com/images/pcr/9/94/n7vfjbovwwoekbjr9n2ut4k66m9pvta.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" },
+                    { "name": "511", "icon": "https://patchwiki.biligame.com/images/pcr/1/10/4s5y0eymxrgfyqpov57hb93lyb12yoj.png" }
+                ],
+                "damage": "532",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct128",
+                "unit": [
+                    { "name": "水电", "icon": "https://patchwiki.biligame.com/images/pcr/7/7e/cruvpw321tfrrppp4tmgwgnriatqsfr.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" },
+                    { "name": "511", "icon": "https://patchwiki.biligame.com/images/pcr/1/10/4s5y0eymxrgfyqpov57hb93lyb12yoj.png" }
+                ],
+                "damage": "535",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct113",
+                "unit": [
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" },
+                    { "name": "511", "icon": "https://patchwiki.biligame.com/images/pcr/1/10/4s5y0eymxrgfyqpov57hb93lyb12yoj.png" }
+                ],
+                "damage": "491",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct108",
+                "unit": [
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "圣锤", "icon": "https://patchwiki.biligame.com/images/pcr/e/e7/o9jg48nqow11dheuce4ia0pfsi9pwri.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" },
+                    { "name": "511", "icon": "https://patchwiki.biligame.com/images/pcr/1/10/4s5y0eymxrgfyqpov57hb93lyb12yoj.png" }
+                ],
+                "damage": "460",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct109",
+                "unit": [
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "狼", "icon": "https://patchwiki.biligame.com/images/pcr/2/27/ergoy0815kqjqqpqn3sa0yuz2be4pco.png" },
+                    { "name": "511", "icon": "https://patchwiki.biligame.com/images/pcr/1/10/4s5y0eymxrgfyqpov57hb93lyb12yoj.png" },
+                    { "name": "狗", "icon": "https://patchwiki.biligame.com/images/pcr/5/59/516euuhwnsfoqvolt8usv5z1jq0kfov.png" }
+                ],
+                "damage": "470",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct110",
+                "unit": [
+                    { "name": "生菜", "icon": "https://patchwiki.biligame.com/images/pcr/c/c6/47w0spbtdogzvdx5z2pq31m07785x99.png" },
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" },
+                    { "name": "511", "icon": "https://patchwiki.biligame.com/images/pcr/1/10/4s5y0eymxrgfyqpov57hb93lyb12yoj.png" },
+                    { "name": "狗", "icon": "https://patchwiki.biligame.com/images/pcr/5/59/516euuhwnsfoqvolt8usv5z1jq0kfov.png" }
+                ],
+                "damage": "440",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct118",
+                "unit": [
+                    { "name": "tp弓", "icon": "https://patchwiki.biligame.com/images/pcr/0/05/exnyc4y1iuhrbjg3gxe7fncrj2mevmh.png" },
+                    { "name": "生菜", "icon": "https://patchwiki.biligame.com/images/pcr/c/c6/47w0spbtdogzvdx5z2pq31m07785x99.png" },
+                    { "name": "克", "icon": "https://patchwiki.biligame.com/images/pcr/6/64/0fiboyjsfpidpeiqy5olahr76tuh5v3.png" },
+                    { "name": "吉塔", "icon": "https://patchwiki.biligame.com/images/pcr/7/7f/j62dyqwinraqa1jhcey51t2xgpl3kkq.png" },
+                    { "name": "水狼", "icon": "https://patchwiki.biligame.com/images/pcr/6/69/kap620ci41yg1513jd731vk3lqk4u5m.png" }
+                ],
+                "damage": "459",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct111",
+                "unit": [
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "露娜", "icon": "https://patchwiki.biligame.com/images/pcr/a/af/5dm5hphdac1xed78t74zo2g1u6auu70.png" },
+                    { "name": "驴", "icon": "https://patchwiki.biligame.com/images/pcr/f/f1/btd4p36c1tzt4aqgo4lfwqjst6mvjtk.png" },
+                    { "name": "春黑", "icon": "https://patchwiki.biligame.com/images/pcr/d/df/pwtwalyy4p1mwan77mtvy46yh0vee67.png" },
+                    { "name": "充电宝", "icon": "https://patchwiki.biligame.com/images/pcr/8/8c/dy0rtln3fvhxkkqfxsnbnws61k8qqjh.png" }
+                ],
+                "damage": "652",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct103",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" },
+                    { "name": "中二", "icon": "https://patchwiki.biligame.com/images/pcr/7/72/edy145bksvw972yhfpfgp8qbquhsi1j.png" },
+                    { "name": "圣伊", "icon": "https://patchwiki.biligame.com/images/pcr/e/ed/0ryyz9zncu0glzl1d711tve017tudge.png" }
+                ],
+                "damage": "620",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct125",
+                "unit": [
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" },
+                    { "name": "中二", "icon": "https://patchwiki.biligame.com/images/pcr/7/72/edy145bksvw972yhfpfgp8qbquhsi1j.png" },
+                    { "name": "圣伊", "icon": "https://patchwiki.biligame.com/images/pcr/e/ed/0ryyz9zncu0glzl1d711tve017tudge.png" }
+                ],
+                "damage": "580",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct119",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" },
+                    { "name": "妹法", "icon": "https://patchwiki.biligame.com/images/pcr/1/14/8pn703o0duodmiyou1c565wjczj5b5o.png" },
+                    { "name": "圣伊", "icon": "https://patchwiki.biligame.com/images/pcr/e/ed/0ryyz9zncu0glzl1d711tve017tudge.png" }
+                ],
+                "damage": "521",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct120",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "499",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct121",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "圣千", "icon": "https://patchwiki.biligame.com/images/pcr/d/dd/jqdfzc8ruvgeuv09bvgrdmhc5la017c.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "487",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct122",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "露娜", "icon": "https://patchwiki.biligame.com/images/pcr/a/af/5dm5hphdac1xed78t74zo2g1u6auu70.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "481",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct105",
+                "unit": [
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "春田", "icon": "https://patchwiki.biligame.com/images/pcr/f/f5/kieyz1llmwrmdtvo2wbl9go0nq3ssa2.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "480",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct124",
+                "unit": [
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "黑猫", "icon": "https://patchwiki.biligame.com/images/pcr/3/39/lgcqculc5zh699k6f391kiwnwcn94me.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "480",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct104",
+                "unit": [
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" },
+                    { "name": "妹法", "icon": "https://patchwiki.biligame.com/images/pcr/1/14/8pn703o0duodmiyou1c565wjczj5b5o.png" }
+                ],
+                "damage": "445",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            }
+        ],
+        "joyshow": {
+            "img": [
+                "https://patchwiki.biligame.com/images/pcr/3/3c/nqftsy2cyvvgp5gipa3auyez7fh1xfg.png",
+                "https://patchwiki.biligame.com/images/pcr/2/20/6ata4r3xj1ola53uvvzm6do1fjtucu8.png",
+                "https://patchwiki.biligame.com/images/pcr/c/c3/imktbj6u8ihz26b9cacrp8dy3057hlw.jpg",
+                "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png",
+                "https://patchwiki.biligame.com/images/pcr/2/20/6ata4r3xj1ola53uvvzm6do1fjtucu8.png",
+                "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png",
+                "https://codeantenna.com/image/https://img-blog.csdnimg.cn/img_convert/829b54a550235bbb98caddec2a554990.gif"
+            ],
+            "msg": ["会长，手机没电了，充电器坏了，今天我就不出刀了", "会长，兰法妈妈要去喝nn，今天就不出刀了"]
+        }
+    },
+    {
+        "name": "野性狮鹫",
+        "id": "302000",
+        "icon": "https://patchwiki.biligame.com/images/pcr/a/af/dz53x5846mk2u4du4i2sok28jlslu6h.png",
+        "stage": 1,
+        "rate": "1.2",
+        "info": "在残酷环境中成长进化的狮鹫。使用龙卷风将猎物卷起到空中进行狩猎。<br>・对前方范围内的敌人造成魔法伤害（中）。",
+        "detail": [
+            ["等级", 65],
+            ["生命值", 8000000],
+            ["物理攻击力", 1802],
+            ["物理防御力", 200],
+            ["魔法攻击力", 2100],
+            ["魔法防御力", 200],
+            ["命中", 50],
+            ["技能值上升", 20]
+        ],
+        "homework": [
+            {
                 "id": 1,
                 "unit": [
                     {
@@ -154,33 +621,15 @@
         ],
         "joyshow": {
             "img": [
-                "https://patchwiki.biligame.com/images/pcr/3/3c/nqftsy2cyvvgp5gipa3auyez7fh1xfg.png",
                 "https://patchwiki.biligame.com/images/pcr/2/20/6ata4r3xj1ola53uvvzm6do1fjtucu8.png",
                 "https://patchwiki.biligame.com/images/pcr/c/c3/imktbj6u8ihz26b9cacrp8dy3057hlw.jpg",
                 "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png",
                 "https://patchwiki.biligame.com/images/pcr/2/20/6ata4r3xj1ola53uvvzm6do1fjtucu8.png",
-                "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png"
+                "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png",
+                "https://codeantenna.com/image/https://img-blog.csdnimg.cn/img_convert/829b54a550235bbb98caddec2a554990.gif"
             ],
             "msg": ["会长，手机没电了，充电器坏了，今天我就不出刀了", "会长，兰法妈妈要去喝nn，今天就不出刀了"]
         }
-    },
-    {
-        "name": "野性狮鹫",
-        "id": "302000",
-        "icon": "https://patchwiki.biligame.com/images/pcr/a/af/dz53x5846mk2u4du4i2sok28jlslu6h.png",
-        "stage": 1,
-        "rate": "1.2",
-        "info": "在残酷环境中成长进化的狮鹫。使用龙卷风将猎物卷起到空中进行狩猎。<br>・对前方范围内的敌人造成魔法伤害（中）。",
-        "detail": [
-            ["等级", 65],
-            ["生命值", 8000000],
-            ["物理攻击力", 1802],
-            ["物理防御力", 200],
-            ["魔法攻击力", 2100],
-            ["魔法防御力", 200],
-            ["命中", 50],
-            ["技能值上升", 20]
-        ]
     },
     {
         "name": "极彩鸟",
@@ -252,6 +701,83 @@
             ["魔法防御力", 200],
             ["命中", 50],
             ["技能值上升", 20]
+        ],
+        "homework": [
+            {
+                "id": "ct121",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "圣千", "icon": "https://patchwiki.biligame.com/images/pcr/d/dd/jqdfzc8ruvgeuv09bvgrdmhc5la017c.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "487",
+                "auto": 2,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct122",
+                "unit": [
+                    { "name": "mcw", "icon": "https://patchwiki.biligame.com/images/pcr/e/e8/28laolt5imgck0jcedywxrh41nkft9l.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "露娜", "icon": "https://patchwiki.biligame.com/images/pcr/a/af/5dm5hphdac1xed78t74zo2g1u6auu70.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "481",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct105",
+                "unit": [
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "春田", "icon": "https://patchwiki.biligame.com/images/pcr/f/f5/kieyz1llmwrmdtvo2wbl9go0nq3ssa2.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "480",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct124",
+                "unit": [
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "黑猫", "icon": "https://patchwiki.biligame.com/images/pcr/3/39/lgcqculc5zh699k6f391kiwnwcn94me.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" }
+                ],
+                "damage": "480",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            },
+            {
+                "id": "ct104",
+                "unit": [
+                    { "name": "xcw", "icon": "https://patchwiki.biligame.com/images/pcr/1/11/kf7jk1e35kfnqqvdd9l0y5f408ktm40.png" },
+                    { "name": "水黑", "icon": "https://patchwiki.biligame.com/images/pcr/8/8f/42rzcdui2rtnpf4je2h94wyz45k5kue.png" },
+                    { "name": "七七香", "icon": "https://patchwiki.biligame.com/images/pcr/5/51/tnz3hs3yep4f047ugdl20lenftix70i.png" },
+                    { "name": "nnk", "icon": "https://patchwiki.biligame.com/images/pcr/e/e1/3bjuikoa8efst7gk080yqglxzon9zro.png" },
+                    { "name": "妹法", "icon": "https://patchwiki.biligame.com/images/pcr/1/14/8pn703o0duodmiyou1c565wjczj5b5o.png" }
+                ],
+                "damage": "445",
+                "auto": 0,
+                "remain": 0,
+                "info": "",
+                "video": []
+            }
         ]
     },
     {
@@ -342,7 +868,19 @@
             ["魔法防御力", 200],
             ["命中", 50],
             ["技能值上升", 20]
-        ]
+        ],
+        "joyshow": {
+            "img": [
+                "https://patchwiki.biligame.com/images/pcr/3/3c/nqftsy2cyvvgp5gipa3auyez7fh1xfg.png",
+                "https://patchwiki.biligame.com/images/pcr/2/20/6ata4r3xj1ola53uvvzm6do1fjtucu8.png",
+                "https://patchwiki.biligame.com/images/pcr/c/c3/imktbj6u8ihz26b9cacrp8dy3057hlw.jpg",
+                "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png",
+                "https://patchwiki.biligame.com/images/pcr/2/20/6ata4r3xj1ola53uvvzm6do1fjtucu8.png",
+                "https://patchwiki.biligame.com/images/pcr/2/2e/abbiqa7zkuutctxvclldauy3xq2py1l.png",
+                "https://codeantenna.com/image/https://img-blog.csdnimg.cn/img_convert/829b54a550235bbb98caddec2a554990.gif"
+            ],
+            "msg": ["会长，手机没电了，充电器坏了，今天我就不出刀了", "会长，兰法妈妈要去喝nn，今天就不出刀了"]
+        }
     },
     {
         "name": "野性狮鹫",

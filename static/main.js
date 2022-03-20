@@ -193,9 +193,26 @@ function getHomeworkHtml(homework, joyshow) {
     let html = '<div class="homeworks">';
     if (homework && homework.length !== 0) {
         homework.forEach(function (hw) {
-            html += '<div class="homework-wrap homework" data-param-auto="' + hw.auto + '" data-param-damage="' + hw.damage + '" data-param-remain="' + hw.remain + '">';
+            html +=
+                '<div class="homework-wrap homework" data-param-name1="' +
+                (hw.unit.length >= 5 ? hw.unit[4].name : "") +
+                '" data-param-name2="' +
+                (hw.unit.length >= 4 ? hw.unit[3].name : "") +
+                '" data-param-name3="' +
+                (hw.unit.length >= 3 ? hw.unit[2].name : "") +
+                '" data-param-name4="' +
+                (hw.unit.length >= 2 ? hw.unit[1].name : "") +
+                '" data-param-name5="' +
+                (hw.unit.length >= 1 ? hw.unit[0].name : "") +
+                '" data-param-auto="' +
+                hw.auto +
+                '" data-param-damage="' +
+                hw.damage +
+                '" data-param-remain="' +
+                hw.remain +
+                '">';
             html += '<div class="homework-up">';
-            html += '<input class="batch-check-' + hw.id + '" type="checkbox" onclick="checkBatch(event)" />';
+            html += '<input class="batch-check-' + hw.id + '" type="checkbox" />';
             html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.id + "</label>";
             html += fiveUnits(hw.unit);
             html += '<div class="damage-value">' + hw.damage + "w</div>";
@@ -224,6 +241,81 @@ function getHomeworkHtml(homework, joyshow) {
     html += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>';
     html += "</div></div>";
     return html;
+}
+
+function sortByGroup(array, f) {
+    let groups = {};
+    array.forEach((o) => {
+        let group = JSON.stringify(f(o));
+        groups[group] = groups[group] || { sortKey: undefined, data: [] };
+        groups[group].data.push(o);
+        if (groups[group].sortKey === undefined || o.damage > groups[group].sortKey) {
+            groups[group].sortKey = o.damage;
+        }
+    });
+    return Object.values(groups)
+        .sort((a, b) => (a.sortKey < b.sortKey ? -1 : 1))
+        .map((value) => {
+            return value.data;
+        });
+}
+
+function sortHomeworkByUnit(that) {
+    let asc = that.dataset.paramAsc || "0";
+    that.dataset.paramAsc = asc === "0" ? "1" : "0";
+    // 阶段1~5都会排序
+    $(".homeworks").each((idx, homeworks) => {
+        let len = homeworks.children.length - 1;
+        let hws = [];
+        let hwsText = [];
+        for (let i = 0; i < len; i++) {
+            hws.push({
+                text: i,
+                name1: homeworks.children[i].dataset.paramName1,
+                name2: homeworks.children[i].dataset.paramName2,
+                name3: homeworks.children[i].dataset.paramName3,
+                name4: homeworks.children[i].dataset.paramName4,
+                name5: homeworks.children[i].dataset.paramName5,
+                damage: parseInt(homeworks.children[i].dataset.paramDamage)
+            });
+            hwsText.push(homeworks.children[i].outerHTML);
+        }
+        let sorted = sortByGroup(hws, function (hw) {
+            return hw.name1;
+        })
+            .map((hws1) => {
+                return sortByGroup(hws1, function (hw) {
+                    return hw.name2;
+                })
+                    .map((hws2) => {
+                        return sortByGroup(hws2, function (hw) {
+                            return hw.name3;
+                        })
+                            .map((hws3) => {
+                                return sortByGroup(hws3, function (hw) {
+                                    return hw.name4;
+                                }).reduce((prev, curr) => {
+                                    return prev.concat(curr);
+                                }, []);
+                            })
+                            .reduce((prev, curr) => {
+                                return prev.concat(curr);
+                            }, []);
+                    })
+                    .reduce((prev, curr) => {
+                        return prev.concat(curr);
+                    }, []);
+            })
+            .reduce((prev, curr) => {
+                return prev.concat(curr);
+            }, []);
+        if (asc === "0") {
+            sorted = sorted.reverse();
+        }
+        sorted.forEach((hw, idx) => {
+            homeworks.children[idx].outerHTML = hwsText[hw.text];
+        });
+    });
 }
 
 function sortHomework(that) {
