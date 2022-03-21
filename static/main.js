@@ -692,7 +692,7 @@ function showImg(src) {
     $(".window-img-wrap")[0].style.display = "block";
     stopMove();
     var imgContent = document.createElement("img");
-    imgContent.setAttribute("src", src);
+    imgContent.setAttribute("src", src.replace("/cache/", "/attachment/"));
     imgContent.setAttribute("id", "imgContent");
     imgContent.setAttribute("class", "handleimg-box");
 
