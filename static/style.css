@@ -448,14 +448,16 @@ input[class="boss-detail-check"] {
     margin: 0 5px 5px 0;
 }
 .joy {
-    margin: 0 0 5px 0;
+    padding: 6px;
+    margin: 0 0 10px 0;
     background-color: #f9f9f9;
-    width: 190px;
+    width: 178px;
     border-radius: 3px;
     overflow: hidden;
+    box-shadow: 0 2px 4px #c8c8c8;
 }
 .joy img {
-    width: 190px;
+    width: 178px;
     height: auto;
     vertical-align: top;
     cursor: pointer;
