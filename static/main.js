@@ -228,14 +228,15 @@ function getHomeworkHtml(homework, joyshow) {
     html += "</div>";
     html += '<div class="joyshow"><div class="joy-tmp">';
     if (joyshow && joyshow.length !== 0) {
-        joyshow.img.forEach(function (joy) {
+        joyshow.forEach(function (joy) {
             html += '<div class="joy">';
-            html += '<img src="' + joy + '" onclick="showImg(this.src)"/>';
+            if (joy.img) {
+                html += '<img src="' + joy.img + '" onclick="showImg(this.src)"/>';
+            }
+            if (joy.msg) {
+                html += joy.msg;
+            }
             html += "</div>";
-        });
-        joyshow.msg.forEach(function (joy) {
-            html += '<div class="joy">';
-            html += joy + "</div>";
         });
     }
     html += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>';
