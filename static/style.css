@@ -303,7 +303,8 @@ input[class="boss-detail-check"] {
 }
 /* 批量/分刀  阵容  参考伤害  特殊说明 */
 .table-header div:nth-child(1) {
-    width: 95px;
+    margin-left: 25px;
+    width: 70px;
 }
 .table-header div:nth-child(2) {
     margin-left: 15px;

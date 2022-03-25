@@ -210,10 +210,12 @@ function getHomeworkHtml(homework, joyshow) {
                 hw.damage +
                 '" data-param-remain="' +
                 hw.remain +
+                '" data-param-sn="' +
+                hw.sn +
                 '">';
             html += '<div class="homework-up">';
             html += '<input class="batch-check-' + hw.id + '" type="checkbox" />';
-            html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.id + "</label>";
+            html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.sn + "</label>";
             html += fiveUnits(hw.unit);
             html += '<div class="damage-value">' + hw.damage + "w</div>";
             html += '<div class="homework-info">' + hw.info + "</div>";
@@ -314,6 +316,32 @@ function sortHomeworkByUnit(that) {
             sorted = sorted.reverse();
         }
         sorted.forEach((hw, idx) => {
+            homeworks.children[idx].outerHTML = hwsText[hw.text];
+        });
+    });
+}
+
+function sortHomeworkBySn(that) {
+    let asc = that.dataset.paramAsc || "0";
+    that.dataset.paramAsc = asc === "0" ? "1" : "0";
+    console.log(asc);
+    // 阶段1~5都会排序
+    $(".homeworks").each((idx, homeworks) => {
+        let len = homeworks.children.length - 1;
+        let hws = [];
+        let hwsText = [];
+        for (let i = 0; i < len; i++) {
+            hws.push({
+                text: i,
+                sn: homeworks.children[i].dataset.paramSn
+            });
+            hwsText.push(homeworks.children[i].outerHTML);
+        }
+        hws = hws.sort((a, b) => (a.sn > b.sn ? -1 : 1));
+        if (asc === "0") {
+            hws = hws.reverse();
+        }
+        hws.forEach((hw, idx) => {
             homeworks.children[idx].outerHTML = hwsText[hw.text];
         });
     });
