@@ -324,7 +324,6 @@ function sortHomeworkByUnit(that) {
 function sortHomeworkBySn(that) {
     let asc = that.dataset.paramAsc || "0";
     that.dataset.paramAsc = asc === "0" ? "1" : "0";
-    console.log(asc);
     // 阶段1~5都会排序
     $(".homeworks").each((idx, homeworks) => {
         let len = homeworks.children.length - 1;
