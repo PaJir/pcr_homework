@@ -297,9 +297,15 @@ function sortHomeworkByUnit(that) {
                             .map((hws3) => {
                                 return sortByGroup(hws3, function (hw) {
                                     return hw.name4;
-                                }).reduce((prev, curr) => {
-                                    return prev.concat(curr);
-                                }, []);
+                                })
+                                    .map((hws4) => {
+                                        return hws4.sort((a, b) => {
+                                            return a.damage < b.damage ? -1 : 1;
+                                        });
+                                    })
+                                    .reduce((prev, curr) => {
+                                        return prev.concat(curr);
+                                    }, []);
                             })
                             .reduce((prev, curr) => {
                                 return prev.concat(curr);
