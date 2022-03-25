@@ -154,7 +154,7 @@ function fiveUnits(units) {
 function listVideos(videos, hwId) {
     let html = '<div class="videos"><span>视频</span>';
     videos.forEach(function (video) {
-        html += '<div class="video"><a href="' + video.url + '" target="_blank">' + video.text + "</a></div>";
+        html += '<a class="video" href="' + video.url + '" target="_blank">' + video.text + "</a>";
     });
     html += '<div class="video-add" data-param-hwid="' + hwId + '" onclick="addVideo(this.dataset.paramHwid)">＋ 添加我的视频</div>';
     html += "</div>";

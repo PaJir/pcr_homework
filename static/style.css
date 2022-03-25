@@ -404,8 +404,8 @@ input[class="boss-detail-check"] {
     box-shadow: 0px 1px 2px #cccccc;
     cursor: pointer;
 }
-.video a:link,
-.video a:visited {
+.video:link,
+.video:visited {
     /* color: #d93f62; */
     color: #ff679a; /* 取自B站 */
     text-decoration: none;
