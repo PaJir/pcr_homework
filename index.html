@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#009ad6" />
         <link type="text/css" rel="stylesheet" href="static/style.css" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     </head>
     <body>
         <div class="top-content">
@@ -44,6 +45,18 @@
         </div>
         <div class="main-content-wrap">
             <div class="main-content">
+                <section class="content">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./static/test/banner1.jpg"/></div>
+                            <div class="swiper-slide"><img src="./static/test/banner2.jpg"/></div>
+                            <div class="swiper-slide"><img src="./static/test/banner3.jpg"/></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </section>
                 <section class="content">
                     <h2>BOSS</h2>
                     <div class="bosses">
@@ -234,6 +247,8 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript" src="https://unpkg.com/swiper@8/swiper-bundle.js"> </script>
+    <script type="text/javascript" src="https://unpkg.com/swiper@8/swiper-bundle.min.js"> </script>
     <script type="text/javascript" src="https://static.caimogu.cc/plugins/jquery.min.js"></script>
     <script type="text/javascript" src="https://static.caimogu.cc/plugins/layer/layer.js"></script>
     <script type="text/javascript" src="static/main.js"></script>

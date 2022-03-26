@@ -116,6 +116,14 @@ body {
     padding-left: 20px;
     padding-right: 20px;
 }
+.swiper {
+    max-height: 300px;
+    margin-top: 10px;
+}
+.swiper img {
+    height: auto;
+    width: 100%;
+}
 .bosses {
     display: flex;
     flex-direction: row;

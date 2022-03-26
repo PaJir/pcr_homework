@@ -820,6 +820,17 @@ function init() {
             changeBoss(null, data[0].name);
         };
     }
+    new Swiper (".swiper", {
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination"
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        autoHeight: true
+    })
 }
 
 $(document).ready(function () {
