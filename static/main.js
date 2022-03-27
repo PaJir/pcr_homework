@@ -829,7 +829,12 @@ function init() {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev"
         },
-        autoHeight: true
+        autoHeight: true,
+        autoplay: {
+            delay: 5000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true
+        }
     })
 }
 
