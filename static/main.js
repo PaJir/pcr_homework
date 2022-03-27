@@ -16,8 +16,10 @@ function tabFilter(event, id) {
     let tabpanels = document.getElementsByClassName("battle-tab-panel");
     for (let i = 0; i < tabpanels.length; i++) {
         tabpanels[i].className = tabpanels[i].className.replace(" active", "");
+        if (i === id) {
+            tabpanels[i].className += " active";
+        }
     }
-    event.currentTarget.className += " active";
     // 改变boss信息
     let html = "";
     data.filter((boss) => {
@@ -27,6 +29,7 @@ function tabFilter(event, id) {
         html += getBossHtml(boss);
     });
     document.getElementsByClassName("bosses")[0].innerHTML = html;
+    localStorage.setItem("stage", id + 1);
 }
 
 // 尾刀和AUTO两个筛选项控制器
@@ -67,6 +70,8 @@ function remainderAutoFilter() {
             }
         }
     }
+    localStorage.setItem("remainder", is_remainder);
+    localStorage.setItem("auto", is_auto);
 }
 
 // 显示一个Boss信息
@@ -138,6 +143,7 @@ function changeBoss(e, activeName) {
     });
     remainderAutoFilter();
     listJoyshow();
+    localStorage.setItem("boss", activeName);
 }
 
 function fiveUnits(units) {
@@ -793,6 +799,11 @@ function narrowImg() {
 }
 
 function init() {
+    // 读取上次显示的设置
+    stage = localStorage.getItem("stage") || 1;
+    $("#checkbox-remainder")[0].checked = localStorage.getItem("remainder") === "true";
+    $("#checkbox-auto")[0].checked = localStorage.getItem("auto") === "true";
+    let bossname = localStorage.getItem("boss") || "";
     if (!data) {
         // TODO
         // $.get(_baseUrl + "/gzlj/data", function (result) {
@@ -806,19 +817,26 @@ function init() {
                 data = JSON.parse(request.responseText);
             }
             // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
+            let found = false; // 上次记录的boss是否能在这次数据里找到
             let html = "";
             data.filter((boss) => {
                 // 兼容 stage="1"，以防万一
-                return boss.stage == 1;
+                return boss.stage == stage;
             }).forEach((boss) => {
-                html += getBossHtml(boss, data[0].name);
+                if (boss.name === bossname) {
+                    found = true;
+                }
+                html += getBossHtml(boss);
             });
             document.getElementsByClassName("bosses")[0].innerHTML = html;
 
-            changeBoss(null, data[0].name);
+            tabFilter(null, stage - 1);
+            !found && (bossname = data[0].name);
+            changeBoss(null, bossname);
         };
     }
-    new Swiper (".swiper", {
+    // 轮播图
+    new Swiper(".swiper", {
         loop: true,
         pagination: {
             el: ".swiper-pagination"
@@ -833,7 +851,7 @@ function init() {
             stopOnLastSlide: false,
             disableOnInteraction: true
         }
-    })
+    });
 }
 
 $(document).ready(function () {
