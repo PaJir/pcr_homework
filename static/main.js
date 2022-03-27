@@ -144,6 +144,8 @@ function changeBoss(e, activeName) {
     remainderAutoFilter();
     listJoyshow();
     localStorage.setItem("boss", activeName);
+    // 懒加载重新绑定
+    lazyInit();
 }
 
 function fiveUnits(units) {
@@ -237,7 +239,7 @@ function getHomeworkHtml(homework, joyshow) {
         joyshow.forEach(function (joy) {
             html += '<div class="joy">';
             if (joy.img) {
-                html += '<img src="' + joy.img + '" onclick="showImg(this.src)"/>';
+                html += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + '" onclick="showImg(this.src)"/>';
             }
             if (joy.msg) {
                 html += joy.msg;
@@ -798,6 +800,42 @@ function narrowImg() {
     }
 }
 
+// lazy load image
+// example: <img src="加载中.gif" class="img-lazy" alt="Chr_110631.jpg" />
+function lazyInit() {
+    var eles = document.querySelectorAll(".img-lazy"); // 获取所有列表元素
+    // 监听回调
+    var lazycallback = function (entries) {
+        entries.forEach(function (item) {
+            // 出现到可视区
+            if (item.intersectionRatio > 0) {
+                var ele = item.target;
+                var imgSrc = ele.getAttribute("alt");
+                if (imgSrc) {
+                    // 预加载
+                    var img = new Image();
+                    img.addEventListener(
+                        "load",
+                        function () {
+                            ele.src = imgSrc;
+                        },
+                        false
+                    );
+                    ele.src = imgSrc;
+                    // 加载过清空路径，避免重复加载
+                    ele.removeAttribute("alt");
+                }
+            }
+        });
+    };
+    var observer = new IntersectionObserver(lazycallback);
+
+    // 列表元素加入监听
+    eles.forEach(function (item) {
+        observer.observe(item);
+    });
+}
+
 function init() {
     // 读取上次显示的设置
     stage = localStorage.getItem("stage") || 1;
@@ -833,6 +871,8 @@ function init() {
             tabFilter(null, stage - 1);
             !found && (bossname = data[0].name);
             changeBoss(null, bossname);
+            // 懒加载图片
+            lazyInit();
         };
     }
     // 轮播图
