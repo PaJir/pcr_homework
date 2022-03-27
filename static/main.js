@@ -27,8 +27,6 @@ function tabFilter(event, id) {
         html += getBossHtml(boss);
     });
     document.getElementsByClassName("bosses")[0].innerHTML = html;
-    // 更新欢乐秀排版
-    listJoyshow();
 }
 
 // 尾刀和AUTO两个筛选项控制器
