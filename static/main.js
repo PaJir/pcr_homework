@@ -142,7 +142,6 @@ function changeBoss(e, activeName) {
         document.getElementById("stage" + boss.stage).innerHTML = html;
     });
     remainderAutoFilter();
-    listJoyshow();
     localStorage.setItem("boss", activeName);
     // 懒加载重新绑定
     lazyInit();
@@ -165,34 +164,6 @@ function listVideos(videos, hwId) {
     html += '<div class="video-add" data-param-hwid="' + hwId + '" onclick="addVideo(this.dataset.paramHwid)">＋ 添加我的视频</div>';
     html += "</div>";
     return html;
-}
-
-function listJoyshow() {
-    // 双列瀑布流
-    $(".joyshow").each((idx, joyshowTmp) => {
-        let lenTmp = joyshowTmp.children.length;
-        let left = '<div class="joy-left">';
-        let right = '<div class="joy-right">';
-        let leftHeight = 0;
-        let rightHeight = 0;
-        for (let j = 0; j < lenTmp; j++) {
-            let joyshow = joyshowTmp.children[j];
-            let len = joyshow.children.length;
-            for (let i = 0; i < len; i++) {
-                let height = $(joyshow.children[i]).outerHeight() || 100;
-                if (leftHeight <= rightHeight) {
-                    leftHeight += height;
-                    left += joyshow.children[i].outerHTML;
-                } else {
-                    rightHeight += height;
-                    right += joyshow.children[i].outerHTML;
-                }
-            }
-        }
-        left += "</div>";
-        right += "</div>";
-        joyshowTmp.innerHTML = left + right;
-    });
 }
 
 function getHomeworkHtml(homework, joyshow) {
@@ -234,21 +205,44 @@ function getHomeworkHtml(homework, joyshow) {
     }
     html += '<div class="homework-wrap homework-add" onclick="addHomework()">+ 添加我的阵容</div>';
     html += "</div>";
-    html += '<div class="joyshow"><div class="joy-tmp">';
+    html += '<div class="joyshow">';
+    let left = '<div class="joy-left">';
+    let right = '<div class="joy-right">';
+    let leftHeight = 0;
+    let rightHeight = 0;
     if (joyshow && joyshow.length !== 0) {
-        joyshow.forEach(function (joy) {
-            html += '<div class="joy">';
-            if (joy.img) {
-                html += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + '" onclick="showImg(this.src)"/>';
+        let len = joyshow.length;
+        for (let i = 0; i < len; i++) {
+            let joy = joyshow[i];
+            let heightImg = joy.width ? (joy.height * 178) / joy.width : 0;
+            let heightMsg = joy.msg ? Math.ceil(joy.msg.length / 14) * 17 : 0;
+            let height = heightImg + heightMsg + 22;
+            if (leftHeight <= rightHeight) {
+                leftHeight += height;
+                left += '<div class="joy">';
+                if (joy.img) {
+                    left += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + '" onclick="showImg(this.src)"/>';
+                }
+                if (joy.msg) {
+                    left += joy.msg;
+                }
+                left += "</div>";
+            } else {
+                rightHeight += height;
+                right += '<div class="joy">';
+                if (joy.img) {
+                    right += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + '" onclick="showImg(this.src)"/>';
+                }
+                if (joy.msg) {
+                    right += joy.msg;
+                }
+                right += "</div>";
             }
-            if (joy.msg) {
-                html += joy.msg;
-            }
-            html += "</div>";
-        });
+        }
     }
-    html += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>';
-    html += "</div></div>";
+    leftHeight <= rightHeight ? (left += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>') : (right += '<div class="joy joy-add" onclick="addJoy()">+ 吐个槽</div>');
+    html += left + "</div>" + right + "</div>";
+    html += "</div>";
     return html;
 }
 
