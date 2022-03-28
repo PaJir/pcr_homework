@@ -104,8 +104,8 @@ function getBossHtml(boss) {
     // TODO
     // html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img src="' + _qiniuUrl + '/image/gzlj/down-arrow.png" height="20px" /></label>';
     // html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="' + _qiniuUrl + '/image/gzlj/up-arrow.png" height="20px" /></label>';
-    html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img src="static/icon/down-arrow.png" height="20px" /></label>';
-    html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="static/icon/up-arrow.png" height="20px" /></label>';
+    html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img class="img-arrow" src="static/icon/down-arrow.png" height="20px" /></label>';
+    html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img class="img-arrow" src="static/icon/up-arrow.png" height="20px" /></label>';
     html += "</div>";
     return html;
 }
@@ -118,7 +118,8 @@ function stopClick(e) {
 // 切换boss，展示该boss下的阵容和欢乐秀，并筛选尾刀和AUTO
 function changeBoss(e, activeName) {
     // 点击的是折叠栏
-    if (e && (e.target.className === "boss-detail-check-down" || e.target.className === "boss-detail-check-up")) {
+    console.log(e);
+    if (e && (e.target.className === "boss-detail-check-down" || e.target.className === "boss-detail-check-up" || e.target.className === "img-arrow")) {
         return;
     }
     // 没变，不更新

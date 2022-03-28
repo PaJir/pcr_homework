@@ -192,7 +192,8 @@ input[class="boss-detail-check"] {
     cursor: pointer;
     text-align: center;
     height: 22px;
-    width: 100%;
+    width: 32px;
+    margin: auto;
 }
 .boss-detail-check-down:hover img,
 .boss-detail-check-up:hover img {
