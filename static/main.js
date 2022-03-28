@@ -2,7 +2,8 @@
 var data = undefined; // boss和homework数据
 var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss，TODO: 没有随着阶段的切换而改变
 var stage = undefined; // 预留
-var icons = undefined; // 角色列表 [{iconFilePath: "", iconValue: ""}]
+var icons = undefined; // 角色列表 [{iconId: "", id: "", iconFilePath: "", iconValue: ""}]
+var iconMap = {}; // {id: {name: "", img: ""}}
 // tab 筛选项
 function tabFilter(event, id) {
     let tabcontents = document.getElementsByClassName("battle-tab-content");
@@ -150,7 +151,7 @@ function changeBoss(e, activeName) {
 function fiveUnits(units) {
     let html = '<div class="units">';
     units.forEach(function (unit) {
-        html += '<div class="unit"><img src="' + unit.icon + '" /><br>' + unit.name + "</div>";
+        html += '<div class="unit"><img src="' + iconMap[unit.id].img + '" /><br>' + iconMap[unit.id].name + "</div>";
     });
     html += "</div>";
     return html;
@@ -524,64 +525,51 @@ function maxDamage(stage) {
 function addHomework() {
     $(".window-add-homework-wrap")[0].style.display = "block";
     stopMove();
-    if (!icons) {
-        // TODO
-        // $.get(_baseUrl + "/gzlj/data/role", function (result) {
-        //     if (result.status == 1) {
-        //         icons = result.data;
-        //     }
-        var request = new XMLHttpRequest();
-        request.open("get", "static/test/icons.json");
-        request.send(null);
-        request.onload = () => {
-            if (request.status === 200) {
-                icons = JSON.parse(request.responseText);
-                icons.forEach((_icon, _idx) => {
-                    let html = "";
-                    _icon.forEach((icon, idx) => {
-                        html +=
-                            '<div class="unit-icon" title="' +
-                            icon.iconValue +
-                            '" data-param-id="' +
-                            icon.iconId +
-                            '" data-param-name="' +
-                            icon.iconValue +
-                            '" data-param-idx="' +
-                            (_idx * 1000 + idx) +
-                            '"><img src="' +
-                            icon.iconFilePath +
-                            '"></div>';
-                    });
-                    $("#candidate-unit-wrap-" + _idx)[0].innerHTML = html;
-                });
-                $(".unit-icon").click(function () {
-                    if (this.className.indexOf(" active") === -1) {
-                        // 选中
-                        if ($(".unit-icon.active").length >= 5) {
-                            // 最多5个
-                            return;
-                        }
-                        this.className += " active";
-                    } else {
-                        // 取消
-                        this.className = this.className.replace(" active", "");
-                    }
-                    updateSelectedUnits();
-                });
-                $(".select-unit-imgs").click(function () {
-                    let id = this.children[1].dataset.paramId;
-                    $(".unit-icon")
-                        .filter(function () {
-                            return this.dataset.paramId == id;
-                        })
-                        .each(function () {
-                            this.className = this.className.replace(" active", "");
-                        });
-                    updateSelectedUnits();
-                });
+
+    // 获取icons不再放在这里
+    icons.forEach((_icon, _idx) => {
+        let html = "";
+        _icon.forEach((icon, idx) => {
+            html +=
+                '<div class="unit-icon" title="' +
+                icon.iconValue +
+                '" data-param-id="' +
+                icon.iconId +
+                '" data-param-name="' +
+                icon.iconValue +
+                '" data-param-idx="' +
+                (_idx * 1000 + idx) +
+                '"><img src="' +
+                icon.iconFilePath +
+                '"></div>';
+        });
+        $("#candidate-unit-wrap-" + _idx)[0].innerHTML = html;
+    });
+    $(".unit-icon").click(function () {
+        if (this.className.indexOf(" active") === -1) {
+            // 选中
+            if ($(".unit-icon.active").length >= 5) {
+                // 最多5个
+                return;
             }
-        };
-    }
+            this.className += " active";
+        } else {
+            // 取消
+            this.className = this.className.replace(" active", "");
+        }
+        updateSelectedUnits();
+    });
+    $(".select-unit-imgs").click(function () {
+        let id = this.children[1].dataset.paramId;
+        $(".unit-icon")
+            .filter(function () {
+                return this.dataset.paramId == id;
+            })
+            .each(function () {
+                this.className = this.className.replace(" active", "");
+            });
+        updateSelectedUnits();
+    });
     // 读取值，填充选项
     // boss头像&id
     data.filter((boss) => {
@@ -830,24 +818,30 @@ function lazyInit() {
     });
 }
 
+function initIconMap() {
+    // 初始化头像图片、名字的map，根据id查找
+    icons.forEach((_icon) => {
+        _icon.forEach((icon) => {
+            iconMap[icon.id] = { name: icon.iconValue, img: icon.iconFilePath };
+        });
+    });
+}
+
 function init() {
     // 读取上次显示的设置
     stage = localStorage.getItem("stage") || 1;
     $("#checkbox-remainder")[0].checked = localStorage.getItem("remainder") === "true";
     $("#checkbox-auto")[0].checked = localStorage.getItem("auto") === "true";
     let bossname = localStorage.getItem("boss") || "";
-    if (!data) {
-        // TODO
-        // $.get(_baseUrl + "/gzlj/data", function (result) {
-        //     if (result.status == 1) {
-        //         data = result.data;
-        var request = new XMLHttpRequest();
-        request.open("get", "static/test/demo.json");
-        request.send(null);
-        request.onload = () => {
-            if (request.status === 200) {
-                data = JSON.parse(request.responseText);
-            }
+    var request = new XMLHttpRequest();
+    request.open("get", "static/test/demo.json");
+    request.send(null);
+    request.onload = () => {
+        if (request.status === 200) {
+            let _data = JSON.parse(request.responseText);
+            data = _data.data;
+            icons = _data.icon;
+            initIconMap();
             // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
             let found = false; // 上次记录的boss是否能在这次数据里找到
             let html = "";
@@ -867,8 +861,8 @@ function init() {
             changeBoss(null, bossname);
             // 懒加载图片
             lazyInit();
-        };
-    }
+        }
+    };
     // 轮播图
     new Swiper(".swiper", {
         loop: true,
