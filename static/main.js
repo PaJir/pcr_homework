@@ -81,12 +81,13 @@ function getBossHtml(boss) {
     boss.name == activeBoss.name && (html += " active");
     // 通过paramName保证切换阶段时不切换boss
     html += '" id="' + boss.id + '" data-param-name="' + boss.name + '" onclick="changeBoss(event, this.dataset.paramName)">';
-    html += '<div class="boss-profile">';
+    // html += '<div class="boss-profile">';
     html += '<img src="' + boss.icon + '" height="48px" width="48px" />';
+    /* 
     html += '<div class="boss-name-rate">';
-    html += '<div class="boss-name">' + boss.name + "</div>";
-    html += '<div class="boss-rate">点数比率：' + boss.rate + "</div>";
-    html += "</div></div>";
+    // html += '<div class="boss-name">' + boss.name + "</div>";
+    // html += '<div class="boss-rate">点数比率：' + boss.rate + "</div>";
+    html += "</div></div>"; 
     html += '<input class="boss-detail-check" id="boss-detail-check-' + boss.id + '" type="checkbox" onclick="stopClick(event)" />';
     html += '<div class="boss-info boss-detail">' + boss.info;
     boss.detail.forEach(function (detail) {
@@ -106,6 +107,7 @@ function getBossHtml(boss) {
     // html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img src="' + _qiniuUrl + '/image/gzlj/up-arrow.png" height="20px" /></label>';
     html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-down"><img class="img-arrow" src="static/icon/down-arrow.png" height="20px" /></label>';
     html += '<label for="boss-detail-check-' + boss.id + '" class="boss-detail-check-up"><img class="img-arrow" src="static/icon/up-arrow.png" height="20px" /></label>';
+    */
     html += "</div>";
     return html;
 }
@@ -118,7 +120,6 @@ function stopClick(e) {
 // 切换boss，展示该boss下的阵容和欢乐秀，并筛选尾刀和AUTO
 function changeBoss(e, activeName) {
     // 点击的是折叠栏
-    console.log(e);
     if (e && (e.target.className === "boss-detail-check-down" || e.target.className === "boss-detail-check-up" || e.target.className === "img-arrow")) {
         return;
     }
@@ -828,42 +829,46 @@ function initIconMap() {
     });
 }
 
+// 选择历史档案
+function selectHistory(date) {
+    getData(date);
+}
+
+// date example: "2022-03"
+function getData(date = "") {
+    let bossname = localStorage.getItem("boss") || "";
+    $.get("static/test/demo.json", { date: date }, function (_data, status) {
+        data = _data.data;
+        icons = _data.icon;
+        initIconMap();
+        // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
+        let found = false; // 上次记录的boss是否能在这次数据里找到
+        let html = "";
+        data.filter((boss) => {
+            // 兼容 stage="1"，以防万一
+            return boss.stage == stage;
+        }).forEach((boss) => {
+            if (boss.name === bossname) {
+                found = true;
+            }
+            html += getBossHtml(boss);
+        });
+        document.getElementsByClassName("bosses")[0].innerHTML = html;
+
+        tabFilter(null, stage - 1);
+        !found && (bossname = data[0].name);
+        changeBoss(null, bossname);
+        // 懒加载图片
+        lazyInit();
+    });
+}
+
 function init() {
     // 读取上次显示的设置
     stage = localStorage.getItem("stage") || 1;
     $("#checkbox-remainder")[0].checked = localStorage.getItem("remainder") === "true";
     $("#checkbox-auto")[0].checked = localStorage.getItem("auto") === "true";
-    let bossname = localStorage.getItem("boss") || "";
-    var request = new XMLHttpRequest();
-    request.open("get", "static/test/demo.json");
-    request.send(null);
-    request.onload = () => {
-        if (request.status === 200) {
-            let _data = JSON.parse(request.responseText);
-            data = _data.data;
-            icons = _data.icon;
-            initIconMap();
-            // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
-            let found = false; // 上次记录的boss是否能在这次数据里找到
-            let html = "";
-            data.filter((boss) => {
-                // 兼容 stage="1"，以防万一
-                return boss.stage == stage;
-            }).forEach((boss) => {
-                if (boss.name === bossname) {
-                    found = true;
-                }
-                html += getBossHtml(boss);
-            });
-            document.getElementsByClassName("bosses")[0].innerHTML = html;
-
-            tabFilter(null, stage - 1);
-            !found && (bossname = data[0].name);
-            changeBoss(null, bossname);
-            // 懒加载图片
-            lazyInit();
-        }
-    };
+    getData();
     // 轮播图
     new Swiper(".swiper", {
         loop: true,

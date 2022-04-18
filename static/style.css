@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     justify-content: flex-start; */
     margin: 0;
+    font-family: "PingFang SC", "Microsoft Yahei", Arial, SimSun, "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", sans-serif;
 }
 .top-content {
     background-color: #f5f6f7 !important;
@@ -23,7 +24,7 @@ body {
     vertical-align: middle;
 }
 .top-h1 {
-    background-color: #009ad6;
+    background-color: #00ae9d;
     height: 64px;
     font-size: 24px;
 }
@@ -119,25 +120,31 @@ body {
 .swiper {
     max-height: 300px;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 .swiper img {
     height: auto;
     width: 100%;
 }
+.bosses-line {
+    padding: 10px 0;
+    vertical-align: middle;
+}
 .bosses {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start; /* 如果要让boss的高度相同，注释这行 */
+    align-items: flex-start; 如果要让boss的高度相同，注释这行 */
     /* justify-content: space-around; */
+    display: inline;
     width: 100%;
+    vertical-align: middle;
 }
-.boss-wrap {
+/* .boss-wrap {
     background-color: #f5f5f5;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    /* height: 200px; */
     width: 200px;
     padding: 10px 10px 5px 10px;
     margin-right: 5px;
@@ -145,10 +152,20 @@ body {
     font-size: small;
     color: #2f2f2f;
     cursor: pointer;
+} */
+.boss-wrap {
+    display: inline-block;
+    background-color: #777777;
+    border-radius: 4px;
+    height: 48px;
+    width: 48px;
+    padding: 3px;
+    margin: 3px 6px 3px 0;
+    cursor: pointer;
 }
 .boss-wrap:hover,
 .boss-wrap.active {
-    background-color: #ddf5fe;
+    background-color: #00ae9d;
 }
 .boss-profile {
     display: flex;
@@ -226,20 +243,18 @@ input[class="boss-detail-check"] {
 .battle-tabs button {
     background-color: inherit;
     color: #3f3f3f;
-    border-color: rgba(222, 222, 222, 0.5);
-    border-radius: 100px;
-    border-width: 1px;
+    border: solid;
+    border-color: #777777;
+    border-radius: 4px;
+    border-width: 3px;
     cursor: pointer;
-    padding: 2px 12px;
+    padding: 2px 6px;
     /* transition: 0.25s; */
-    margin: 0 1px;
+    margin: 2px 1px;
 }
-.battle-tabs button:hover {
-    background-color: #b6dcfe;
-}
+.battle-tabs button:hover,
 .battle-tabs button.active {
-    color: #ffffff;
-    background-color: #49a8fc;
+    border-color: #00ae9d;
 }
 .battle-tabs span {
     margin-left: 10px;
@@ -248,6 +263,12 @@ input[class="boss-detail-check"] {
     display: none;
     padding: 10px 0;
     width: 1200px;
+}
+.battle-tabs-right {
+    height: 32px;
+    line-height: 32px;
+    float: right;
+    vertical-align: middle;
 }
 
 .switch {

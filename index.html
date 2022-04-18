@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#009ad6" />
         <link type="text/css" rel="stylesheet" href="static/style.css" />
-        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+        <link rel="stylesheet" href="https://static.caimogu.cc/plugins/swiper8/swiper.min.css">
     </head>
     <body>
         <div class="top-content">
@@ -58,32 +58,41 @@
                     </div>
                 </section>
                 <section class="content">
-                    <h2>BOSS</h2>
-                    <div class="bosses">
-                        <!--用id区分boss 1~5，动态生成-->
+                    <div class="battle-tabs">
+                        <b>阶段</b>
+                        <button class="battle-tab-panel active" onclick="tabFilter(event, 0)" value="1" title="1-3周目">A 1~3周目</button>
+                        <button class="battle-tab-panel" onclick="tabFilter(event, 1)" value="2" title="4-10周目">B 4~10周目</button>
+                        <button class="battle-tab-panel" onclick="tabFilter(event, 2)" value="3" title="11-34周目">C 11~34周目</button>
+                        <button class="battle-tab-panel" onclick="tabFilter(event, 3)" value="4" title="35+周目">D 35+周目</button>
+                        <!-- <button class="battle-tab-panel" onclick="tabFilter(event, 4)" value="5" title="未开放">E</button> -->
+                        <span class="battle-tabs-right">
+                            <label>历史档案</label>
+                            <select class="select" onchange="selectHistory(this.value)">
+                                <!--example-->
+                                <option value="2022-03">2022-03</option>
+                                <option value="2022-04">2022-04</option>
+                            </select>
+                        </span>
                     </div>
-                </section>
-                <section class="content">
-                    <h2>阵容</h2>
-                    <div class="battle">
-                        <div class="battle-tabs">
-                            阶段
-                            <button class="battle-tab-panel active" onclick="tabFilter(event, 0)" value="1" title="1-3周目">一阶段</button>
-                            <button class="battle-tab-panel" onclick="tabFilter(event, 1)" value="2" title="4-10周目">二阶段</button>
-                            <button class="battle-tab-panel" onclick="tabFilter(event, 2)" value="3" title="11-34周目">三阶段</button>
-                            <button class="battle-tab-panel" onclick="tabFilter(event, 3)" value="4" title="35+周目">四阶段</button>
-                            <button class="battle-tab-panel" onclick="tabFilter(event, 4)" value="5" title="未开放">五阶段</button>
-                            <span>尾刀</span>
-                            <label class="switch">
-                                <input type="checkbox" id="checkbox-remainder" onclick="remainderAutoFilter()" />
-                                <div class="slider"></div>
-                            </label>
-                            <span>AUTO/半AUTO</span>
-                            <label class="switch">
-                                <input type="checkbox" id="checkbox-auto" onclick="remainderAutoFilter()" />
-                                <div class="slider"></div>
-                            </label>
+                    <div class="bosses-line">
+                        <b>BOSS</b>
+                        <div class="bosses">
+                            <!--用id区分boss 1~5，动态生成-->
                         </div>
+                    </div>
+                    <div class="battle-tabs">
+                        <b>刀型</b> 尾刀
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox-remainder" onclick="remainderAutoFilter()" />
+                            <div class="slider"></div>
+                        </label>
+                        <span>AUTO/半AUTO</span>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox-auto" onclick="remainderAutoFilter()" />
+                            <div class="slider"></div>
+                        </label>
+                    </div>
+                    <div class="battle">
                         <!--不好用table实现，直接用div硬怼-->
                         <div class="table-header">
                             <div class="table-head" style="cursor: pointer;" onclick="sortHomeworkBySn(this)">
@@ -247,8 +256,7 @@
             </div>
         </div>
     </body>
-    <script type="text/javascript" src="https://unpkg.com/swiper@8/swiper-bundle.js"> </script>
-    <script type="text/javascript" src="https://unpkg.com/swiper@8/swiper-bundle.min.js"> </script>
+    <script type="text/javascript" src="https://static.caimogu.cc/plugins/swiper8/swiper.min.js"> </script>
     <script type="text/javascript" src="https://static.caimogu.cc/plugins/jquery.min.js"></script>
     <script type="text/javascript" src="https://static.caimogu.cc/plugins/layer/layer.js"></script>
     <script type="text/javascript" src="static/main.js"></script>
