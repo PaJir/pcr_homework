@@ -140,13 +140,13 @@ function stopClick(e) {
 }
 
 // 切换boss，展示该boss下的阵容和欢乐秀，并筛选尾刀和AUTO
-function changeBoss(e, activeName) {
+function changeBoss(e, activeName, forceUpdate = false) {
     // 点击的是折叠栏
     if (e && (e.target.className === "boss-detail-check-down" || e.target.className === "boss-detail-check-up" || e.target.className === "img-arrow")) {
         return;
     }
     // 没变，不更新
-    if (activeBoss.name === activeName) {
+    if (!forceUpdate && activeBoss.name === activeName) {
         return;
     }
     activeBoss.name = activeName;
@@ -885,8 +885,8 @@ function getData(date = "") {
             document.getElementsByClassName("bosses")[0].innerHTML = html;
 
             tabFilter(null, stage - 1);
-            !found && (bossname = data[0].name);
-            changeBoss(null, bossname);
+            !found && (bossname = iconBossMap[data[0].id].name);
+            changeBoss(null, bossname, true);
             // 懒加载图片
             lazyInit();
         })
