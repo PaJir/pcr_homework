@@ -217,7 +217,6 @@ function getHomeworkHtml(homework, joyshow) {
                 hw.sn +
                 '">';
             html += '<div class="homework-up">';
-            html += '<input class="batch-check-' + hw.id + '" type="checkbox" />';
             html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.sn + "</label>";
             html += fiveUnits(hw.unit);
             html += '<div class="damage-value">' + hw.damage + "w</div>";
@@ -864,10 +863,9 @@ function selectHistory(date) {
 // date example: "2022-03"
 function getData(date = "") {
     let bossname = localStorage.getItem("boss") || "";
-    $.get("static/test/icons.json", { date: date }, function (data, status) {
-        icons = data;
+    $.get("static/test/icons.json", { date: date }, function (_data, status) {
+        icons = _data;
         initIconMap();
-    }).then(
         $.get("static/test/demo.json", { date: date }, function (_data, status) {
             data = _data;
             // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
@@ -889,8 +887,8 @@ function getData(date = "") {
             changeBoss(null, bossname, true);
             // 懒加载图片
             lazyInit();
-        })
-    );
+        });
+    });
 }
 
 function init() {
