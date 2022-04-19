@@ -4,6 +4,7 @@ var activeBoss = { id: "", idx: "", name: "" }; // 选中的boss，TODO: 没有�
 var stage = undefined; // 预留
 var icons = undefined; // 角色列表 [{iconId: "", id: "", iconFilePath: "", iconValue: ""}]
 var iconMap = {}; // {id: {name: "", img: ""}}
+var iconBossMap = {}; // id: {name: "", img: ""}}
 // tab 筛选项
 function tabFilter(event, id) {
     let tabcontents = document.getElementsByClassName("battle-tab-content");
@@ -78,11 +79,11 @@ function remainderAutoFilter() {
 // 显示一个Boss信息
 function getBossHtml(boss) {
     let html = '<div class="boss-wrap';
-    boss.name == activeBoss.name && (html += " active");
+    iconBossMap[boss.id].name == activeBoss.name && (html += " active");
     // 通过paramName保证切换阶段时不切换boss
-    html += '" id="' + boss.id + '" data-param-name="' + boss.name + '" onclick="changeBoss(event, this.dataset.paramName)">';
+    html += '" id="' + boss.id + '" data-param-name="' + iconBossMap[boss.id].name + '" onclick="changeBoss(event, this.dataset.paramName)">';
     // html += '<div class="boss-profile">';
-    html += '<img src="' + boss.icon + '" height="48px" width="48px" />';
+    html += '<img src="' + iconBossMap[boss.id].img + '" height="48px" width="48px" />';
     /* 
     html += '<div class="boss-name-rate">';
     // html += '<div class="boss-name">' + boss.name + "</div>";
@@ -139,7 +140,7 @@ function changeBoss(e, activeName) {
     }
 
     data.filter(function (boss) {
-        return boss.name === activeName;
+        return iconBossMap[boss.id].name === activeName;
     }).forEach(function (boss) {
         let html = getHomeworkHtml(boss.homework, boss.joyshow);
         document.getElementById("stage" + boss.stage).innerHTML = html;
@@ -153,7 +154,7 @@ function changeBoss(e, activeName) {
 function fiveUnits(units) {
     let html = '<div class="units">';
     units.forEach(function (unit) {
-        html += '<div class="unit"><img src="' + iconMap[unit.id].img + '" /><br>' + iconMap[unit.id].name + "</div>";
+        html += '<div class="unit"><img src="' + iconMap[unit].img + '" /><br>' + iconMap[unit].name + "</div>";
     });
     html += "</div>";
     return html;
@@ -529,7 +530,8 @@ function addHomework() {
     stopMove();
 
     // 获取icons不再放在这里
-    icons.forEach((_icon, _idx) => {
+    for (let _idx = 0; _idx < 3; _idx++) {
+        let _icon = icons[_idx];
         let html = "";
         _icon.forEach((icon, idx) => {
             html +=
@@ -546,7 +548,7 @@ function addHomework() {
                 '"></div>';
         });
         $("#candidate-unit-wrap-" + _idx)[0].innerHTML = html;
-    });
+    }
     $(".unit-icon").click(function () {
         if (this.className.indexOf(" active") === -1) {
             // 选中
@@ -577,7 +579,7 @@ function addHomework() {
     data.filter((boss) => {
         return boss.id == activeBoss.id;
     }).forEach((boss) => {
-        $("#select-boss-span")[0].innerHTML = '<img src="' + boss.icon + '" />';
+        $("#select-boss-span")[0].innerHTML = '<img src="' + iconBossMap[boss.id].icon + '" />';
     });
     // 整刀 / 尾刀
     let is_remainder = $("#checkbox-remainder")[0].checked;
@@ -822,10 +824,14 @@ function lazyInit() {
 
 function initIconMap() {
     // 初始化头像图片、名字的map，根据id查找
-    icons.forEach((_icon) => {
-        _icon.forEach((icon) => {
+    for (let i = 0; i < 3; i++) {
+        icons[i].forEach((icon) => {
             iconMap[icon.id] = { name: icon.iconValue, img: icon.iconFilePath };
         });
+    }
+    console.log(icons);
+    icons[3].forEach((icon) => {
+        iconBossMap[icon.id] = { name: icon.iconValue, img: icon.iconFilePath };
     });
 }
 
@@ -837,30 +843,33 @@ function selectHistory(date) {
 // date example: "2022-03"
 function getData(date = "") {
     let bossname = localStorage.getItem("boss") || "";
-    $.get("static/test/demo.json", { date: date }, function (_data, status) {
-        data = _data.data;
-        icons = _data.icon;
+    $.get("static/test/icons.json", { date: date }, function (data, status) {
+        icons = data;
         initIconMap();
-        // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
-        let found = false; // 上次记录的boss是否能在这次数据里找到
-        let html = "";
-        data.filter((boss) => {
-            // 兼容 stage="1"，以防万一
-            return boss.stage == stage;
-        }).forEach((boss) => {
-            if (boss.name === bossname) {
-                found = true;
-            }
-            html += getBossHtml(boss);
-        });
-        document.getElementsByClassName("bosses")[0].innerHTML = html;
+    }).then(
+        $.get("static/test/demo.json", { date: date }, function (_data, status) {
+            data = _data;
+            // activeBoss = {id: data[0].id, idx: 0, name: data[0].name}
+            let found = false; // 上次记录的boss是否能在这次数据里找到
+            let html = "";
+            data.filter((boss) => {
+                // 兼容 stage="1"，以防万一
+                return boss.stage == stage;
+            }).forEach((boss) => {
+                if (iconBossMap[boss.id].name === bossname) {
+                    found = true;
+                }
+                html += getBossHtml(boss);
+            });
+            document.getElementsByClassName("bosses")[0].innerHTML = html;
 
-        tabFilter(null, stage - 1);
-        !found && (bossname = data[0].name);
-        changeBoss(null, bossname);
-        // 懒加载图片
-        lazyInit();
-    });
+            tabFilter(null, stage - 1);
+            !found && (bossname = data[0].name);
+            changeBoss(null, bossname);
+            // 懒加载图片
+            lazyInit();
+        })
+    );
 }
 
 function init() {
