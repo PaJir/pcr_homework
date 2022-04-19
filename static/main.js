@@ -545,56 +545,60 @@ function maxDamage(stage) {
                 });
         });
 }
+var initAddHomeworkUnit = true;
 // 显示添加阵容弹窗
 function addHomework() {
     $(".window-add-homework-wrap")[0].style.display = "block";
     stopMove();
 
     // 获取icons不再放在这里
-    for (let _idx = 0; _idx < 3; _idx++) {
-        let _icon = icons[_idx];
-        let html = "";
-        _icon.forEach((icon, idx) => {
-            html +=
-                '<div class="unit-icon" title="' +
-                icon.iconValue +
-                '" data-param-id="' +
-                icon.iconId +
-                '" data-param-name="' +
-                icon.iconValue +
-                '" data-param-idx="' +
-                (_idx * 1000 + idx) +
-                '"><img src="' +
-                icon.iconFilePath +
-                '"></div>';
-        });
-        $("#candidate-unit-wrap-" + _idx)[0].innerHTML = html;
-    }
-    $(".unit-icon").click(function () {
-        if (this.className.indexOf(" active") === -1) {
-            // 选中
-            if ($(".unit-icon.active").length >= 5) {
-                // 最多5个
-                return;
-            }
-            this.className += " active";
-        } else {
-            // 取消
-            this.className = this.className.replace(" active", "");
-        }
-        updateSelectedUnits();
-    });
-    $(".select-unit-imgs").click(function () {
-        let id = this.children[1].dataset.paramId;
-        $(".unit-icon")
-            .filter(function () {
-                return this.dataset.paramId == id;
-            })
-            .each(function () {
-                this.className = this.className.replace(" active", "");
+    if (initAddHomeworkUnit) {
+        initAddHomeworkUnit = false;
+        for (let _idx = 0; _idx < 3; _idx++) {
+            let _icon = icons[_idx];
+            let html = "";
+            _icon.forEach((icon, idx) => {
+                html +=
+                    '<div class="unit-icon" title="' +
+                    icon.iconValue +
+                    '" data-param-id="' +
+                    icon.iconId +
+                    '" data-param-name="' +
+                    icon.iconValue +
+                    '" data-param-idx="' +
+                    (_idx * 1000 + idx) +
+                    '"><img src="' +
+                    icon.iconFilePath +
+                    '"></div>';
             });
-        updateSelectedUnits();
-    });
+            $("#candidate-unit-wrap-" + _idx)[0].innerHTML = html;
+        }
+        $(".unit-icon").click(function () {
+            if (this.className.indexOf(" active") === -1) {
+                // 选中
+                if ($(".unit-icon.active").length >= 5) {
+                    // 最多5个
+                    return;
+                }
+                this.className += " active";
+            } else {
+                // 取消
+                this.className = this.className.replace(" active", "");
+            }
+            updateSelectedUnits();
+        });
+        $(".select-unit-imgs").click(function () {
+            let id = this.children[1].dataset.paramId;
+            $(".unit-icon")
+                .filter(function () {
+                    return this.dataset.paramId == id;
+                })
+                .each(function () {
+                    this.className = this.className.replace(" active", "");
+                });
+            updateSelectedUnits();
+        });
+    }
     // 读取值，填充选项
     // boss头像&id
     data.filter((boss) => {

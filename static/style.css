@@ -1,5 +1,7 @@
 body {
-    background: url(./icon/bg.jpg) fixed 50% 0 #f5f6f7 !important;
+    background: url(./icon/bg.jpg) fixed;
+    background-repeat: repeat;
+    background-size: cover;
     /* display: flex;
     flex-direction: column;
     justify-content: flex-start; */
@@ -101,11 +103,11 @@ body {
 }
 
 .main-content-wrap {
-    margin: 104px 20px 20px 20px;
-    width: calc(100vw - 40px);
+    margin: 104px 5px 20px 5px;
+    width: calc(100vw - 10px);
 }
 .main-content {
-    background-color: rgba(204, 204, 204, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 3px;
     margin: auto;
     min-height: calc(100vh - 70px);
@@ -612,6 +614,7 @@ input[class="boss-detail-check"] {
     border-radius: 3px;
 }
 input.select-unit {
+    text-align: center;
     width: 50px;
     pointer-events: none;
 }
