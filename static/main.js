@@ -601,7 +601,7 @@ function addHomework() {
     data.filter((boss) => {
         return boss.id == activeBoss.id;
     }).forEach((boss) => {
-        $("#select-boss-span")[0].innerHTML = '<img src="' + iconBossMap[boss.id].icon + '" />';
+        $("#select-boss-span")[0].innerHTML = '<img src="' + iconBossMap[boss.id].img + '" />';
     });
     // 整刀 / 尾刀
     let is_remainder = $("#checkbox-remainder")[0].checked;

@@ -531,9 +531,11 @@ input[class="boss-detail-check"] {
     display: none;
 }
 .input-row {
-    line-height: 20px;
-    height: 20px;
-    margin-bottom: 20px;
+    display: flex;
+    text-align: center;
+    line-height: 28px;
+    height: 28px;
+    margin-bottom: 12px;
     font-weight: 600;
 }
 .box {
@@ -617,10 +619,16 @@ input#input-damage {
 input#input-info {
     width: 100%;
 }
+input#input-remainder-0,
+input#input-remainder-1 {
+    height: 28px;
+    margin: 0 5px;
+}
 input#input-video-title,
 input#input-video-link {
-    width: calc(100% - 32px);
-    margin-left: 2px;
+    /* width: calc(100% - 32px); */
+    flex: 1;
+    margin-left: 5px;
 }
 .close-window-icon {
     position: absolute;
@@ -681,7 +689,7 @@ input#input-add-video-link {
 input#input-add-joy-text,
 input#input-add-joy-img {
     width: 320px;
-    margin: 5px 0;
+    margin: 1px 0;
 }
 select#select-stage,
 select#select-auto,
