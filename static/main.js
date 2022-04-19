@@ -76,6 +76,27 @@ function remainderAutoFilter() {
     localStorage.setItem("auto", is_auto);
 }
 
+// 显隐视频
+function simpleShowFilter() {
+    let is_simple = document.getElementById("checkbox-simple").checked;
+    if (is_simple) {
+        $(".homework-down").each((_, videos) => {
+            videos.style.display = "none";
+        });
+        $(".homework-wrap").each((_, wrap) => {
+            wrap.style.padding = "0 10px";
+        });
+    } else {
+        $(".homework-down").each((_, videos) => {
+            videos.style.display = "block";
+        });
+        $(".homework-wrap").each((_, wrap) => {
+            wrap.style.padding = "10px";
+        });
+    }
+    localStorage.setItem("simple", is_simple);
+}
+
 // 显示一个Boss信息
 function getBossHtml(boss) {
     let html = '<div class="boss-wrap';
@@ -146,6 +167,7 @@ function changeBoss(e, activeName) {
         document.getElementById("stage" + boss.stage).innerHTML = html;
     });
     remainderAutoFilter();
+    simpleShowFilter();
     localStorage.setItem("boss", activeName);
     // 懒加载重新绑定
     lazyInit();
@@ -829,7 +851,6 @@ function initIconMap() {
             iconMap[icon.id] = { name: icon.iconValue, img: icon.iconFilePath };
         });
     }
-    console.log(icons);
     icons[3].forEach((icon) => {
         iconBossMap[icon.id] = { name: icon.iconValue, img: icon.iconFilePath };
     });
@@ -877,6 +898,7 @@ function init() {
     stage = localStorage.getItem("stage") || 1;
     $("#checkbox-remainder")[0].checked = localStorage.getItem("remainder") === "true";
     $("#checkbox-auto")[0].checked = localStorage.getItem("auto") === "true";
+    $("#checkbox-simple")[0].checked = localStorage.getItem("simple") === "true";
     getData();
     // 轮播图
     new Swiper(".swiper", {
