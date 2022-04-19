@@ -176,15 +176,15 @@ function getHomeworkHtml(homework, joyshow) {
         homework.forEach(function (hw) {
             html +=
                 '<div class="homework-wrap homework" data-param-name1="' +
-                (hw.unit.length >= 5 ? hw.unit[4].name : "") +
+                (hw.unit.length >= 5 ? iconMap[hw.unit[4]].name : "") +
                 '" data-param-name2="' +
-                (hw.unit.length >= 4 ? hw.unit[3].name : "") +
+                (hw.unit.length >= 4 ? iconMap[hw.unit[3]].name : "") +
                 '" data-param-name3="' +
-                (hw.unit.length >= 3 ? hw.unit[2].name : "") +
+                (hw.unit.length >= 3 ? iconMap[hw.unit[2]].name : "") +
                 '" data-param-name4="' +
-                (hw.unit.length >= 2 ? hw.unit[1].name : "") +
+                (hw.unit.length >= 2 ? iconMap[hw.unit[1]].name : "") +
                 '" data-param-name5="' +
-                (hw.unit.length >= 1 ? hw.unit[0].name : "") +
+                (hw.unit.length >= 1 ? iconMap[hw.unit[0]].name : "") +
                 '" data-param-auto="' +
                 hw.auto +
                 '" data-param-damage="' +
@@ -201,7 +201,7 @@ function getHomeworkHtml(homework, joyshow) {
             html += '<div class="damage-value">' + hw.damage + "w</div>";
             html += '<div class="homework-info">' + hw.info + "</div>";
             html += "</div>";
-            html += '<div clas="homw-work-down">';
+            html += '<div class="homework-down">';
             html += listVideos(hw.video, hw.id);
             html += "</div>";
             html += "</div>";
