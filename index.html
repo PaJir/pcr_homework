@@ -59,7 +59,7 @@
                 </section>
                 <section class="content">
                     <div class="battle-tabs">
-                        <b>阶段</b>
+                        <span class="b-title">阶段</span>
                         <button class="battle-tab-panel active" onclick="tabFilter(event, 0)" value="1" title="1-3周目">A 1~3周目</button>
                         <button class="battle-tab-panel" onclick="tabFilter(event, 1)" value="2" title="4-10周目">B 4~10周目</button>
                         <button class="battle-tab-panel" onclick="tabFilter(event, 2)" value="3" title="11-34周目">C 11~34周目</button>
@@ -74,14 +74,15 @@
                             </select>
                         </span>
                     </div>
-                    <div class="bosses-line">
-                        <b>BOSS</b>
+                    <div class="battle-tabs bosses-line">
+                        <span class="b-title">BOSS</span>
                         <div class="bosses">
                             <!--用id区分boss 1~5，动态生成-->
                         </div>
                     </div>
                     <div class="battle-tabs">
-                        <b>刀型</b> 尾刀
+                        <span class="b-title">刀型</span>
+                        尾刀
                         <label class="switch">
                             <input type="checkbox" id="checkbox-remainder" onclick="remainderAutoFilter()" />
                             <div class="slider"></div>

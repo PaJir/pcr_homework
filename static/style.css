@@ -270,6 +270,15 @@ input[class="boss-detail-check"] {
     float: right;
     vertical-align: middle;
 }
+.b-title {
+    width: 45px;
+    display: inline-block;
+    text-align: justify;
+    text-align-last: justify;
+    text-justify: inter-ideograph;
+    font-weight: bold;
+    margin-right: 10px;
+}
 
 .switch {
     position: relative;
