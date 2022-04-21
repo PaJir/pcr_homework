@@ -35,15 +35,27 @@ function tabFilter(event, id) {
 }
 
 // 尾刀和AUTO两个筛选项控制器
-function remainderAutoFilter() {
+function tabFilter2(is_click=false, is_auto, is_remainder) {
+    if (!is_click) {
+        is_auto = localStorage.getItem("auto") === "true";
+        is_remainder = localStorage.getItem("remainder") === "true";
+    }
+    let id = 0;
+    is_auto && (id = 1);
+    is_remainder && (id = 2);
+    let tabpanels = document.getElementsByClassName("battle-tab-panel2");
+    for (let i = 0; i < tabpanels.length; i++) {
+        tabpanels[i].className = tabpanels[i].className.replace(" active", "");
+        if (i === id) {
+            tabpanels[i].className += " active";
+        }
+    }
     // 四种情况
     // remainder auto
     //     0      0     只显示非尾刀非auto
     //     0      1     只显示非尾刀auto/半auto
     //     1      0     只显示尾刀非auto
     //     1      1     只显示尾刀auto/半auto
-    let is_remainder = document.getElementById("checkbox-remainder").checked;
-    let is_auto = document.getElementById("checkbox-auto").checked;
     let hw = document.getElementsByClassName("homework");
     for (let i = 0; i < hw.length; i++) {
         if (!is_remainder && !is_auto) {
@@ -58,22 +70,18 @@ function remainderAutoFilter() {
             } else {
                 hw[i].style.display = "none";
             }
-        } else if (is_remainder && !is_auto) {
-            if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto === "2") {
-                hw[i].style.display = "block";
-            } else {
-                hw[i].style.display = "none";
-            }
-        } else {
-            if (hw[i].dataset.paramRemain !== "0" && hw[i].dataset.paramAuto !== "2") {
+        } else if (is_remainder) {
+            if (hw[i].dataset.paramRemain !== "0") {
                 hw[i].style.display = "block";
             } else {
                 hw[i].style.display = "none";
             }
         }
     }
-    localStorage.setItem("remainder", is_remainder);
-    localStorage.setItem("auto", is_auto);
+    if (is_click) {
+        localStorage.setItem("remainder", is_remainder);
+        localStorage.setItem("auto", is_auto);
+    }
 }
 
 // 显隐视频
@@ -166,7 +174,7 @@ function changeBoss(e, activeName, forceUpdate = false) {
         let html = getHomeworkHtml(boss.homework, boss.joyshow);
         document.getElementById("stage" + boss.stage).innerHTML = html;
     });
-    remainderAutoFilter();
+    tabFilter2();
     simpleShowFilter();
     localStorage.setItem("boss", activeName);
     // 懒加载重新绑定
@@ -898,8 +906,7 @@ function getData(date = "") {
 function init() {
     // 读取上次显示的设置
     stage = localStorage.getItem("stage") || 1;
-    $("#checkbox-remainder")[0].checked = localStorage.getItem("remainder") === "true";
-    $("#checkbox-auto")[0].checked = localStorage.getItem("auto") === "true";
+    tabFilter2();
     $("#checkbox-simple")[0].checked = localStorage.getItem("simple") === "true";
     getData();
     // 轮播图
