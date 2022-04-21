@@ -15,10 +15,9 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 9999;
+    z-index: 9990;
 }
-.top-h1,
-.top-h2 {
+.top-h1 {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -53,54 +52,133 @@ body {
     height: 36px;
     width: 36px;
 }
-.top-h2 {
-    height: 30px;
-    padding-left: 30px;
+@media only screen and (min-width: 768.01px) {
+    .top-h2 {
+        height: 30px;
+        width: 100% !important;
+        padding-left: 30px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .top-h2 .top-h2-ul {
+        line-height: 30px;
+        padding: 0 15px;
+        margin: 0 10px;
+    }
+    .top-h2 a,
+    .top-h2 a:link,
+    .top-h2 a:visited {
+        color: #3f3f3f;
+        text-decoration: none;
+    }
+    .top-h2 .top-h2-ul {
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .top-h2 .top-h2-ul:hover {
+        background-color: #888888;
+    }
+    .top-h2 .top-h2-ul:hover a {
+        color: #ffffff;
+        background-color: #888888;
+    }
+    .top-h2 .top-h2-ul:hover .top-h2-li {
+        display: block;
+    }
+    .top-h2 .top-h2-ul .top-h2-li {
+        display: none;
+        position: absolute;
+        font-size: 12px;
+        background-color: #888888;
+        margin-left: -15px;
+        max-height: 346px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .top-h2 .top-h2-ul .top-h2-li a {
+        display: block;
+        position: relative;
+        padding: 0 15px;
+        width: 128px;
+    }
+    .top-h2 .top-h2-ul .top-h2-li a:hover {
+        color: #ffffff;
+        background-color: #555555;
+    }
 }
-.top-h2 .top-h2-ul {
-    line-height: 30px;
-    padding: 0 15px;
-    margin: 0 10px;
+
+@media only screen and (max-width: 768px) {
+    .top-h2-sidebar {
+        height: 30px;
+        padding-left: 30px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        text-align: center;
+        vertical-align: middle;
+        z-index: 9999;
+    }
+    .top-h2-menu {
+        display: block !important;
+    }
+    .sidebar {
+        background-color: #ffffff;
+        position: fixed;
+        width: 0;
+        height: 100vh;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        padding-top: 100px;
+        overflow: hidden;
+        transition: width 0.25s;
+    }
+    .sidebar a {
+        display: block;
+        padding: 5px 10px;
+        line-height: 36px;
+        cursor: pointer;
+    }
+    .sidebar a,
+    .sidebar a:link,
+    .sidebar a:visited {
+        color: #3f3f3f;
+        text-decoration: none;
+    }
+    .sidebar a:hover {
+        color: #ffffff;
+        background-color: #888888;
+    }
+    .sidebar .top-h2-ul {
+        position: relative;
+        font-size: 16px;
+    }
+    .sidebar .top-h2-li {
+        padding-left: 20px;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .sidebar .top-h2-ul:hover > .top-h2-li,
+    .sidebar .top-h2-ul:active > .top-h2-li {
+        max-height: 300px;
+    }
+    .window-shadow {
+        z-index: 9980 !important;
+    }
 }
-.top-h2 a,
-.top-h2 a:link,
-.top-h2 a:visited {
-    color: #3f3f3f;
-    text-decoration: none;
-}
-.top-h2 .top-h2-ul {
-    font-size: 16px;
+.top-h2-menu {
+    display: none;
+    margin: auto 0;
     cursor: pointer;
 }
-.top-h2 .top-h2-ul:hover {
-    background-color: #888888;
-}
-.top-h2 .top-h2-ul:hover a {
-    color: #ffffff;
-    background-color: #888888;
-}
-.top-h2 .top-h2-ul:hover .top-h2-li {
-    display: block;
-}
-.top-h2 .top-h2-ul .top-h2-li {
-    display: none;
-    position: absolute;
-    font-size: 12px;
-    background-color: #888888;
-    margin-left: -15px;
-    max-height: 346px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-.top-h2 .top-h2-ul .top-h2-li a {
-    display: block;
-    position: relative;
-    padding: 0 15px;
-    width: 128px;
-}
-.top-h2 .top-h2-ul .top-h2-li a:hover {
-    color: #ffffff;
-    background-color: #555555;
+.top-h2-menu img {
+    height: 24px;
+    width: 24px;
 }
 
 .main-content-wrap {
@@ -285,10 +363,6 @@ input[class="boss-detail-check"] {
     text-justify: inter-ideograph;
     font-weight: bold;
     margin-right: 10px;
-}
-.b-title:after {
-    content: '';
-    width: 100%;
 }
 
 .switch {
@@ -527,7 +601,7 @@ input[class="boss-detail-check"] {
     width: 100vw;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 9998;
 }
 .window-inner {
     position: absolute;
