@@ -5,6 +5,20 @@ var stage = undefined; // 预留
 var icons = undefined; // 角色列表 [{iconId: "", id: "", iconFilePath: "", iconValue: ""}]
 var iconMap = {}; // {id: {name: "", img: ""}}
 var iconBossMap = {}; // id: {name: "", img: ""}}
+// 移动端导航栏相关
+function showSideBar() {
+    $(".sidebar").css({
+        width: "200px"
+    });
+    $(".window-sidebar-shadow")[0].style.display = "block";
+    stopMove();
+}
+function closeSideBar(e, that) {
+    $(".sidebar").css({
+        width: "0"
+    });
+    closeShadow(e, that);
+}
 // tab 筛选项
 function tabFilter(event, id) {
     let tabcontents = document.getElementsByClassName("battle-tab-content");
@@ -35,7 +49,7 @@ function tabFilter(event, id) {
 }
 
 // 尾刀和AUTO两个筛选项控制器
-function tabFilter2(is_click=false, is_auto, is_remainder) {
+function tabFilter2(is_click = false, is_auto, is_remainder) {
     if (!is_click) {
         is_auto = localStorage.getItem("auto") === "true";
         is_remainder = localStorage.getItem("remainder") === "true";
@@ -421,7 +435,7 @@ function stopMove() {
     });
     $(".main-content-wrap").css({
         width: "calc(100vw - 10px)"
-    })
+    });
 }
 
 function closeWindow(id) {
@@ -438,7 +452,7 @@ function closeWindow(id) {
     $("body").scrollLeft(left);
     $(".main-content-wrap").css({
         width: ""
-    })
+    });
 }
 
 // 关闭弹窗
