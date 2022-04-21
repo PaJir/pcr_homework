@@ -419,6 +419,9 @@ function stopMove() {
             left: left + "px"
         });
     });
+    $(".main-content-wrap").css({
+        width: "calc(100vw - 10px)"
+    })
 }
 
 function closeWindow(id) {
@@ -433,6 +436,9 @@ function closeWindow(id) {
     });
     $("body").scrollTop(top);
     $("body").scrollLeft(left);
+    $(".main-content-wrap").css({
+        width: ""
+    })
 }
 
 // 关闭弹窗
@@ -615,7 +621,7 @@ function addHomework() {
         $("#select-boss-span")[0].innerHTML = '<img src="' + iconBossMap[boss.id].img + '" />';
     });
     // 整刀 / 尾刀
-    let is_remainder = $("#checkbox-remainder")[0].checked;
+    let is_remainder = localStorage.getItem("remainder") === "true";
     if (is_remainder) {
         $("#input-remainder-1")[0].checked = true;
     } else {
@@ -638,7 +644,7 @@ function addHomework() {
         }
     }
     // 手动 / AUTO
-    let is_auto = $("#checkbox-auto")[0].checked;
+    let is_auto = localStorage.getItem("auto") === "true";
     options = $("#select-auto")[0].options;
     for (let i = 0; i < options.length; i++) {
         if ((is_auto && options[i].value == "1") || (!is_auto && options[i].value == "2")) {

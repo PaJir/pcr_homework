@@ -13,6 +13,7 @@ body {
     box-shadow: 0 1px 5px #cccccc;
     width: 100%;
     position: fixed;
+    left: 0;
     top: 0;
     z-index: 9999;
 }
@@ -104,13 +105,13 @@ body {
 
 .main-content-wrap {
     margin: 104px 5px 20px 5px;
-    width: calc(100vw - 10px);
+    width: calc(100% - 10px);
 }
 .main-content {
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 3px;
     margin: auto;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 124px);
     width: 100%;
     max-width: 1200px;
 }
@@ -122,15 +123,11 @@ body {
 .swiper {
     max-height: 300px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .swiper img {
     height: auto;
     width: 100%;
-}
-.bosses-line {
-    padding: 10px 0;
-    vertical-align: middle;
 }
 .bosses {
     /* display: flex;
@@ -242,7 +239,13 @@ input[class="boss-detail-check"] {
     background-color: #ffffff;
 }
 
-.battle-tabs button {
+.battle-tabs {
+    min-width: 600px;
+    padding: 5px 0;
+    vertical-align: middle;
+}
+.battle-tabs button,
+.connect-kk {
     background-color: inherit;
     color: #3f3f3f;
     border: solid;
@@ -253,9 +256,11 @@ input[class="boss-detail-check"] {
     padding: 2px 6px;
     /* transition: 0.25s; */
     margin: 2px 1px;
+    text-decoration: none;
 }
 .battle-tabs button:hover,
-.battle-tabs button.active {
+.battle-tabs button.active,
+.connect-kk:hover {
     border-color: #00ae9d;
 }
 .battle-tabs span {
@@ -280,6 +285,10 @@ input[class="boss-detail-check"] {
     text-justify: inter-ideograph;
     font-weight: bold;
     margin-right: 10px;
+}
+.b-title:after {
+    content: '';
+    width: 100%;
 }
 
 .switch {
@@ -336,7 +345,7 @@ input[class="boss-detail-check"] {
     width: 1140px;
     font-size: small;
     padding: 3px 10px;
-    margin: 20px 0 0 0;
+    margin: 15px 0 0 0;
 }
 .table-header div {
     display: inline-block;
@@ -359,8 +368,8 @@ input[class="boss-detail-check"] {
     width: 300px;
 }
 .table-header div:nth-child(5) {
-    margin-left: 55px;
-    width: 366px;
+    margin-left: 58px;
+    width: 360px;
 }
 
 .homeworks {

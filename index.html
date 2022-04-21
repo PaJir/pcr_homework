@@ -56,8 +56,6 @@
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
-                </section>
-                <section class="content">
                     <div class="battle-tabs">
                         <span class="b-title">阶段</span>
                         <button class="battle-tab-panel active" onclick="tabFilter(event, 0)" value="1" title="1-3周目">A 1~3周目</button>
@@ -74,22 +72,27 @@
                             </select>
                         </span>
                     </div>
-                    <div class="battle-tabs bosses-line">
+                    <div class="battle-tabs">
                         <span class="b-title">BOSS</span>
                         <div class="bosses">
                             <!--用id区分boss 1~5，动态生成-->
                         </div>
+                        <span class="battle-tabs-right">
+                            精简
+                            <label class="switch">
+                                <input type="checkbox" id="checkbox-simple" onclick="simpleShowFilter()" />
+                                <div class="slider"></div>
+                            </label>
+                        </span>
                     </div>
                     <div class="battle-tabs">
                         <span class="b-title">刀型</span>
                         <button class="battle-tab-panel2" onclick="tabFilter2(true, false, false)" title="手动">手动</button>
                         <button class="battle-tab-panel2" onclick="tabFilter2(true, true, false)" title="AUTO/半AUTO">AUTO/半AUTO</button>
                         <button class="battle-tab-panel2" onclick="tabFilter2(true, false, true)" title="尾刀">尾刀</button>
-                        <span>精简</span>
-                        <label class="switch">
-                            <input type="checkbox" id="checkbox-simple" onclick="simpleShowFilter()" />
-                            <div class="slider"></div>
-                        </label>
+                        <span class="battle-tabs-right">
+                            <a class="connect-kk" href="xxx" target="_blank"  title="KK">交流反馈频道</a>
+                        </span>
                     </div>
                     <div class="battle">
                         <!--不好用table实现，直接用div硬怼-->
