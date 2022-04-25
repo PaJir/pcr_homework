@@ -830,3 +830,18 @@ input#input-add-joy-text {
     cursor: grab;
     -webkit-user-drag: none;
 }
+
+.beian {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    height: 30px;
+    line-height: 30px;
+}
+.beian a {
+    color: rgba(152, 152, 152, 1);
+    text-decoration: none;
+}
+.beian img {
+    margin: 0 0 -5px 2px;
+}
