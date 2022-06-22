@@ -427,22 +427,17 @@ input[class="boss-detail-check"] {
 }
 /* 批量/分刀  阵容  参考伤害  特殊说明 = 1140 */
 .table-header div:nth-child(1) {
-    margin-left: 4px;
     width: 78px;
 }
 .table-header div:nth-child(2) {
     margin-left: 10px;
-    width: 200px;
+    width: 260px;
 }
 .table-header div:nth-child(3) {
-    margin-left: 10px;
-    width: 100px;
+    width: 120px;
 }
 .table-header div:nth-child(4) {
-    width: 300px;
-}
-.table-header div:nth-child(5) {
-    margin-left: 58px;
+    margin-left: 298px;
     width: 360px;
 }
 
@@ -454,14 +449,14 @@ input[class="boss-detail-check"] {
     background-color: #f2f4fa;
     border: 1px #cccccc solid;
     border-radius: 5px;
-    min-height: 60px;
+    min-height: 74px;
     width: 740px; /* 100 + 230 + 100 + 300 + 20padding*/
     padding: 10px;
     margin: 5px 0;
 }
 .homework-up {
     align-items: center;
-    height: 60px;
+    height: 74px;
     display: flex;
     justify-content: start;
     text-align: center;
@@ -481,21 +476,21 @@ input[class="boss-detail-check"] {
 .units {
     display: flex;
     flex-direction: row;
-    height: 62px;
-    width: 210px;
+    height: 76px;
+    width: 280px;
     margin: 0 10px;
 }
 .unit {
     background-color: #ffffff;
     border-radius: 3px;
-    height: 60px;
-    width: 40px;
+    height: 74px;
+    width: 54px;
     font-size: small;
     margin: 1px;
 }
 .unit img {
-    height: 40px;
-    width: 40px;
+    height: 54px;
+    width: 54px;
 }
 .damage-value {
     font-weight: bolder;
@@ -505,7 +500,7 @@ input[class="boss-detail-check"] {
 .homework-info {
     font-size: small;
     color: #3f3f3f;
-    width: 330px;
+    width: 260px;
     text-align: left;
 }
 .videos {

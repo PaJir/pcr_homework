@@ -242,7 +242,7 @@ function getHomeworkHtml(homework, joyshow) {
             html += '<label for="batch-check-' + hw.id + '" class="batch-check-label">' + hw.sn + "</label>";
             html += fiveUnits(hw.unit);
             html += '<div class="damage-value">' + hw.damage + "w</div>";
-            html += '<div class="homework-info">' + hw.info + "</div>";
+            html += '<div class="homework-info"></div>';
             html += "</div>";
             html += '<div class="homework-down">';
             html += listVideos(hw.video, hw.id);
