@@ -105,11 +105,17 @@ function simpleShowFilter() {
         $(".homework-down").each((_, videos) => {
             videos.style.display = "none";
         });
+        $(".homework-note").each((_, videos) => {
+            videos.style.display = "none";
+        });
         $(".homework-wrap").each((_, wrap) => {
             wrap.style.padding = "0 10px";
         });
     } else {
         $(".homework-down").each((_, videos) => {
+            videos.style.display = "block";
+        });
+        $(".homework-note").each((_, videos) => {
             videos.style.display = "block";
         });
         $(".homework-wrap").each((_, wrap) => {
@@ -184,8 +190,8 @@ function changeBoss(e, activeName, forceUpdate = false) {
 
     data.filter(function (boss) {
         return iconBossMap[boss.id].name === activeName;
-    }).forEach(function (boss) {
-        let html = getHomeworkHtml(boss.homework, boss.joyshow);
+    }).forEach(function (boss, idx) {
+        let html = getHomeworkHtml(boss.homework, boss.joyshow, idx);
         document.getElementById("stage" + boss.stage).innerHTML = html;
     });
     tabFilter2();
@@ -203,21 +209,57 @@ function fiveUnits(units) {
     html += "</div>";
     return html;
 }
-
-function listVideos(videos, hwId) {
+function showNote(url, image, note, noteId) {
+    let lastNoteId = $("#" + noteId)[0].dataset.paramNoteId;
+    // 重复点击即折叠
+    if (lastNoteId === noteId) {
+        $("#" + noteId)[0].innerHTML = "";
+        $("#" + noteId)[0].dataset.paramNoteId = "";
+        return;
+    }
+    $("#" + noteId)[0].dataset.paramNoteId = noteId;
+    image = JSON.parse(image);
+    console.log(url, image, note, noteId);
+    let html = "<div class='homework-note-inner'><h3>链接：</h3>";
+    html += url ? "<a href='" + url + "' target='_blank'>" + url + "</a>" : "无";
+    html += "<h3>备注：</h3>";
+    if (image.length === 0 && !note) {
+        html += "无";
+    }
+    image.forEach(function (img) {
+        console.log(img);
+        html += '<img src="' + img.url + '" onclick="showImg(\'' + img.source + "')\"/><br>";
+    });
+    html += note.replace("\n", "<br>");
+    html += "</div>";
+    $("#" + noteId)[0].innerHTML = html;
+}
+function listVideos(videos, hwId, noteId) {
     let html = '<div class="videos"><span>视频</span>';
     videos.forEach(function (video) {
-        html += '<a class="video" href="' + video.url + '" target="_blank">' + video.text + "</a>";
+        html +=
+            '<div class="video" data-param-url="' +
+            video.url +
+            "\" data-param-image='" +
+            JSON.stringify(video.image) +
+            "' data-param-note='" +
+            video.note.replace("'", '"') +
+            "' onclick=\"showNote(this.dataset.paramUrl, this.dataset.paramImage, this.dataset.paramNote, '" +
+            noteId +
+            "')\">" +
+            video.text +
+            "</div>";
     });
     html += '<div class="video-add" data-param-hwid="' + hwId + '" onclick="addVideo(this.dataset.paramHwid)">＋ 添加我的视频</div>';
     html += "</div>";
     return html;
 }
 
-function getHomeworkHtml(homework, joyshow) {
+function getHomeworkHtml(homework, joyshow, bossIdx) {
     let html = '<div class="homeworks">';
     if (homework && homework.length !== 0) {
-        homework.forEach(function (hw) {
+        homework.forEach(function (hw, idx) {
+            let noteId = "homework-note-" + bossIdx + "-" + idx;
             html +=
                 '<div class="homework-wrap homework" data-param-name1="' +
                 (hw.unit.length >= 5 ? iconMap[hw.unit[4]].name : "") +
@@ -245,8 +287,9 @@ function getHomeworkHtml(homework, joyshow) {
             html += '<div class="homework-info"></div>';
             html += "</div>";
             html += '<div class="homework-down">';
-            html += listVideos(hw.video, hw.id);
+            html += listVideos(hw.video, hw.id, noteId);
             html += "</div>";
+            html += '<div class="homework-note" id="' + noteId + '"></div>';
             html += "</div>";
         });
     }
@@ -268,7 +311,7 @@ function getHomeworkHtml(homework, joyshow) {
                 leftHeight += height;
                 left += '<div class="joy">';
                 if (joy.img) {
-                    left += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + '" onclick="showImg(this.src)"/>';
+                    left += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + "\" onclick=\"showImg(this.src.replace('/cache/', '/attachment/'))\"/>";
                 }
                 if (joy.msg) {
                     left += joy.msg;
@@ -278,7 +321,7 @@ function getHomeworkHtml(homework, joyshow) {
                 rightHeight += height;
                 right += '<div class="joy">';
                 if (joy.img) {
-                    right += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + '" onclick="showImg(this.src)"/>';
+                    right += '<img class="img-lazy" src="./static/icon/加载中.gif" alt="' + joy.img + "\" onclick=\"showImg(this.src.replace('/cache/', '/attachment/'))\"/>";
                 }
                 if (joy.msg) {
                     right += joy.msg;
@@ -813,7 +856,7 @@ function showImg(src) {
     $(".window-img-wrap")[0].style.display = "block";
     stopMove();
     var imgContent = document.createElement("img");
-    imgContent.setAttribute("src", src.replace("/cache/", "/attachment/"));
+    imgContent.setAttribute("src", src);
     imgContent.setAttribute("id", "imgContent");
     imgContent.setAttribute("class", "handleimg-box");
 

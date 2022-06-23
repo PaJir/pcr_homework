@@ -464,6 +464,13 @@ input[class="boss-detail-check"] {
 .homework-down {
     margin-top: 6px;
 }
+.homework-note {
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+.homework-note-inner {
+    padding: 20px;
+}
 .batch-check-label {
     color: #ffffff;
     border-radius: 4px;
@@ -526,6 +533,7 @@ input[class="boss-detail-check"] {
     box-shadow: 0px 1px 2px #cccccc;
     cursor: pointer;
 }
+.video,
 .video:link,
 .video:visited {
     /* color: #d93f62; */
