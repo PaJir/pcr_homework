@@ -478,15 +478,31 @@ function confirmHomework() {
         remain: "0",
         damage: document.getElementById("input-damage").value,
         auto: document.getElementById("select-auto").value,
-        info: document.getElementById("input-info").value,
+        // info: document.getElementById("input-info").value,
         video: {
             text: document.getElementById("input-video-title").value,
-            url: document.getElementById("input-video-link").value
+            url: document.getElementById("input-video-link").value,
+            note: document.getElementById("input-video-note").value,
+            imgs: []
         }
     };
+    let files = document.getElementById("input-video-img").files;
     if (form.damage === "") {
         // 必须输入参考伤害
         layer.msg("请输入参考伤害", { icon: 0 });
+        return;
+    }
+    if (form.video.text === "") {
+        // 必须输入标题
+        layer.msg("请输入标题", { icon: 0 });
+        return;
+    }
+    if (form.video.url === "" && form.video.note === "" && files.length === 0) {
+        layer.msg("作业内容不完整，请填写链接、备注、图片任意一个", { icon: 0 });
+        return;
+    }
+    if (files.length > 5) {
+        layer.msg("图片数量过多！", { icon: 0 });
         return;
     }
     let units = document.getElementsByClassName("select-unit");
@@ -504,6 +520,19 @@ function confirmHomework() {
             form.remain = e.value;
         }
     });
+    if (files.length !== 0) {
+        for (let file of files) {
+            if (file.type !== "image/jpeg" && file.type !== "image/png") {
+                layer.msg("不是有效的图片文件!", { icon: 0 });
+                return;
+            }
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                form.video.imgs.push(e.target.result);
+            };
+            fileReader.readAsDataURL(file);
+        }
+    }
     // TODO
     // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
     // $.post(_baseUrl + "/gzlj/data/lineup", { data: JSON.stringify(form) }, function (result) {
@@ -675,11 +704,36 @@ function confirmVideo() {
     let form = {
         hwId: document.getElementsByClassName("window-add-video-wrap")[0].dataset.paramHwid,
         text: document.getElementById("input-add-video-title").value,
-        url: document.getElementById("input-add-video-link").value
+        url: document.getElementById("input-add-video-link").value,
+        note: document.getElementById("input-add-video-note").value,
+        imgs: []
     };
-    if (form.text === "" || form.url === "") {
-        // 简单判空处理
+    let files = document.getElementById("input-add-video-img").files;
+    if (form.text === "") {
+        // 必须输入标题
+        layer.msg("请输入标题", { icon: 0 });
         return;
+    }
+    if (form.url === "" && form.note === "" && files.length === 0) {
+        layer.msg("作业内容不完整，请填写链接、备注、图片任意一个", { icon: 0 });
+        return;
+    }
+    if (files.length > 5) {
+        layer.msg("图片数量过多！", { icon: 0 });
+        return;
+    }
+    if (files.length !== 0) {
+        for (let file of files) {
+            if (file.type !== "image/jpeg" && file.type !== "image/png") {
+                layer.msg("不是有效的图片文件!", { icon: 0 });
+                return;
+            }
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                form.imgs.push(e.target.result);
+            };
+            fileReader.readAsDataURL(file);
+        }
     }
     // TODO
     // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
@@ -712,6 +766,10 @@ function confirmJoy() {
         img: ""
     };
     let file = document.getElementById("input-add-joy-img").files[0];
+    if (form.text === "" && file === undefined) {
+        layer.msg("无效内容!", { icon: 0 });
+        return;
+    }
     if (file !== undefined) {
         if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/gif") {
             layer.msg("不是有效的图片文件!", { icon: 0 });
@@ -719,45 +777,29 @@ function confirmJoy() {
         }
         var fileReader = new FileReader();
         fileReader.onload = function (e) {
-            // TODO
             form.img = e.target.result;
-            // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
-            // $.post(_baseUrl + "/gzlj/data/debunk", { data: JSON.stringify(form) }, function (result) {
-            //     layer.close(_layerIndex);
-            //     if (result.status != 1) {
-            //         layer.msg(result.info, { icon: 2 });
-            //     } else {
-            //         closeWindow("window-add-joy-wrap");
-            //         // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
-            //         document.getElementById("input-add-joy-text").value = "";
-            //         document.getElementById("input-add-joy-img").value = "";
-            //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
-            //     }
-            // });
-            layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
-            closeWindow("window-add-joy-wrap");
-            // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
-            document.getElementById("input-add-joy-text").value = "";
-            document.getElementById("input-add-joy-img").value = "";
         };
         fileReader.readAsDataURL(file);
-    } else if (form.text !== "") {
-        // TODO
-        // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
-        // $.post(_baseUrl + "/gzlj/data/debunk", { data: JSON.stringify(form) }, function (result) {
-        //     layer.close(_layerIndex);
-        //     if (result.status != 1) {
-        //         layer.msg(result.info, { icon: 2 });
-        //     } else {
-        //         closeWindow("window-add-joy-wrap");
-        //         document.getElementById("input-add-joy-text").value = "";
-        //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
-        //     }
-        // });
-        layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
-        closeWindow("window-add-joy-wrap");
-        document.getElementById("input-add-joy-text").value = "";
     }
+    // var _layerIndex = layer.msg("正在提交数据", { icon: 16, time: 0, shade: [0.5, "#000", true] });
+    // $.post(_baseUrl + "/gzlj/data/debunk", { data: JSON.stringify(form) }, function (result) {
+    //     layer.close(_layerIndex);
+    //     if (result.status != 1) {
+    //         layer.msg(result.info, { icon: 2 });
+    //     } else {
+    //         closeWindow("window-add-joy-wrap");
+    //         // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
+    //         document.getElementById("input-add-joy-text").value = "";
+    //         document.getElementById("input-add-joy-img").value = "";
+    //         layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
+    //     }
+    // });
+    console.log(form);
+    layer.msg("吐槽提交成功~请等待审核", { icon: 1 });
+    closeWindow("window-add-joy-wrap");
+    // 关闭窗口同时清除数据，只有这里是必要的，吐槽内容不太可能相近
+    document.getElementById("input-add-joy-text").value = "";
+    document.getElementById("input-add-joy-img").value = "";
 }
 
 // 显示吐个槽

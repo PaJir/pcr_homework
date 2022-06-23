@@ -197,20 +197,25 @@
                     <label>参考伤害(w)</label>
                     <input id="input-damage" type="number" min="1" step="1" onkeydown="keyDownLoop(event, this)" />
                 </div>
-                <div>
-                    <label>特殊说明</label>
-                </div>
-                <div class="input-row">
-                    <input id="input-info" placeholder="注意与“视频标题”相区分" />
-                </div>
-                <p style="font-size: medium">视频</p>
                 <div class="input-row">
                     <label>标题</label>
                     <input id="input-video-title" placeholder="作者 类型 伤害 其他" />
                 </div>
                 <div class="input-row">
                     <label>链接</label>
-                    <input id="input-video-link" />
+                    <input id="input-video-link" placeholder="不填默认“无”"/>
+                </div>
+                <div>
+                    <label>备注</label>
+                </div>
+                <div class="input-row">
+                    <textarea id="input-video-note" placeholder="可以填写轴、角色练度说明、其他解释等内容，不填默认“无”"></textarea>
+                </div>
+                <div>
+                    <label>轴图(可选, 最多5张)</label>
+                </div>
+                <div class="input-row">
+                    <input type="file" id="input-video-img" accept=".jpg, .jpeg, .png" multiple="multiple" />
                 </div>
                 <div class="check-info">*确定前请再三检查投稿内容是否有误</div>
                 <div class="close-window-icon" onclick="closeWindow('window-add-homework-wrap')">×</div>
@@ -226,11 +231,23 @@
                 <h3 style="text-align: center">添加视频</h3>
                 <div class="input-row">
                     <label>标题</label>
-                    <input id="input-add-video-title" />
+                    <input id="input-add-video-title"  placeholder="作者 类型 伤害 其他" />
                 </div>
                 <div class="input-row">
                     <label>链接</label>
-                    <input id="input-add-video-link" />
+                    <input id="input-add-video-link" placeholder="不填默认“无”" />
+                </div>
+                <div>
+                    <label>备注</label>
+                </div>
+                <div class="input-row">
+                    <textarea id="input-add-video-note" placeholder="可以填写轴、角色练度说明、其他解释等内容，不填默认“无”"></textarea>
+                </div>
+                <div>
+                    <label>轴图(可选, 最多5张)</label>
+                </div>
+                <div class="input-row">
+                    <input type="file" id="input-add-video-img" accept=".jpg, .jpeg, .png" multiple="multiple" />
                 </div>
                 <div class="check-info">*确定前请再三检查投稿内容是否有误</div>
                 <div class="close-window-icon" onclick="closeWindow('window-add-video-wrap')">×</div>
@@ -240,6 +257,7 @@
                 </div>
             </div>
         </div>
+        <!--添加吐槽弹窗-->
         <div class="window-shadow window-add-joy-wrap" onclick="closeShadow(event, this)">
             <div class="window-inner window-add-joy">
                 <h3 style="text-align: center">添加吐槽</h3>
@@ -253,7 +271,7 @@
                     <label>上传图片</label>
                 </div>
                 <div class="input-row">
-                    <input type="file" id="input-add-joy-img" />
+                    <input type="file" id="input-add-joy-img" accept=".jpg, .jpeg, .png, .gif" />
                 </div>
                 <div class="check-info">*确定前请再三检查投稿内容是否有误</div>
                 <div class="close-window-icon" onclick="closeWindow('window-add-joy-wrap')">×</div>
@@ -263,6 +281,7 @@
                 </div>
             </div>
         </div>
+        <!--大图弹窗-->
         <div class="window-shadow window-img-wrap" onclick="closeImgShadow(event, this)">
             <img class="imgbtn expand" src="static/icon/expand.png" onclick="expandImg()" alt="放大"></img>
             <img class="imgbtn narrow" src="static/icon/narrow.png" onclick="narrowImg()" alt="缩小"></img>

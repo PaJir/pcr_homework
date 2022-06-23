@@ -623,7 +623,7 @@ input[class="boss-detail-check"] {
     display: flex;
     text-align: center;
     line-height: 28px;
-    height: 28px;
+    /* height: 28px; */
     margin-bottom: 12px;
     font-weight: 600;
 }
@@ -706,8 +706,13 @@ select#select-auto {
 input#input-damage {
     width: 80px;
 }
-input#input-info {
+textarea#input-video-note,
+input#input-video-img {
     width: 100%;
+}
+textarea#input-video-note {
+    resize: vertical;
+    min-height: 100px;
 }
 input#input-remainder-0,
 input#input-remainder-1 {
@@ -773,8 +778,17 @@ input#input-video-link {
 }
 input#input-add-video-title,
 input#input-add-video-link {
-    margin: 0 5px;
-    width: 280px;
+    margin: 0 0 0 5px;
+    width: 285px;
+}
+textarea#input-add-video-note,
+input#input-add-video-img {
+    margin: 0 5px 0 0;
+    width: 100%;
+}
+textarea#input-add-video-note {
+    resize: vertical;
+    min-height: 100px;
 }
 input#input-add-joy-text,
 input#input-add-joy-img {
