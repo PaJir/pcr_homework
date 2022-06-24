@@ -209,17 +209,16 @@ function fiveUnits(units) {
     html += "</div>";
     return html;
 }
-function showNote(url, image, note, noteId) {
-    let lastNoteId = $("#" + noteId)[0].dataset.paramNoteId;
+function showNote(url, image, note, noteId, videoIdx) {
+    let lastVideoId = $("#" + noteId)[0].dataset.paramVideoId;
     // 重复点击即折叠
-    if (lastNoteId === noteId) {
+    if (lastVideoId === videoIdx) {
         $("#" + noteId)[0].innerHTML = "";
-        $("#" + noteId)[0].dataset.paramNoteId = "";
+        $("#" + noteId)[0].dataset.paramVideoId = "";
         return;
     }
-    $("#" + noteId)[0].dataset.paramNoteId = noteId;
+    $("#" + noteId)[0].dataset.paramVideoId = videoIdx;
     image = JSON.parse(image);
-    console.log(url, image, note, noteId);
     let html = "<div class='homework-note-inner'><h3>链接：</h3>";
     html += url ? "<a href='" + url + "' target='_blank'>" + url + "</a>" : "无";
     html += "<h3>备注：</h3>";
@@ -236,7 +235,7 @@ function showNote(url, image, note, noteId) {
 }
 function listVideos(videos, hwId, noteId) {
     let html = '<div class="videos"><span>视频</span>';
-    videos.forEach(function (video) {
+    videos.forEach(function (video, videoIdx) {
         html +=
             '<div class="video" data-param-url="' +
             video.url +
@@ -246,6 +245,8 @@ function listVideos(videos, hwId, noteId) {
             video.note.replace("'", '"') +
             "' onclick=\"showNote(this.dataset.paramUrl, this.dataset.paramImage, this.dataset.paramNote, '" +
             noteId +
+            "', '" +
+            videoIdx +
             "')\">" +
             video.text +
             "</div>";
